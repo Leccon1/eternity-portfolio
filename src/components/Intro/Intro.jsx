@@ -42,11 +42,15 @@ const Intro = ({ onStartAnimateFinish }) => {
           animate(introContainerLeft, {
             translateX: ['0%', '-100%'],
             easing: 'easeOutExpo',
+            '--intro-blur': ['0px', '5px'],
+            '--intro-opacity': [1, 0.8],
             duration: timerDuration,
           })
           animate(introContainerRight, {
             translateX: ['0%', '100%'],
             easing: 'easeOutExpo',
+            '--intro-blur': ['0px', '5px'],
+            '--intro-opacity': [1, 0.8],
             duration: timerDuration,
           })
         },
@@ -59,12 +63,12 @@ const Intro = ({ onStartAnimateFinish }) => {
 
   return (
     <>
-      <div className={styles.introLeft} ref={introLeft}>
+      <div className={`${styles.introContainer} ${styles.introLeft}`} ref={introLeft}>
         <span className={styles.title} id="introTitleLeft">
           Eter
         </span>
       </div>
-      <div className={styles.introRight} ref={introRight}>
+      <div className={`${styles.introContainer} ${styles.introRight}`} ref={introRight}>
         <span className={styles.title} id="introTitleRight">
           nity
         </span>
