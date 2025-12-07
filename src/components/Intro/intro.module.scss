@@ -25,9 +25,10 @@
 }
 
 .title {
+  font-family: $font-family-secondary;
   color: white;
   opacity: 0;
-  font-size: 48px;
-  letter-spacing: 4px;
+  font-size: 92px;
+  letter-spacing: 16px;
   transition: opacity 0.6s ease;
 }
