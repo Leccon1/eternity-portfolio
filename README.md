@@ -1,98 +1,86 @@
-# Project Standards by Leccon1
+# Eternity — Portfolio by Leccon1
 
-My personal set of configurations and approaches to frontend development.
-This repository allows me to start new projects quickly, maintain a consistent style, and avoid repeating setup steps.
-## Getting Started
+**Strong Junior / Early Middle Frontend Developer**
 
-1. Clone or copy the repository. (In your project: `git clone https://github.com/Leccon1/My-standart-for-projects.git`)
-3. Run `npm install` to install dependencies.
-4. Use `npm run dev` to start development with Vite.
-5. Adjust variables, colors, and mixins to match your new project.
+Hi! I'm **Leccon1**, a 17-year-old frontend developer on my way to becoming a Senior. After 11 months of intense practice, I’ve built dozens of projects, mastered modern technologies, and created my own growth system. My path is all about discipline, grind, and love for clean, structured code.
 
 ---
 
-## What's inside?
+## Tech Stack
 
-* **SCSS** — complete structure with variables, mixins, functions, helpers, and BEM-based organization.
-* **JavaScript** — base file with ready-to-use structure for scripts.
-* **Project Structure** — organized by purpose: base styles, blocks, components, pages, and helpers.
-* **Vite Configuration** — optimized setup for my workflow (paths, aliases, build optimization).
-* **Stylelint Configuration** — automatic code-style checking for SCSS with custom rules.
-* **Eslint Configuration** — Checking your JS code with ready-made custom rules.
-* **Prettier Configuration** — Automatically formatting your code with strict opinionated rules.
-* **Git Integration** — project ready for version control, with `.gitignore` tuned for web projects.
+### **Core Stack**
 
----
+* **JavaScript (ES6+)** — confident skills, strong understanding of logic and architecture
+* **React** — components, hooks, state management, architecture
+* **SCSS / CSS** — adaptive layouts, structure, complex UI elements
+* **HTML5** — semantics, accessibility, clean markup
+* **Git & GitHub** — branching, Git Flow, commit optimization, automated deploy
+* **Vite** — config customization, optimization, advanced setup
 
-## Why this exists
+### **Tools & Environment**
 
-* Fast setup for new projects
-* Unified and consistent code style
-* Better scalability and maintenance
-* Simplifies collaboration and onboarding
-* Reusability of patterns and best practices
+* Arch Linux 🐧
+* Bash scripts (including universal deployment scripts)
+* Figma
+* npm / pnpm
 
----
+### **Currently Learning / Next Goals**
 
-## SRC Structure
-
-```
-├── src
-│   ├── assets
-│   │   ├── favicons
-│   │   │   └── .gitkeep
-│   │   ├── fonts
-│   │   │   └── .gitkeep
-│   │   ├── icons
-│   │   │   └── .gitkeep
-│   │   └── images
-│   │       └── .gitkeep
-│   ├── js
-│   │   └── main.js
-│   └── sass
-│       ├── base
-│       │   ├── _base.scss
-│       │   ├── _fonts.scss
-│       │   ├── _normalized.scss
-│       │   └── _utilites.scss
-│       ├── blocks
-│       │   └── .gitkeep
-│       ├── components
-│       │   └── .gitkeep
-│       ├── helpers
-│       │   ├── _functions.scss
-│       │   ├── _index.scss
-│       │   ├── _media.scss
-│       │   └── _mixins.scss
-│       ├── pages
-│       │   └── .gitkeep
-│       ├── _variables.scss
-│       └── main.scss
-└── .gitignore
-```
-
-Each file has a clear purpose and follows naming conventions based on the BEM methodology.
-Components and blocks are separated for better modularity and maintainability.
+* Async JavaScript: Fetch, Async/Await, REST
+* Advanced React: state, context, performance optimization
+* Backend fundamentals (Node.js)
 
 ---
 
-## Linting and Code Quality
+## About the Project
 
-The project uses **Stylelint** with custom rules to maintain consistent formatting and catch common mistakes early.
-For flexibility, certain rules (like `block-no-empty`) are disabled in specific folders where placeholder files are needed.
+This website is my personal portfolio called **Eternity**. It reflects my development journey: minimalism, power, mood, clean architecture, and attention to detail.
 
-The project also uses ESLint for static analysis of JavaScript code, ensuring consistent style and preventing potential errors.
-Modern rules have been configured to comply with current ECMAScript standards, with an emphasis on code cleanliness and best development practices.
+My goals with this project:
 
----
-
-## Notes
-
-This setup reflects my personal workflow.
-You can freely modify configs and structure to match your own standards.
-If you want to create your own reusable frontend setup — take this as a base and evolve it further.
+* showcase code quality
+* demonstrate my design sense
+* present carefully built interfaces
+* show my engineering mindset, not just layout skills
 
 ---
 
-made by [Leccon1](https://github.com/Leccon1)
+## Skills I Continuously Improve
 
+* UI/UX design principles
+* Structuring large projects
+* Creating custom component libraries
+* Automation (scripts, deployment)
+* Animations (including ⚡ Anime.js)
+* Reading and understanding other developers’ code
+
+---
+
+## Projects & Demos
+
+Here you’ll find my best work — from adaptive interfaces to full React applications.
+Each project represents a new stage in my growth and the desire to write code that ages well.
+
+*(Links will be added soon)*
+
+---
+
+## My Journey
+
+I began learning web development in November 2024.
+No courses, no mentors — only practice, documentation, experiments, and persistence.
+
+I enjoy thinking like an engineer: building architecture, planning systems, and writing code I won’t be ashamed to revisit a year later.
+
+---
+
+## Contacts
+
+* **GitHub:** [https://github.com/Leccon1](https://github.com/Leccon1)
+* **Telegram:** *(add later)*
+
+---
+
+### ⭐ If you like this project, consider leaving a star!
+
+It helps me stay motivated and push my skills even further.
