@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import styles from './intro.module.scss'
 
-export default function Intro({ onFinish }) {
+const Intro = ({ onFinish }) => {
   const [visible, setVisible] = useState(true)
   const containerRef = useRef(null)
 
@@ -41,3 +41,5 @@ export default function Intro({ onFinish }) {
     </div>
   )
 }
+
+export default Intro
