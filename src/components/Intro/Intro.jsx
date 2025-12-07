@@ -3,64 +3,73 @@ import { useEffect, useRef, useState } from 'react'
 
 import styles from './intro.module.scss'
 
-const Intro = ({ onFinish }) => {
+const Intro = ({ onStartAnimateFinish }) => {
+  const introLeft = useRef(null)
+  const introRight = useRef(null)
+
   const [visible, setVisible] = useState(true)
-  const containerRef = useRef(null)
 
   useEffect(() => {
-    const titleLeft = containerRef.current.querySelector(`#introTitleLeft`)
-    const titleRight = containerRef.current.querySelector(`#introTitleRight`)
-    const introContainerLeft = containerRef.current.querySelector(`#introContainerLeft`)
-    const introContainerRight = containerRef.current.querySelector(`#introContainerRight`)
+    const titleLeft = introLeft.current.querySelector(`#introTitleLeft`)
+    const titleRight = introRight.current.querySelector(`#introTitleRight`)
+    const introContainerLeft = introLeft.current
+    const introContainerRight = introRight.current
+
+    const textDuration = 2500
+    const timerDuration = 2500
 
     animate([titleLeft, titleRight], {
       opacity: [0, 1],
       translateY: [80, 0],
       easing: 'easeOutExpo',
-      duration: 2500,
-    })
+      duration: textDuration,
 
-    createTimer({
-      duration: 2500,
       onComplete: () => {
-        animate([titleLeft, titleRight], {
-          opacity: [1, 0],
-          easing: 'easeInExpo',
-          duration: 2500,
-          onComplete: () => {
-            setVisible(false)
-            onFinish()
-          },
-        })
-        animate(introContainerLeft, {
-          translateX: ['0%', '-100%'],
-          easing: 'easeOutExpo',
-          duration: 2500,
-        })
-        animate(introContainerRight, {
-          translateX: ['0%', '100%'],
-          easing: 'easeOutExpo',
-          duration: 2500,
-        })
+        onStartAnimateFinish()
       },
     })
+
+    createTimer(
+      {
+        duration: timerDuration,
+        onComplete: () => {
+          animate([titleLeft, titleRight], {
+            opacity: [1, 0],
+            easing: 'easeInExpo',
+            duration: 2500,
+            onComplete: () => setVisible(false),
+          })
+          animate(introContainerLeft, {
+            translateX: ['0%', '-100%'],
+            easing: 'easeOutExpo',
+            duration: timerDuration,
+          })
+          animate(introContainerRight, {
+            translateX: ['0%', '100%'],
+            easing: 'easeOutExpo',
+            duration: timerDuration,
+          })
+        },
+      },
+      textDuration
+    )
   }, [])
 
   if (!visible) return null
 
   return (
-    <div className={styles.intro} ref={containerRef}>
-      <div className={styles.introLeft} id="introContainerLeft">
+    <>
+      <div className={styles.introLeft} ref={introLeft}>
         <span className={styles.title} id="introTitleLeft">
           Eter
         </span>
       </div>
-      <div className={styles.introRight} id="introContainerRight">
+      <div className={styles.introRight} ref={introRight}>
         <span className={styles.title} id="introTitleRight">
           nity
         </span>
       </div>
-    </div>
+    </>
   )
 }
 
