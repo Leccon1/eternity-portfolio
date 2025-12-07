@@ -5,16 +5,32 @@
   inset: 0;
   background: #000;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-  z-index: $z-index-tooltip;
+  z-index: $z-index-modal;
   opacity: 1;
   transition: opacity 0.6s ease;
+
+  .introLeft,
+  .introRight {
+    flex: 1;
+  }
+
+  .introRight {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .introLeft {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 .title {
   color: white;
+  opacity: 0;
   font-size: 48px;
   letter-spacing: 4px;
-  opacity: 0;
+  transition: opacity 0.6s ease;
 }
