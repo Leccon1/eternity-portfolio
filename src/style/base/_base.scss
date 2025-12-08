@@ -1,4 +1,4 @@
-@use '../variables' as *;
+@use '../setting/variables' as *;
 @use '../helpers/' as *;
 
 html {
@@ -8,5 +8,11 @@ html {
 }
 
 body {
-  font-family: #{$fonts.primary};
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  overflow: hidden;
 }
