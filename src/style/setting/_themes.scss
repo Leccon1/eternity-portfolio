@@ -10,6 +10,7 @@
   @include theme-vars($fonts);
   @include theme-vars($font-sizes);
   @include theme-vars($font-weights);
+  @include theme-vars($line-heights);
   @include theme-vars($spacing);
   @include theme-vars($radius);
   @include theme-vars($shadows);
