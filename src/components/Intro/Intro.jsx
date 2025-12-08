@@ -43,14 +43,12 @@ const Intro = ({ onStartAnimateFinish }) => {
             translateX: ['0%', '-100%'],
             easing: 'easeOutExpo',
             '--intro-blur': ['0px', '5px'],
-            '--intro-opacity': [1, 0.8],
             duration: timerDuration,
           })
           animate(introContainerRight, {
             translateX: ['0%', '100%'],
             easing: 'easeOutExpo',
             '--intro-blur': ['0px', '5px'],
-            '--intro-opacity': [1, 0.8],
             duration: timerDuration,
           })
         },
