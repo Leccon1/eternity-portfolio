@@ -17,14 +17,14 @@ const Intro = ({ onStartAnimateFinish }) => {
     const introContainerLeft = introLeft.current
     const introContainerRight = introRight.current
 
-    const textDuration = 2500
-    const timerDuration = 4000
+    const TEXT_DURATION = 2500
+    const TIMER_DURATION = 4000
 
     animate([titleLeft, titleRight], {
       opacity: [0, 1],
       translateY: [80, 0],
       easing: 'easeOutExpo',
-      duration: textDuration,
+      duration: TEXT_DURATION,
 
       onComplete: () => {
         animate(titleLeft, {
@@ -46,17 +46,17 @@ const Intro = ({ onStartAnimateFinish }) => {
       translateY: ['-115%', '0%'],
       easing: 'easeInOutSine',
       duration: 1000,
-      delay: textDuration,
+      delay: TEXT_DURATION,
     })
 
     createTimer(
       {
-        duration: timerDuration,
+        duration: TIMER_DURATION,
         onComplete: () => {
           animate([titleLeft, titleRight], {
             opacity: [1, 0],
             easing: 'easeInExpo',
-            duration: 2500,
+            duration: TIMER_DURATION,
             onComplete: () => setVisible(false),
           })
           animate(titleLeft, {
@@ -70,20 +70,20 @@ const Intro = ({ onStartAnimateFinish }) => {
             duration: 1000,
           })
           animate(introContainerLeft, {
-            translateX: ['0%', '-100%'],
+            translateX: ['0%', '-110%'],
             easing: 'easeOutExpo',
             '--intro-blur': ['0px', '5px'],
-            duration: timerDuration,
+            duration: TIMER_DURATION,
           })
           animate(introContainerRight, {
-            translateX: ['0%', '100%'],
+            translateX: ['0%', '110%'],
             easing: 'easeOutExpo',
             '--intro-blur': ['0px', '5px'],
-            duration: timerDuration,
+            duration: TIMER_DURATION,
           })
         },
       },
-      textDuration
+      TEXT_DURATION
     )
   }, [])
 
