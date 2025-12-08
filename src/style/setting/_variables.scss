@@ -1,0 +1,81 @@
+@use '../helpers/functions/' as *;
+
+$colors-dark: (
+  colors-bg: #121212,
+  colors-bg-secondary: #1e1e1e,
+  colors-text: #e0e0e0,
+  colors-text-secondary: #b0b0b0,
+  colors-accent: #bb86fc,
+  colors-accent-alt: #03dac6,
+  colors-border: #2c2c2c,
+  colors-error: #cf6679,
+);
+
+$colors-light: (
+  colors-bg: #ffffff,
+  colors-bg-secondary: #f5f5f5,
+  colors-text: #121212,
+  colors-text-secondary: #444444,
+  colors-accent: #6200ee,
+  colors-accent-alt: #018786,
+  colors-border: #e0e0e0,
+  colors-error: #b00020,
+);
+
+$fonts: (
+  font-primary: 'Comfortaa',
+  font-accent: 'Pacifico',
+);
+
+$font-sizes: (
+  font-sizes-sm: 0.875rem,
+  font-sizes-base: 1rem,
+  font-sizes-lg: 1.25rem,
+);
+
+$font-weights: (
+  font-weights-normal: 400,
+  font-weights-medium: 500,
+  font-weights-bold: 700,
+);
+
+$spacing: (
+  spacing-sm: rem(8),
+  spacing-md: rem(12),
+  spacing-lg: rem(16),
+  spacing-xl: rem(32),
+);
+
+$radius: (
+  radius-sm: 4px,
+  radius-md: 8px,
+  radius-lg: 16px,
+);
+
+$border-width: rem(1);
+$border-color: #dee2e6;
+
+$shadows: (
+  shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05),
+  shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1),
+  shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.2),
+);
+$transitions: (
+  transitions-fast: 0.2s ease-in-out,
+  transitions-normal: 0.3s ease-in-out,
+);
+
+$container-max-width: (
+  container-max-width-sm: 540px,
+  container-max-width-md: 720px,
+  container-max-width-lg: 960px,
+  container-max-width-xl: 1200px,
+  container-max-width-xxl: 1400px,
+  container-max-width-xxxl: 1600px,
+);
+
+$z-index: (
+  z-index-header: 1000,
+  z-index-modal: 1050,
+  z-index-tooltip: 1100,
+);

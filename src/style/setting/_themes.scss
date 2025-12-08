@@ -1,0 +1,23 @@
+@use './variables' as *;
+
+@mixin theme-vars($map) {
+  @each $name, $value in $map {
+    --#{$name}: #{$value};
+  }
+}
+:root {
+  @include theme-vars($colors-dark);
+  @include theme-vars($fonts);
+  @include theme-vars($font-sizes);
+  @include theme-vars($font-weights);
+  @include theme-vars($spacing);
+  @include theme-vars($radius);
+  @include theme-vars($shadows);
+  @include theme-vars($container-max-width);
+  @include theme-vars($transitions);
+  @include theme-vars($z-index);
+}
+
+.light-theme {
+  @include theme-vars($colors-light);
+}
