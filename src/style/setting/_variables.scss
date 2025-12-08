@@ -1,16 +1,16 @@
 @use '../helpers/functions/' as *;
 
 $colors-dark: (
-  color-bg: #0a0a0a,
-  color-bg-secondary: #111111,
-  color-bg-tertiary: #181818,
-  color-surface: #1f1f1f,
-  color-text: #f0f0f0,
-  color-text-secondary: #b5b5b5,
-  color-accent: #e0e0e0,
-  color-accent-alt: #9f9f9f,
-  color-border: #2a2a2a,
-  color-border-light: #3a3a3a,
+  color-bg: #050507,
+  color-bg-secondary: #0d0f12,
+  color-bg-tertiary: #16181c,
+  color-surface: #1e2127,
+  color-text: #f2f2f5,
+  color-text-secondary: #a8abb3,
+  color-accent: #a6b1ff,
+  color-accent-alt: #5561d8,
+  color-border: #2a2e37,
+  color-border-light: #383d47,
   color-error: #ff4b4b,
   color-success: #4bff8a,
   color-warning: #ffd452,
@@ -44,18 +44,13 @@ $font-sizes: (
   font-sizes-lg: rem(24),
   font-sizes-xl: rem(32),
   font-sizes-xxl: rem(48),
+  font-sizes-xxxl: rem(64),
 );
 
 $font-weights: (
   font-weights-normal: 400,
   font-weights-medium: 500,
   font-weights-bold: 700,
-);
-
-$line-heights: (
-  line-height-sm: 1.2,
-  line-height-base: 1.5,
-  line-height-lg: 1.75,
 );
 
 $spacing: (
