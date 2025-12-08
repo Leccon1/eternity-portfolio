@@ -5,12 +5,12 @@ $colors-dark: (
   color-bg-secondary: #0d0f12,
   color-bg-tertiary: #16181c,
   color-surface: #1e2127,
-  color-text: #f2f2f5,
-  color-text-secondary: #a8abb3,
-  color-accent: #a6b1ff,
-  color-accent-alt: #5561d8,
-  color-border: #2a2e37,
-  color-border-light: #383d47,
+  color-text: #e0f7f9,
+  color-text-secondary: #a8e0e5,
+  color-accent: #5fbdce,
+  color-accent-alt: #7fd6da,
+  color-border: #3ba6aa,
+  color-border-light: #238c90,
   color-error: #ff4b4b,
   color-success: #4bff8a,
   color-warning: #ffd452,
@@ -38,13 +38,13 @@ $fonts: (
 );
 
 $font-sizes: (
-  font-sizes-sm: rem(14),
-  font-sizes-base: rem(16),
-  font-sizes-md: rem(18),
-  font-sizes-lg: rem(24),
-  font-sizes-xl: rem(32),
-  font-sizes-xxl: rem(48),
-  font-sizes-xxxl: rem(64),
+  font-sizes-sm: fluid(12, 14),
+  font-sizes-base: fluid(14, 18),
+  font-sizes-md: fluid(16, 22),
+  font-sizes-lg: fluid(20, 28),
+  font-sizes-xl: fluid(28, 40),
+  font-sizes-xxl: fluid(40, 56),
+  font-sizes-xxxl: fluid(56, 72),
 );
 
 $font-weights: (
@@ -61,9 +61,9 @@ $spacing: (
 );
 
 $radius: (
-  radius-sm: 4px,
-  radius-md: 8px,
-  radius-lg: 16px,
+  radius-sm: rem(4),
+  radius-md: rem(8),
+  radius-lg: rem(16),
 );
 
 $shadows: (
@@ -71,18 +71,19 @@ $shadows: (
   shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1),
   shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.2),
 );
+
 $transitions: (
   transitions-fast: 0.2s ease-in-out,
   transitions-normal: 0.3s ease-in-out,
 );
 
 $container-max-width: (
-  container-max-width-sm: 540px,
-  container-max-width-md: 720px,
-  container-max-width-lg: 960px,
-  container-max-width-xl: 1200px,
-  container-max-width-xxl: 1400px,
-  container-max-width-xxxl: 1600px,
+  container-max-width-sm: rem(540),
+  container-max-width-md: rem(720),
+  container-max-width-lg: rem(960),
+  container-max-width-xl: rem(1200),
+  container-max-width-xxl: rem(1400),
+  container-max-width-xxxl: rem(1600),
 );
 
 $z-index: (
