@@ -85,7 +85,8 @@ const Intro = ({ onStartAnimateFinish }) => {
       },
       TEXT_DURATION
     )
-  })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (!visible) return null
 
