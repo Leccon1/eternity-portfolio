@@ -1,10 +1,6 @@
 @use './variables' as *;
+@use './helpers' as *;
 
-@mixin theme-vars($map) {
-  @each $name, $value in $map {
-    --#{$name}: #{$value};
-  }
-}
 :root {
   @include theme-vars($colors-dark);
   @include theme-vars($fonts);

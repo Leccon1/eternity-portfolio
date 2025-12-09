@@ -1,5 +1,11 @@
 @use '../setting/variables' as *;
 
+@mixin theme-vars($map) {
+  @each $name, $value in $map {
+    --#{$name}: #{$value};
+  }
+}
+
 @mixin square($size) {
   width: $size;
   height: $size;
