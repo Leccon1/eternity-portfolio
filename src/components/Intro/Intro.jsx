@@ -85,7 +85,7 @@ const Intro = ({ onStartAnimateFinish }) => {
       },
       TEXT_DURATION
     )
-  }, [])
+  })
 
   if (!visible) return null
 
