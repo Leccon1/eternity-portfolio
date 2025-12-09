@@ -1,0 +1,23 @@
+@use '@styles/helpers' as *;
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+
+  &--default {
+    padding: 0 var(--spacing-xl);
+  }
+
+  &--full {
+    min-width: 100%;
+    padding: 0;
+  }
+
+  @include tablet {
+    padding: 0 var(--spacing-lg);
+  }
+
+  @include mobile {
+    padding: 0 var(--spacing-md);
+  }
+}
