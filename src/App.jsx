@@ -2,7 +2,7 @@ import { animate } from 'animejs'
 import { useEffect, useRef, useState } from 'react'
 
 import Intro from './components/Intro/Intro'
-import ContentContainer from './components/layuot/ContentContainer/ContentContainer'
+import ContentContainer from './components/ui/ContentContainer/ContentContainer'
 
 const App = () => {
   const containerRef = useRef(null)
