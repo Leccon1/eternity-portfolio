@@ -2,6 +2,7 @@ import { animate } from 'animejs'
 import { useEffect, useRef, useState } from 'react'
 
 import Intro from './components/Intro/Intro'
+import ContentContainer from './components/layuot/ContentContainer/ContentContainer'
 
 const App = () => {
   const containerRef = useRef(null)
@@ -24,19 +25,11 @@ const App = () => {
 
   return (
     <div className="app" ref={containerRef}>
-      <div id="page" ref={pageRef} style={{ opacity: 0 }}>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam, alias nesciunt! Nulla
-          dolorum rerum similique praesentium fuga suscipit architecto recusandae, exercitationem
-          natus earum ratione esse eum quaerat quas voluptas expedita nihil officiis quia rem
-          voluptate a, nemo optio accusamus amet? Nemo doloremque veniam dolorem distinctio rem quo
-          quaerat hic aperiam dignissimos qui similique ducimus unde eligendi neque voluptatum,
-          animi sint corporis quisquam amet necessitatibus. Molestiae sapiente quaerat quisquam nemo
-          tenetur enim corporis illum alias nostrum adipisci error, in eligendi pariatur fugit
-          voluptatibus porro. Cupiditate officiis eum neque, debitis mollitia dicta facere,
-          quibusdam quam necessitatibus non doloremque accusantium molestias, vero modi.
-        </p>
-      </div>
+      <ContentContainer>
+        <div id="page" ref={pageRef} style={{ opacity: 0 }}>
+          <h1>HELLO</h1>
+        </div>
+      </ContentContainer>
 
       <Intro onStartAnimateFinish={() => setIsIntroTextFinished(true)} />
     </div>
