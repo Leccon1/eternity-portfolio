@@ -1,0 +1,17 @@
+.heading {
+  color: var(--color-text);
+  font-family: var(--font-accent);
+  font-weight: var(--font-weights-bold);
+  font-size: var(--font-sizes-xxxl);
+  letter-spacing: var(--spacing-lg);
+
+  &--xxl {
+    font-size: var(--font-sizes-xxl);
+  }
+  &--xl {
+    font-size: var(--font-sizes-xl);
+  }
+  &--lg {
+    font-size: var(--font-sizes-lg);
+  }
+}
