@@ -1,0 +1,26 @@
+@use '@styles/helpers' as *;
+
+.pageContainer {
+  max-width: var(--container-max-width-xxxl);
+  margin: 0 auto;
+
+  @include breakpoint(1700px) {
+    max-width: var(--container-max-width-xxl);
+  }
+
+  @include breakpoint(1500px) {
+    max-width: var(--container-max-width-xl);
+  }
+
+  @include breakpoint(1300px) {
+    max-width: var(--container-max-width-lg);
+  }
+
+  @include breakpoint(1000px) {
+    max-width: var(--container-max-width-md);
+  }
+
+  @include breakpoint(768px) {
+    max-width: var(--container-max-width-sm);
+  }
+}
