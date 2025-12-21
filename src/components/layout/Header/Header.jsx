@@ -9,11 +9,7 @@ const Navigation = () => {
 
   return (
     <header className={styles.header}>
-      <nav
-        className={styles.navigation}
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => setIsOpen(false)}
-      >
+      <nav className={styles.navigation}>
         <ul className={styles.navigation__list}>
           {navigationData.map((item) => (
             <li key={item.label} className={styles.navigation__item}>
@@ -42,7 +38,7 @@ const Navigation = () => {
           </div>
         </div>
 
-        <button className={styles.openNavToggle} type="button">
+        <button className={styles.openNavToggle} type="button" onClick={() => setIsOpen(!isOpen)}>
           <img src={downArrowsIcon} alt="Down arrows" />
         </button>
       </nav>
