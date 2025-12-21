@@ -17,4 +17,6 @@
 }
 
 .openNavToggle {
+  position: relative;
+  @include hover-zone(-16px);
 }
