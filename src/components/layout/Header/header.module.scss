@@ -1,5 +1,20 @@
+@use '@styles/setting/variables' as *;
+@use '@styles/helpers' as *;
+
 .header {
-  display: flex;
-  justify-content: center;
+  max-width: rem(900);
+}
+
+.navigation__list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   align-items: center;
+}
+
+.openNav__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.openNavToggle {
 }
