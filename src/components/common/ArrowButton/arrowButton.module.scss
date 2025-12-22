@@ -1,0 +1,17 @@
+.arrowButton {
+  &--up {
+    transform: rotate(180deg);
+  }
+
+  &--down {
+    transform: rotate(0deg);
+  }
+
+  &--left {
+    transform: rotate(90deg);
+  }
+
+  &--right {
+    transform: rotate(-90deg);
+  }
+}
