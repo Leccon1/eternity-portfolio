@@ -1,11 +1,16 @@
 @use '@styles/setting/variables' as *;
 @use '@styles/helpers' as *;
 
+// переменная для высоты хедера/навигации
+$header-height: rem(80);
+
 .header {
-  //   width: rem(900);
+  position: relative;
+  width: rem(1000);
 }
 
 .navigation {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15,7 +20,7 @@
 
 .navigation__list {
   width: 100%;
-  height: rem(80);
+  height: $header-height;
   background-color: var(--color-bg);
   padding-inline: fluid(75, 100);
   border-bottom-left-radius: rem(64);
@@ -25,10 +30,11 @@
 
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(1, 80px);
-
+  grid-template-rows: repeat(1, $header-height);
   place-items: center;
   gap: fluid(40, 80);
+
+  z-index: var(--z-index-tooltip);
 }
 
 .navigation__item {
@@ -57,15 +63,52 @@
 .openNav__grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  place-items: center;
+  gap: fluid(40, 80);
+}
+
+.openNavContainer {
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: var(--spacing-lg);
 }
 
 .openNav {
-  max-height: 0;
+  width: 100%;
+  height: $header-height;
+  max-height: $header-height;
+  background-color: var(--color-bg-secondary);
+  backdrop-filter: blur(8px);
+
+  font-size: var(--font-sizes-base);
+
+  padding: var(--spacing-xl) fluid(75, 100);
   overflow: hidden;
   opacity: 0;
+  z-index: var(--z-index-modal);
   transition:
     max-height 0.35s ease,
     opacity 0.25s ease;
+
+  &::before {
+    content: '';
+    display: block;
+    height: $header-height;
+    width: 100%;
+  }
+}
+
+.openNav__column {
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: fluid(20, 40);
+  }
 }
 
 .open {
