@@ -79,20 +79,22 @@ $header-height: rem(80);
 
 .openNav {
   width: 100%;
-  height: $header-height;
+
   max-height: $header-height;
   background-color: var(--color-bg-secondary);
   backdrop-filter: blur(8px);
+  border-bottom-left-radius: rem(64);
+  border-bottom-right-radius: rem(64);
 
   font-size: var(--font-sizes-base);
 
   padding: var(--spacing-xl) fluid(75, 100);
   overflow: hidden;
-  opacity: 0;
+
   z-index: var(--z-index-modal);
   transition:
     max-height 0.35s ease,
-    opacity 0.25s ease;
+    border-radius 0.35s ease;
 
   &::before {
     content: '';
@@ -113,7 +115,8 @@ $header-height: rem(80);
 
 .open {
   max-height: 400px;
-  opacity: 1;
+  border-bottom-left-radius: var(--radius-xl);
+  border-bottom-right-radius: var(--radius-xl);
 }
 
 .openNavToggle {
