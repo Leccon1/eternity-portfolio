@@ -25,27 +25,29 @@ const Navigation = () => {
           ))}
         </ul>
 
-        <div className={`${styles.openNav} ${isOpen ? styles.open : ''}`}>
-          <div className={styles.openNav__grid}>
-            {navigationData.map((item) => (
-              <div key={item.label} className={styles.openNav__column}>
-                {item.subMenu && (
-                  <ul className={styles.openNav__list}>
-                    {item.subMenu.map((sub) => (
-                      <li key={sub.label}>
-                        <a href={sub.href}>{sub.label}</a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
+        <div className={styles.openNavContainer}>
+          <div className={`${styles.openNav} ${isOpen ? styles.open : ''}`}>
+            <div className={styles.openNav__grid}>
+              {navigationData.map((item) => (
+                <div key={item.label} className={styles.openNav__column}>
+                  {item.subMenu && (
+                    <ul className={styles.openNav__list}>
+                      {item.subMenu.map((sub) => (
+                        <li key={sub.label}>
+                          <a href={sub.href}>{sub.label}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
 
-        <button className={styles.openNavToggle} type="button" onClick={() => setIsOpen(!isOpen)}>
-          <img src={downArrowsIcon} alt="Down arrows" />
-        </button>
+          <button className={styles.openNavToggle} type="button" onClick={() => setIsOpen(!isOpen)}>
+            <img src={downArrowsIcon} alt="Down arrows" />
+          </button>
+        </div>
       </nav>
     </header>
   )
