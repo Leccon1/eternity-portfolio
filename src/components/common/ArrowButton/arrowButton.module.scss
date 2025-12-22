@@ -1,23 +1,15 @@
 .arrowButton {
   transition: transform var(--transition-normal);
   &--up {
-    &__icon {
-      transform: rotate(180deg);
-    }
+    transform: rotate(180deg);
   }
   &--down {
-    &__icon {
-      transform: rotate(0deg);
-    }
+    transform: rotate(0deg);
   }
   &--left {
-    &__icon {
-      transform: rotate(90deg);
-    }
+    transform: rotate(90deg);
   }
   &--right {
-    &__icon {
-      transform: rotate(-90deg);
-    }
+    transform: rotate(-90deg);
   }
 }
