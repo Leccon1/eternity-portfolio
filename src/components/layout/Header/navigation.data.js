@@ -20,6 +20,10 @@ const navigationData = [
     ],
   },
   {
+    id: 'Logo',
+    type: 'Logo',
+  },
+  {
     label: 'Portfolio',
     link: '#portfolio',
     subMenu: [

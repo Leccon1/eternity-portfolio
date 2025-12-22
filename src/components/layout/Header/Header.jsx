@@ -1,3 +1,4 @@
+import Logo from '@components/common/Logo/Logo'
 import downArrowsIcon from '@icons/down-arrows.svg'
 import { useState } from 'react'
 
@@ -11,11 +12,15 @@ const Navigation = () => {
     <header className={styles.header}>
       <nav className={styles.navigation}>
         <ul className={styles.navigation__list}>
-          {navigationData.map((item) => (
-            <li key={item.label} className={styles.navigation__item}>
-              <button type="button" className={styles.navigation__link}>
-                {item.label}
-              </button>
+          {navigationData.map((item, index) => (
+            <li key={index} className={styles.navigation__item}>
+              {item.type === 'Logo' ? (
+                <Logo />
+              ) : (
+                <button type="button" className={styles.navigation__link}>
+                  {item.label}
+                </button>
+              )}
             </li>
           ))}
         </ul>
