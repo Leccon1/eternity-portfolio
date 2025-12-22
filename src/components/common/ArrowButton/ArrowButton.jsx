@@ -1,7 +1,7 @@
 import downArrowsIcon from '@icons/down-arrows.svg'
 
 import styles from './arrowButton.module.scss'
-const ArrowButton = ({ className, onClick, direction = 'down' }) => {
+const ArrowButton = ({ className, direction = 'down', onClick }) => {
   return (
     <button
       className={`${styles.arrowButton} ${styles[`arrowButton--${direction}`]} ${className || ''}`}

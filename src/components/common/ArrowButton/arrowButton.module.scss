@@ -1,6 +1,5 @@
 .arrowButton {
   transition: transform var(--transition-normal);
-
   &--up {
     &__icon {
       transform: rotate(180deg);
