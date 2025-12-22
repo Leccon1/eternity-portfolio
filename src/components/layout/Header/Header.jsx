@@ -15,7 +15,7 @@ const Navigation = () => {
           {navigationData.map((item, index) => (
             <li key={index} className={styles.navigation__item}>
               {item.type === 'Logo' ? (
-                <Logo />
+                <Logo className={styles.navigation__logo} />
               ) : (
                 <button type="button" className={styles.navigation__link}>
                   {item.label}
