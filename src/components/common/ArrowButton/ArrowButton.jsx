@@ -4,7 +4,7 @@ import styles from './arrowButton.module.scss'
 const ArrowButton = ({ className, onClick, direction = 'down' }) => {
   return (
     <button
-      className={`${className} ${styles[`arrowButton--${direction}`]}`}
+      className={`${styles.arrowButton} ${styles[`arrowButton--${direction}`]} ${className || ''}`}
       type="button"
       onClick={onClick}
     >
