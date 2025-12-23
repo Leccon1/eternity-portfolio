@@ -68,16 +68,6 @@ $header-height: rem(80);
   gap: fluid(40, 80);
 }
 
-.openNavContainer {
-  position: absolute;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: var(--spacing-lg);
-}
-
 .openNav {
   width: 100%;
 
@@ -103,6 +93,16 @@ $header-height: rem(80);
     height: $header-height;
     width: 100%;
   }
+}
+
+.openNavContainer {
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: var(--spacing-lg);
 }
 
 .openNav__column {
