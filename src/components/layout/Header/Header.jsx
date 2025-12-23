@@ -13,7 +13,11 @@ const Navigation = () => {
       <nav className={styles.navigation}>
         <ul className={styles.navigation__list}>
           {navigationData.map((item, index) => (
-            <li key={index} className={styles.navigation__item}>
+            <li
+              key={index}
+              className={styles.navigation__item}
+              onClick={() => console.log(item.label)}
+            >
               {item.type === 'Logo' ? (
                 <Logo className={styles.navigation__logo} />
               ) : (
