@@ -88,6 +88,7 @@ $header-height: rem(80);
   grid-template-columns: repeat(5, 1fr);
   place-items: center;
   gap: fluid(40, 80);
+  padding: var(--spacing-xl) 0;
 }
 
 .openNav {
@@ -103,20 +104,14 @@ $header-height: rem(80);
 
   font-size: var(--font-sizes-base);
 
-  padding: var(--spacing-xl) fluid(75, 100);
+  padding-inline: fluid(75, 100);
+  padding-top: $header-height;
   overflow: hidden;
 
   z-index: var(--z-index-modal);
   transition:
     max-height 0.35s ease,
     border-radius 0.35s ease;
-
-  &::before {
-    content: '';
-    display: block;
-    height: $header-height;
-    width: 100%;
-  }
 }
 
 .openNavContainer {
