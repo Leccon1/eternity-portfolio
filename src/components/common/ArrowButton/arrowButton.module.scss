@@ -1,8 +1,7 @@
-@use '@styles/helpers/' as *;
-
 .arrowButton {
   position: relative;
   transition: transform var(--transitions-normal);
+
   &--up {
     transform: rotate(180deg);
   }
@@ -25,7 +24,19 @@
     box-shadow: 0 0 16px 6px var(--color-text);
   }
 
-  @include hover {
-    transform: scale(1.1);
+  &--up:hover {
+    transform: rotate(180deg) scale(1.1);
+  }
+
+  &--down:hover {
+    transform: rotate(0deg) scale(1.1);
+  }
+
+  &--left:hover {
+    transform: rotate(90deg) scale(1.1);
+  }
+
+  &--right:hover {
+    transform: rotate(-90deg) scale(1.1);
   }
 }
