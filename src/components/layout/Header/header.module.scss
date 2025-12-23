@@ -2,6 +2,7 @@
 @use '@styles/helpers' as *;
 
 $header-height: rem(80);
+$color-bg-secondary: color(color-bg-secondary, 'dark');
 
 .header {
   position: relative;
@@ -92,8 +93,6 @@ $header-height: rem(80);
 }
 
 .openNav {
-  $color-bg-secondary: color(color-bg-secondary, 'dark');
-
   width: 100%;
 
   max-height: $header-height;
