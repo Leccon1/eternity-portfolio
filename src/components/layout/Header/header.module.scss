@@ -2,6 +2,7 @@
 @use '@styles/helpers' as *;
 
 $header-height: rem(80);
+$color-bg-secondary: color(color-bg-secondary, 'dark');
 
 .header {
   position: relative;
@@ -88,33 +89,28 @@ $header-height: rem(80);
   grid-template-columns: repeat(5, 1fr);
   place-items: center;
   gap: fluid(40, 80);
+  padding: var(--spacing-xl) 0;
 }
 
 .openNav {
   width: 100%;
 
   max-height: $header-height;
-  background-color: var(--color-bg-secondary);
+  background-color: rgba($color-bg-secondary, 0.7);
   backdrop-filter: blur(8px);
   border-bottom-left-radius: rem(64);
   border-bottom-right-radius: rem(64);
 
   font-size: var(--font-sizes-base);
 
-  padding: var(--spacing-xl) fluid(75, 100);
+  padding-inline: fluid(75, 100);
+  padding-top: $header-height;
   overflow: hidden;
 
   z-index: var(--z-index-modal);
   transition:
-    max-height 0.35s ease,
-    border-radius 0.35s ease;
-
-  &::before {
-    content: '';
-    display: block;
-    height: $header-height;
-    width: 100%;
-  }
+    max-height var(--transitions-normal),
+    border-radius var(--transitions-normal);
 }
 
 .openNavContainer {

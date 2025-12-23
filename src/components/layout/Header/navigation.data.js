@@ -27,10 +27,9 @@ const navigationData = [
     label: 'Portfolio',
     link: '#portfolio',
     subMenu: [
-      { label: 'Web Projects', link: '#web-projects' },
-      { label: 'JS Games', link: '#js-games' },
-      { label: 'UI/UX Designs', link: '#ui-ux-designs' },
-      { label: 'Other Projects', link: '#other-projects' },
+      { label: 'Projects', link: '#projects' },
+      { label: 'Games', link: '#games' },
+      { label: 'Designs', link: '#designs' },
     ],
   },
   {

@@ -1,2 +1,13 @@
 .hero {
+  &::before {
+    content: url('@images/hero/hero-bg.svg');
+    position: absolute;
+    inset: 0;
+    place-self: center;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    z-index: -1;
+  }
 }
