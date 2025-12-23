@@ -1,9 +1,14 @@
 .heading {
   color: var(--color-text);
-  font-family: var(--font-accent);
   font-weight: var(--font-weights-bold);
-  font-size: var(--font-sizes-xxxl);
   letter-spacing: var(--spacing-lg);
+
+  &--accent {
+    font-family: var(--color-accent);
+  }
+  &--primary {
+    font-family: var(--color-primary);
+  }
 
   &--xxxl {
     font-size: var(--font-sizes-xxxl);
