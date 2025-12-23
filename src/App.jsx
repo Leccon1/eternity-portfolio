@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import Intro from './components/Intro/Intro'
 import Header from './components/layout/Header/Header'
-
+import Pages from './components/pages/Pages'
 const App = () => {
   const containerRef = useRef(null)
   const [isIntroTextFinished, setIsIntroTextFinished] = useState(false)
@@ -24,8 +24,13 @@ const App = () => {
   }, [isIntroTextFinished])
 
   return (
-    <div className="app" ref={containerRef} style={{ display: 'flex', justifyContent: 'center' }}>
+    <div
+      className="app"
+      ref={containerRef}
+      style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}
+    >
       <Header />
+      <Pages />
 
       <Intro onStartAnimateFinish={() => setIsIntroTextFinished(true)} />
     </div>
