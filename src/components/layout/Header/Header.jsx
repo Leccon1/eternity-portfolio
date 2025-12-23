@@ -5,7 +5,7 @@ import { useState } from 'react'
 import styles from './header.module.scss'
 import navigationData from './navigation.data'
 
-const Navigation = () => {
+const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -59,4 +59,4 @@ const Navigation = () => {
   )
 }
 
-export default Navigation
+export default Header
