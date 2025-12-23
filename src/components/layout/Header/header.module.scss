@@ -91,10 +91,12 @@ $header-height: rem(80);
 }
 
 .openNav {
+  $color-bg-secondary: color(color-bg-secondary, 'dark');
+
   width: 100%;
 
   max-height: $header-height;
-  background-color: var(--color-bg-secondary);
+  background-color: rgba($color-bg-secondary, 0.7);
   backdrop-filter: blur(8px);
   border-bottom-left-radius: rem(64);
   border-bottom-right-radius: rem(64);
