@@ -109,8 +109,8 @@ $color-bg-secondary: color(color-bg-secondary, 'dark');
 
   z-index: var(--z-index-modal);
   transition:
-    max-height 0.35s ease,
-    border-radius 0.35s ease;
+    max-height var(--transitions-normal),
+    border-radius var(--transitions-normal);
 }
 
 .openNavContainer {
