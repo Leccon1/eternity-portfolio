@@ -1,16 +1,6 @@
 @use '@styles/setting/variables' as *;
 @use '@styles/helpers/' as *;
 @use 'sass:color';
-@use 'sass:map';
-
-// для получения цвета
-@function color($key, $theme: 'dark') {
-  @if $theme == 'dark' {
-    @return map.get($colors-dark, $key);
-  } @else {
-    @return map.get($colors-light, $key);
-  }
-}
 
 .introContainer {
   position: fixed;
