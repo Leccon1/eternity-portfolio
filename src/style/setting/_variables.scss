@@ -1,5 +1,3 @@
-@use '../helpers/functions/' as *;
-
 $colors-dark: (
   color-bg: #03040a,
   color-bg-secondary: #080b14,
@@ -37,35 +35,10 @@ $fonts: (
   font-accent: 'Pacifico',
 );
 
-$font-sizes: (
-  font-sizes-sm: fluid(12, 14),
-  font-sizes-base: fluid(14, 18),
-  font-sizes-md: fluid(16, 22),
-  font-sizes-lg: fluid(20, 28),
-  font-sizes-xl: fluid(28, 40),
-  font-sizes-xxl: fluid(40, 56),
-  font-sizes-xxxl: fluid(56, 72),
-);
-
 $font-weights: (
   font-weights-normal: 400,
   font-weights-medium: 500,
   font-weights-bold: 700,
-);
-
-$spacing: (
-  spacing-sm: rem(8),
-  spacing-md: rem(12),
-  spacing-lg: rem(16),
-  spacing-xl: rem(32),
-);
-
-$radius: (
-  radius-sm: rem(4),
-  radius-md: rem(8),
-  radius-lg: rem(16),
-  radius-xl: rem(32),
-  radius-circle: 50%,
 );
 
 $shadows: (
@@ -77,15 +50,6 @@ $shadows: (
 $transitions: (
   transitions-fast: 0.2s ease-in-out,
   transitions-normal: 0.3s ease-in-out,
-);
-
-$container-max-width: (
-  container-max-width-sm: rem(540),
-  container-max-width-md: rem(720),
-  container-max-width-lg: rem(960),
-  container-max-width-xl: rem(1200),
-  container-max-width-xxl: rem(1400),
-  container-max-width-xxxl: rem(1600),
 );
 
 $z-index: (
