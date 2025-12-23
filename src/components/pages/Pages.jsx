@@ -7,11 +7,7 @@ const Pages = () => {
 
   const goTo = (screenName) => setCurrentScreen(screenName)
 
-  return (
-    <div className="pages-container">
-      <div className="screen">{currentScreen === 'home' && <HomeScreen />}</div>
-    </div>
-  )
+  return <main className="pages-container">{currentScreen === 'home' && <HomeScreen />}</main>
 }
 
 export default Pages

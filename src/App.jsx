@@ -2,8 +2,9 @@ import { animate } from 'animejs'
 import { useEffect, useRef, useState } from 'react'
 
 import Intro from './components/Intro/Intro'
+import Header from './components/layout/Header/Header'
+import Pages from './components/pages/Pages'
 import ContentContainer from './components/ui/ContentContainer/ContentContainer'
-
 const App = () => {
   const containerRef = useRef(null)
   const [isIntroTextFinished, setIsIntroTextFinished] = useState(false)
@@ -25,12 +26,8 @@ const App = () => {
 
   return (
     <div className="app" ref={containerRef}>
-      <ContentContainer>
-        <div id="page" ref={pageRef} style={{ opacity: 0 }}>
-          <h1>HELLO</h1>
-        </div>
-      </ContentContainer>
-
+      <Header />
+      <Pages />
       <Intro onStartAnimateFinish={() => setIsIntroTextFinished(true)} />
     </div>
   )
