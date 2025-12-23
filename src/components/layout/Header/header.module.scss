@@ -45,6 +45,26 @@ $header-height: rem(80);
   align-items: center;
 
   cursor: pointer;
+
+  @include hover {
+    .navigation__link::before {
+      width: 100%;
+    }
+  }
+}
+
+.navigation__link {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: em(-2);
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-text);
+    transition: width 0.2s ease-in-out;
+  }
 }
 
 .navigation__logo {
