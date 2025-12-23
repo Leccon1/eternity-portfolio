@@ -5,6 +5,7 @@ $header-height: rem(80);
 
 .header {
   position: relative;
+  max-width: rem(1000);
 }
 
 .navigation {
@@ -24,7 +25,7 @@ $header-height: rem(80);
   border-bottom-left-radius: rem(64);
   border-bottom-right-radius: rem(64);
 
-  font-size: var(--font-sizes-md);
+  font-size: var(--font-sizes-base);
 
   display: grid;
   grid-template-columns: repeat(5, 1fr);
