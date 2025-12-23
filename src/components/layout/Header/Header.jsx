@@ -1,5 +1,5 @@
+import ArrowButton from '@components/common/ArrowButton/ArrowButton'
 import Logo from '@components/common/Logo/Logo'
-import downArrowsIcon from '@icons/down-arrows.svg'
 import { useState } from 'react'
 
 import styles from './header.module.scss'
@@ -44,9 +44,11 @@ const Navigation = () => {
             </div>
           </div>
 
-          <button className={styles.openNavToggle} type="button" onClick={() => setIsOpen(!isOpen)}>
-            <img src={downArrowsIcon} alt="Down arrows" />
-          </button>
+          <ArrowButton
+            className={styles.openNavToggle}
+            onClick={() => setIsOpen(!isOpen)}
+            direction={isOpen ? 'up' : 'down'}
+          />
         </div>
       </nav>
     </header>
