@@ -1,6 +1,7 @@
 import { animate } from 'animejs'
 import { useEffect, useRef, useState } from 'react'
 
+import Header from './components/layout'
 import Intro from './components/Intro/Intro'
 import Header from './components/layout/Header/Header'
 import Pages from './components/pages/Pages'
@@ -25,9 +26,9 @@ const App = () => {
   }, [isIntroTextFinished])
 
   return (
-    <div className="app" ref={containerRef}>
+    <div className="app" ref={containerRef} style={{ display: 'flex', justifyContent: 'center' }}>
       <Header />
-      <Pages />
+
       <Intro onStartAnimateFinish={() => setIsIntroTextFinished(true)} />
     </div>
   )
