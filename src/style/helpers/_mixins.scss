@@ -1,6 +1,8 @@
 @use '../setting/variables' as *;
+@use '../setting/derived-variables' as *;
 @use '../helpers/media' as *;
 @use './functions' as *;
+@use 'sass:map';
 
 @mixin theme-vars($map) {
   @each $name, $value in $map {
@@ -10,31 +12,31 @@
 
 @mixin font-size-modifiers {
   &--sm {
-    font-size: map-get($font-sizes, font-sizes-sm);
+    font-size: map.get($font-sizes, font-sizes-sm);
   }
 
   &--base {
-    font-size: map-get($font-sizes, font-sizes-base);
+    font-size: map.get($font-sizes, font-sizes-base);
   }
 
   &--md {
-    font-size: map-get($font-sizes, font-sizes-md);
+    font-size: map.get($font-sizes, font-sizes-md);
   }
 
   &--lg {
-    font-size: map-get($font-sizes, font-sizes-lg);
+    font-size: map.get($font-sizes, font-sizes-lg);
   }
 
   &--xl {
-    font-size: map-get($font-sizes, font-sizes-xl);
+    font-size: map.get($font-sizes, font-sizes-xl);
   }
 
   &--xxl {
-    font-size: map-get($font-sizes, font-sizes-xxl);
+    font-size: map.get($font-sizes, font-sizes-xxl);
   }
 
   &--xxxl {
-    font-size: map-get($font-sizes, font-sizes-xxxl);
+    font-size: map.get($font-sizes, font-sizes-xxxl);
   }
 }
 
