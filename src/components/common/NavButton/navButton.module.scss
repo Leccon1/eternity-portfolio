@@ -1,5 +1,9 @@
-@use '@style-helpers/mixins' as *;
-@use '@style-helpers/functions' as *;
+@use '@style-setting/variables' as *;
+@use '@style-helpers/' as *;
+
+$color-bg-border: color(color-border, 'dark');
+$color-box-shadow-accent: color(color-accent, 'dark');
+$color-box-shadow-border: color(color-border, 'dark');
 
 .navButton {
   position: relative;
@@ -12,11 +16,47 @@
     @include underline;
   }
 
+  &--primary,
+  &--secondary {
+    padding: fluid(24, 18) fluid(48, 42);
+    border-radius: var(--radius-xl);
+    transition:
+      background-color var(--transitions-fast),
+      transform var(--transitions-fast),
+      box-shadow var(--transitions-fast);
+  }
+
   &--primary {
     background-color: var(--color-accent);
-    border: 2px solid var(--color-border-light);
-    border-radius: var(--radius-xl);
-    padding: fluid(24, 18) fluid(48, 42);
+    border: rem(2) solid var(--color-border-light);
+    box-shadow: 0 4px 24px 0 rgba($color-box-shadow-accent, 0.35);
+
+    @include hover {
+      background-color: var(--color-accent-alt);
+      transform: scale(1.03);
+      box-shadow: 0 8px 32px 0 rgba($color-box-shadow-accent, 0.35);
+    }
+    &:active {
+      transform: scale(1.01);
+      box-shadow: 0 4px 18px 0 rgba($color-box-shadow-accent, 0.35);
+    }
+  }
+
+  &--secondary {
+    background-color: rgba($color-bg-border, 0.25);
+    border: rem(2) solid var(--color-border);
+    box-shadow: 0 4px 24px 0 rgba($color-box-shadow-border, 0.5);
+    backdrop-filter: blur(2px);
+
+    @include hover {
+      background-color: rgba($color-bg-border, 0.5);
+      transform: scale(1.03);
+      box-shadow: 0 4px 32px 0 rgba($color-box-shadow-border, 0.5);
+    }
+    &:active {
+      transform: scale(1.01);
+      box-shadow: 0 4px 18px 0 rgba($color-box-shadow-border, 0.5);
+    }
   }
 
   @include font-size-modifiers;
