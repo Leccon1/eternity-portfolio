@@ -1,4 +1,5 @@
 @use '@style-helpers/mixins' as *;
+@use '@style-helpers/functions' as *;
 
 .navButton {
   position: relative;
@@ -9,6 +10,13 @@
 
   &--nav {
     @include underline;
+  }
+
+  &--primary {
+    background-color: var(--color-accent);
+    border: 2px solid var(--color-border-light);
+    border-radius: var(--radius-xl);
+    padding: fluid(24, 18) fluid(48, 42);
   }
 
   @include font-size-modifiers;
