@@ -1,5 +1,6 @@
 @use '../setting/variables' as *;
 @use '../helpers/media' as *;
+@use './functions' as *;
 
 @mixin theme-vars($map) {
   @each $name, $value in $map {
@@ -22,7 +23,7 @@
     &::before {
       content: '';
       position: absolute;
-      bottom: 0;
+      bottom: em(-2);
       left: 50%;
       width: 0;
       height: 2px;
