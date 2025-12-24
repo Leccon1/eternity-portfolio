@@ -1,4 +1,5 @@
 @use '../setting/variables' as *;
+@use '../helpers/media' as *;
 
 @mixin theme-vars($map) {
   @each $name, $value in $map {
@@ -18,19 +19,19 @@
 
 @mixin underline($color: white) {
   @include mobile-above {
-    &::after {
+    &::before {
       content: '';
       position: absolute;
       bottom: 0;
       left: 50%;
       width: 0;
-      height: $border-width;
-      background-color: $color-white;
+      height: 2px;
+      background-color: $color;
       transform: translateX(-50%);
-      transition: width $transition-fast;
+      transition: width var(--transitions-fast);
     }
     @include hover {
-      &::after {
+      &::before {
         width: 100%;
       }
     }
