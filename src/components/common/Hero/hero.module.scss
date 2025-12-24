@@ -1,13 +1,38 @@
+@use '@styles/helpers/' as *;
 .hero {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // относительно документа
   &::before {
-    content: url('@images/hero/hero-bg.svg');
+    content: '';
     position: absolute;
     inset: 0;
-    place-self: center;
 
+    background-image: url('@images/hero/hero-bg.svg');
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
 
+    opacity: 0.1;
     z-index: -1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 4px 250px 42px rgba(0, 0, 0, 1);
+    background: linear-gradient(
+      -11.31deg,
+      var(--color-bg, rgba(3, 4, 10, 1)),
+      var(--color-bg-secondary, rgba(8, 11, 20, 1)) 50%,
+      var(--color-surface, rgba(21, 28, 46, 1)) 100%
+    );
+
+    z-index: -2;
   }
 }
