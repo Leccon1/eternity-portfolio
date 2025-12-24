@@ -1,0 +1,15 @@
+@use '@style-helpers/mixins' as *;
+
+.navButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+
+  &--nav {
+    @include underline;
+  }
+
+  @include font-size-modifiers;
+}
