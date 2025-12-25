@@ -1,15 +1,22 @@
 import ArrowButton from '@components/common/ArrowButton/ArrowButton'
 import Logo from '@components/common/Logo/Logo'
-import { useState } from 'react'
+import { animate } from 'animejs'
+import { useState, useRef, useEffect } from 'react'
 
 import styles from './header.module.scss'
 import navigationData from './navigation.data'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const containerRef = useRef(null)
+
+  useEffect(() => {
+    const navigation = containerRef.current.querySelector(`.${styles.navigation}`)
+    const navigationList = containerRef.current.querySelector(`.${styles.navigation__list}`)
+  }, [])
 
   return (
-    <header className={styles.header}>
+    <header className={styles.header} ref={containerRef}>
       <nav className={styles.navigation}>
         <ul className={styles.navigation__list}>
           {navigationData.map((item, index) => (
