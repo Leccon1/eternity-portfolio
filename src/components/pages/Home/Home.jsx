@@ -1,18 +1,39 @@
 import Heading from '@common/Heading/Heading'
 import Hero from '@common/Hero/Hero'
 import ContentContainer from '@ui/ContentContainer/ContentContainer'
+import { animate, splitText, stagger } from 'animejs'
+import { useEffect, useRef } from 'react'
 
 import NavButton from '../../common/NavButton/NavButton'
 
 import styles from './home.module.scss'
 const HomeScreen = () => {
+  const containerRef = useRef(null)
+
+  useEffect(() => {
+    const hero = containerRef.current.querySelector(`.${styles.hero}`)
+    const heroTitle = containerRef.current.querySelector('.hero__title')
+    
+
+    const { chars } = splitText('.hero__title', {
+      chars: { wrap: 'clip' },
+    })
+
+    animate(chars, {
+      y: [{ to: ['100%', '0%'] }],
+      duration: 1000,
+      ease: 'out(3)',
+      delay: stagger(50),
+    })
+  }, [])
+
   return (
-    <div className={styles.homeScreen}>
+    <div className={styles.homeScreen} ref={containerRef}>
       <Hero className={styles.hero}>
         <div className={styles.hero__content}>
           <ContentContainer>
             <div className={styles.hero__info}>
-              <Heading className={styles.hero__title} level="h1" size="xxxl">
+              <Heading className="hero__title" level="h1" size="xxxl">
                 Ivan Samolkin
               </Heading>
               <p className={styles.hero__subtitle}>Aka Leccon1</p>
