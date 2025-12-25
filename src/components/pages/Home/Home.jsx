@@ -1,7 +1,7 @@
 import Heading from '@common/Heading/Heading'
 import Hero from '@common/Hero/Hero'
 import ContentContainer from '@ui/ContentContainer/ContentContainer'
-import { animate, splitText, stagger } from 'animejs'
+import { animate, createTimeline, splitText, stagger, Timeline } from 'animejs'
 import { useEffect, useRef } from 'react'
 
 import NavButton from '../../common/NavButton/NavButton'
@@ -15,7 +15,7 @@ const HomeScreen = () => {
     const heroSubtitle = containerRef.current.querySelector(`.${styles.hero__subtitle}`)
     const heroPost = containerRef.current.querySelector(`.${styles.hero__post}`)
     const heroDescription = containerRef.current.querySelector(`.${styles.hero__description}`)
-    // const
+    const buttonsContainer = containerRef.current.querySelector(`.${styles.hero__buttons}`)
 
     const { chars } = splitText('.hero__title', {
       chars: { wrap: 'clip' },
@@ -27,14 +27,29 @@ const HomeScreen = () => {
       delay: stagger(50),
     })
 
-    animate([heroSubtitle, heroPost, heroDescription], {
+    const tl = createTimeline({
+      easing: 'easeOutExpo',
+      duration: 1000,
+    })
+
+    // 1. Появление всех элементов по очереди
+    tl.add([heroSubtitle, heroPost, heroDescription, buttonsContainer], {
       scale: [0.9, 1],
       translateY: [10, 0],
       opacity: [0, 1],
-      duration: 1000,
-      easing: 'easeOutExpo', 
-      delay: (el, i) => 1000 + i * 500, 
+      delay: stagger(500, { start: 1000 }),
     })
+
+    // 2. Анимация gap, которая начнется ровно тогда же, когда и анимация buttonsContainer
+    // Время старта = 1000 (start) + 3 (индекс контейнера) * 500 = 2500мс
+    tl.add(
+      buttonsContainer,
+      {
+        gap: 'var(--spacing-xl)',
+        duration: 1000,
+      },
+      2500
+    ) // <-- Просто укажите точное время начала (мс)
   }, [])
 
   return (
