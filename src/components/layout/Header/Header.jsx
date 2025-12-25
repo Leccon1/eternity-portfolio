@@ -8,11 +8,27 @@ import navigationData from './navigation.data'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
+
   const containerRef = useRef(null)
 
   useEffect(() => {
     const navigation = containerRef.current.querySelector(`.${styles.navigation}`)
     const navigationList = containerRef.current.querySelector(`.${styles.navigation__list}`)
+
+    animate(navigation, {
+      opacity: [0, 1],
+      translateY: [-100, 0],
+      easing: 'ease',
+      duration: 1200,
+      onComplete: () => {
+        animate(navigationList, {
+          gap: 'clamp(40px,calc(40px + 40 * ((100vw - 375px) / 1545)),80px)',
+          easing: 'ease',
+          duration: 1200,
+        })
+      },
+    })
+    animate(navigationList, {})
   }, [])
 
   return (
