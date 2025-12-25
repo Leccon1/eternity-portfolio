@@ -12,18 +12,25 @@ const HomeScreen = () => {
 
   useEffect(() => {
     const hero = containerRef.current.querySelector(`.${styles.hero}`)
-    const heroTitle = containerRef.current.querySelector('.hero__title')
-    
+    const heroSubtitle = containerRef.current.querySelector(`.${styles.hero__subtitle}`)
 
     const { chars } = splitText('.hero__title', {
       chars: { wrap: 'clip' },
     })
-
     animate(chars, {
       y: [{ to: ['100%', '0%'] }],
       duration: 1000,
       ease: 'out(3)',
       delay: stagger(50),
+    })
+
+    animate(heroSubtitle, {
+      scale: [0.9, 1],
+      translateY: [10, 0],
+      opacity: [0, 1],
+      duration: 1000,
+      ease: 'out(3)',
+      delay: 1000,
     })
   }, [])
 
