@@ -10,25 +10,25 @@ Hi! I'm **Leccon1**, a 17-year-old frontend developer on my way to becoming a Se
 
 ### **Core Stack**
 
-* **JavaScript (ES6+)** — confident skills, strong understanding of logic and architecture
-* **React** — components, hooks, state management, architecture
-* **SCSS / CSS** — adaptive layouts, structure, complex UI elements
-* **HTML5** — semantics, accessibility, clean markup
-* **Git & GitHub** — branching, Git Flow, commit optimization, automated deploy
-* **Vite** — config customization, optimization, advanced setup
+- **JavaScript (ES6+)** — confident skills, strong understanding of logic and architecture
+- **React** — components, hooks, state management, architecture
+- **SCSS / CSS** — adaptive layouts, structure, complex UI elements
+- **HTML5** — semantics, accessibility, clean markup
+- **Git & GitHub** — branching, Git Flow, commit optimization, automated deploy
+- **Vite** — config customization, optimization, advanced setup
 
 ### **Tools & Environment**
 
-* Arch Linux 🐧
-* Bash scripts (including universal deployment scripts)
-* Figma
-* npm / pnpm
+- Arch Linux 🐧
+- Bash scripts (including universal deployment scripts)
+- Figma
+- npm / pnpm
 
 ### **Currently Learning / Next Goals**
 
-* Async JavaScript: Fetch, Async/Await, REST
-* Advanced React: state, context, performance optimization
-* Backend fundamentals (Node.js)
+- Async JavaScript: Fetch, Async/Await, REST
+- Advanced React: state, context, performance optimization
+- Backend fundamentals (Node.js)
 
 ---
 
@@ -38,21 +38,21 @@ This website is my personal portfolio called **Eternity**. It reflects my develo
 
 My goals with this project:
 
-* showcase code quality
-* demonstrate my design sense
-* present carefully built interfaces
-* show my engineering mindset, not just layout skills
+- showcase code quality
+- demonstrate my design sense
+- present carefully built interfaces
+- show my engineering mindset, not just layout skills
 
 ---
 
 ## Skills I Continuously Improve
 
-* UI/UX design principles
-* Structuring large projects
-* Creating custom component libraries
-* Automation (scripts, deployment)
-* Animations (including ⚡ Anime.js)
-* Reading and understanding other developers’ code
+- UI/UX design principles
+- Structuring large projects
+- Creating custom component libraries
+- Automation (scripts, deployment)
+- Animations (including ⚡ Anime.js)
+- Reading and understanding other developers’ code
 
 ---
 
@@ -61,7 +61,7 @@ My goals with this project:
 Here you’ll find my best work — from adaptive interfaces to full React applications.
 Each project represents a new stage in my growth and the desire to write code that ages well.
 
-*(Links will be added soon)*
+_(Links will be added soon)_
 
 ---
 
@@ -76,8 +76,8 @@ I enjoy thinking like an engineer: building architecture, planning systems, and 
 
 ## Contacts
 
-* **GitHub:** [https://github.com/Leccon1](https://github.com/Leccon1)
-* **Telegram:** *(add later)*
+- **GitHub:** [https://github.com/Leccon1](https://github.com/Leccon1)
+- **Telegram:** _(add later)_
 
 ---
 
