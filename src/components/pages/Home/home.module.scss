@@ -24,4 +24,8 @@
   &__description {
     font-size: var(--font-sizes-base);
   }
+  &__buttons {
+    display: flex;
+    gap: var(--spacing-xl);
+  }
 }
