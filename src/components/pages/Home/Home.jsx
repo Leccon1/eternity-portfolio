@@ -2,6 +2,8 @@ import Heading from '@common/Heading/Heading'
 import Hero from '@common/Hero/Hero'
 import ContentContainer from '@ui/ContentContainer/ContentContainer'
 
+import NavButton from '../../common/NavButton/NavButton'
+
 import styles from './home.module.scss'
 const HomeScreen = () => {
   return (
@@ -22,8 +24,24 @@ const HomeScreen = () => {
             </div>
           </ContentContainer>
           <div className={styles.hero__buttons}>
-            <button type="button">View News</button>
-            <button type="button">About Me</button>
+            <NavButton
+              href={'#about'}
+              className={styles.hero__button}
+              vairiant="primary"
+              size="md"
+              onClick={() => console.log('gg')}
+            >
+              View News
+            </NavButton>
+            <NavButton
+              href={'#about'}
+              className={styles.hero__button}
+              vairiant="secondary"
+              size="md"
+              onClick={() => console.log('gg')}
+            >
+              About Me
+            </NavButton>
           </div>
         </div>
       </Hero>
