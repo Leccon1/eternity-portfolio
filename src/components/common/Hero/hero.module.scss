@@ -6,21 +6,6 @@
   justify-content: center;
   align-items: center;
 
-  // относительно документа
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-
-    background-image: url('@images/hero/hero-bg.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    opacity: 0.1;
-    z-index: -1;
-  }
-
   &::after {
     content: '';
     position: absolute;
