@@ -1,6 +1,7 @@
 import Heading from '@common/Heading/Heading'
 import Hero from '@common/Hero/Hero'
 import NavButton from '@common/NavButton/NavButton'
+import { useAnimation, AnimationProvider } from '@hooks/useAnimationContext'
 import ContentContainer from '@ui/ContentContainer/ContentContainer'
 import { animate, createTimeline, splitText, stagger } from 'animejs'
 import { useEffect, useRef } from 'react'
@@ -9,8 +10,11 @@ import styles from './homeHero.module.scss'
 
 const HomeHero = () => {
   const containerRef = useRef(null)
+  const { state, setState } = useAnimation()
 
   useEffect(() => {
+    if (!state.introFinished) return
+
     const heroSubtitle = containerRef.current.querySelector(`.${styles.hero__subtitle}`)
     const heroPost = containerRef.current.querySelector(`.${styles.hero__post}`)
     const heroDescription = containerRef.current.querySelector(`.${styles.hero__description}`)
@@ -46,7 +50,7 @@ const HomeHero = () => {
       },
       2500
     )
-  }, [])
+  }, [state.introFinished])
 
   return (
     <Hero className={styles.hero}>
