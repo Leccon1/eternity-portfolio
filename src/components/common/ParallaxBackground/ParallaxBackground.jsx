@@ -3,27 +3,37 @@ import { useEffect, useRef } from 'react'
 
 import styles from './parallaxBackground.module.scss'
 
-const ParallaxBackground = () => {
+const ParallaxBackground = ({
+  className = '',
+  isAnimate = true,
+  parallaxSpeed = 0.1,
+  imageSrc = '',
+  opacity = 1,
+}) => {
   const bgRef = useRef(null)
   const parallaxHandler = useRef(null)
 
   useEffect(() => {
     if (!bgRef.current) return
 
-    animate(bgRef.current, {
-      scale: [1, 1.1],
-      translateY: [20, 0],
-      duration: 1800,
-      easing: 'easeOutExpo',
-      onComplete: enableParallax,
-    })
+    {
+      isAnimate
+        ? animate(bgRef.current, {
+            scale: [1, 1.1],
+            translateY: [20, 0],
+            duration: 1800,
+            easing: 'easeOutExpo',
+            onComplete: enableParallax,
+          })
+        : enableParallax()
+    }
 
     function enableParallax() {
       let mouseX = 0
       let mouseY = 0
       let currentX = 0
       let currentY = 0
-      const speed = 0.06
+      const speed = parallaxSpeed
 
       const animateParallax = () => {
         currentX += (mouseX - currentX) * speed
@@ -52,7 +62,13 @@ const ParallaxBackground = () => {
     }
   }, [])
 
-  return <div ref={bgRef} className={styles.parallaxBg} />
+  return (
+    <div
+      ref={bgRef}
+      className={`${styles.parallaxBg} ${className}`}
+      style={{ backgroundImage: `url(${imageSrc})`, opacity: opacity }}
+    />
+  )
 }
 
 export default ParallaxBackground
