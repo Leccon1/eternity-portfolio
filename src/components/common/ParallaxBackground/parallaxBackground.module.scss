@@ -1,0 +1,13 @@
+.parallaxBg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background-image: url('@images/hero/hero-bg.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  will-change: transform;
+  pointer-events: none;
+}
