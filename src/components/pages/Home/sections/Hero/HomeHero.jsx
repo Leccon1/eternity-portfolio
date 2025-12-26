@@ -23,6 +23,11 @@ const HomeHero = () => {
     const { chars } = splitText('.hero__title', {
       chars: { wrap: 'clip' },
     })
+
+    animate([chars, heroDescription, heroPost, heroSubtitle, buttonsContainer], {
+      delay: 400,
+    })
+
     animate(chars, {
       y: [{ to: ['100%', '0%'] }],
       duration: 1000,

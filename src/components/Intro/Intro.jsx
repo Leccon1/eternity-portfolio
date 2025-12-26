@@ -37,8 +37,6 @@ const Intro = ({ onStartAnimateFinish }) => {
           easing: 'easeInOutSine',
           duration: 1000,
         })
-
-        onStartAnimateFinish()
       },
     })
 
@@ -74,6 +72,7 @@ const Intro = ({ onStartAnimateFinish }) => {
             easing: 'easeOutExpo',
             '--intro-blur': ['0px', '5px'],
             duration: TIMER_DURATION,
+            onBegin: onStartAnimateFinish(),
           })
           animate(introContainerRight, {
             translateX: ['0%', '110%'],
@@ -85,7 +84,6 @@ const Intro = ({ onStartAnimateFinish }) => {
       },
       TEXT_DURATION
     )
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (!visible) return null
