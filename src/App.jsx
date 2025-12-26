@@ -1,6 +1,8 @@
 import { animate } from 'animejs'
 import { useEffect, useRef, useState } from 'react'
 
+import HeroBg from './assets/images/hero/hero-bg.svg'
+import ParallaxBackground from './components/common/ParallaxBackground/ParallaxBackground'
 import Intro from './components/Intro/Intro'
 import Header from './components/layout/Header/Header'
 import Pages from './components/pages/Pages'
@@ -27,8 +29,14 @@ const App = () => {
     <div
       className="app"
       ref={containerRef}
-      style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+      }}
     >
+      <ParallaxBackground imageSrc={HeroBg} opacity={0.1} />
       <Header />
       <Pages />
 
