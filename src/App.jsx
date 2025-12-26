@@ -42,7 +42,17 @@ const App = () => {
     >
       <Intro onStartAnimateFinish={() => setState((prev) => ({ ...prev, introFinished: true }))} />
       {/* TODO: сделать компонент Layout */}
-      <div style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+      <div
+        style={{
+          position: 'relative',
+          height: '100vh',
+          overflow: 'hidden',
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'column',
+        }}
+      >
         <ParallaxBackground imageSrc={HeroBg} opacity={0.1} />
         <Header />
         <Pages />
