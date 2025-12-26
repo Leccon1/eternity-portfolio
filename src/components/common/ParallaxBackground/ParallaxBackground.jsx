@@ -1,3 +1,4 @@
+import { useAnimation, AnimationProvider } from '@hooks/useAnimationContext'
 import { animate } from 'animejs'
 import { useEffect, useRef } from 'react'
 
@@ -12,9 +13,10 @@ const ParallaxBackground = ({
 }) => {
   const bgRef = useRef(null)
   const parallaxHandler = useRef(null)
+  const { state, setState } = useAnimation()
 
   useEffect(() => {
-    if (!bgRef.current) return
+    if (!bgRef.current || !state.introFinished) return
 
     {
       isAnimate
@@ -23,6 +25,7 @@ const ParallaxBackground = ({
             translateY: [20, 0],
             duration: 1800,
             easing: 'easeOutExpo',
+            delay: 150,
             onComplete: enableParallax,
           })
         : enableParallax()
@@ -60,7 +63,7 @@ const ParallaxBackground = ({
         window.removeEventListener('mousemove', parallaxHandler.current)
       }
     }
-  }, [])
+  }, [state.introFinished])
 
   return (
     <div

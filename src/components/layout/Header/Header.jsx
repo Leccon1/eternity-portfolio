@@ -1,5 +1,6 @@
 import ArrowButton from '@components/common/ArrowButton/ArrowButton'
 import Logo from '@components/common/Logo/Logo'
+import { useAnimation, AnimationProvider } from '@hooks/useAnimationContext'
 import { animate } from 'animejs'
 import { useState, useRef, useEffect } from 'react'
 
@@ -8,10 +9,12 @@ import navigationData from './navigation.data'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
-
+  const { state, setState } = useAnimation()
   const containerRef = useRef(null)
 
   useEffect(() => {
+    if (!state.introFinished) return
+
     const navigation = containerRef.current.querySelector(`.${styles.navigation}`)
     const navigationList = containerRef.current.querySelector(`.${styles.navigation__list}`)
 
@@ -28,8 +31,7 @@ const Header = () => {
         })
       },
     })
-    animate(navigationList, {})
-  }, [])
+  }, [state.introFinished])
 
   return (
     <header className={styles.header} ref={containerRef}>
