@@ -140,6 +140,10 @@ $header-height-scrolled: rem(60);
   }
 }
 
+.openNav__link {
+  white-space: nowrap;
+}
+
 .scrolled {
   --current-header-height: #{$header-height-scrolled};
 

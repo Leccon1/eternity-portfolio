@@ -13,6 +13,9 @@ const Header = () => {
   const { state } = useAnimation()
   const containerRef = useRef(null)
 
+  const headerGapMax = '60px'
+  const headerGapMin = '30px'
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -40,7 +43,7 @@ const Header = () => {
       duration: 1200,
       onComplete: () => {
         animate(navigationList, {
-          gap: 'clamp(40px,calc(40px + 40 * ((100vw - 375px) / 1545)),60px)',
+          gap: `clamp(${headerGapMin},calc(${headerGapMin} + 40 * ((100vw - 375px) / 1545)), ${headerGapMax})`,
           easing: 'ease',
           duration: 1200,
         })
@@ -53,7 +56,7 @@ const Header = () => {
       <nav className={styles.navigation}>
         <ul
           className={styles.navigation__list}
-          style={{ gridTemplateColumns: `repeat(${navigationData.length}, 1fr)` }}
+          style={{ gridTemplateColumns: `repeat(${navigationData.length}, 90px)` }}
         >
           {navigationData.map((item, index) => (
             <li
@@ -76,7 +79,10 @@ const Header = () => {
           <div className={`${styles.openNav} ${isOpen ? styles.open : ''}`}>
             <div
               className={styles.openNav__grid}
-              style={{ gridTemplateColumns: `repeat(${navigationData.length}, 1fr)` }}
+              style={{
+                gridTemplateColumns: `repeat(${navigationData.length}, 1fr)`,
+                gap: `clamp(${headerGapMin},calc(${headerGapMin} + 40 * ((100vw - 375px) / 1545)), ${headerGapMax})`,
+              }}
             >
               {navigationData.map((item) => (
                 <div key={item.label} className={styles.openNav__column}>
@@ -84,7 +90,9 @@ const Header = () => {
                     <ul className={styles.openNav__list}>
                       {item.subMenu.map((sub) => (
                         <li key={sub.label}>
-                          <a href={sub.href}>{sub.label}</a>
+                          <a href={sub.href} className={styles.openNav__link}>
+                            {sub.label}
+                          </a>
                         </li>
                       ))}
                     </ul>
