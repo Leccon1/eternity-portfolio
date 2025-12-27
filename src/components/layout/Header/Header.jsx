@@ -9,8 +9,29 @@ import navigationData from './navigation.data'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const { state } = useAnimation()
   const containerRef = useRef(null)
+
+  window.addEventListener('scroll', () => {
+    if (window.screenY > 50) {
+      containerRef.current.classList
+    }
+  })
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     if (!state.introFinished) return
@@ -34,7 +55,7 @@ const Header = () => {
   }, [state.introFinished])
 
   return (
-    <header className={styles.header} ref={containerRef}>
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`} ref={containerRef}>
       <nav className={styles.navigation}>
         <ul
           className={styles.navigation__list}
