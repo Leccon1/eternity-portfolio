@@ -5,8 +5,13 @@ $header-height: rem(80);
 $color-bg-secondary: color(color-bg-secondary, 'dark');
 
 .header {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
   max-width: rem(1000);
+  z-index: var(--z-index-tooltip);
 }
 
 .navigation {
