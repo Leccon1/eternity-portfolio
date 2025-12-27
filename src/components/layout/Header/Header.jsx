@@ -13,12 +13,6 @@ const Header = () => {
   const { state } = useAnimation()
   const containerRef = useRef(null)
 
-  window.addEventListener('scroll', () => {
-    if (window.screenY > 50) {
-      containerRef.current.classList
-    }
-  })
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -46,7 +40,7 @@ const Header = () => {
       duration: 1200,
       onComplete: () => {
         animate(navigationList, {
-          gap: 'clamp(40px,calc(40px + 40 * ((100vw - 375px) / 1545)),80px)',
+          gap: 'clamp(40px,calc(40px + 40 * ((100vw - 375px) / 1545)),60px)',
           easing: 'ease',
           duration: 1200,
         })
