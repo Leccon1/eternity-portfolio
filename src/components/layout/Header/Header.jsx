@@ -36,7 +36,10 @@ const Header = () => {
   return (
     <header className={styles.header} ref={containerRef}>
       <nav className={styles.navigation}>
-        <ul className={styles.navigation__list}>
+        <ul
+          className={styles.navigation__list}
+          style={{ gridTemplateColumns: `repeat(${navigationData.length}, 1fr)` }}
+        >
           {navigationData.map((item, index) => (
             <li
               key={index}
@@ -56,7 +59,10 @@ const Header = () => {
 
         <div className={styles.openNavContainer}>
           <div className={`${styles.openNav} ${isOpen ? styles.open : ''}`}>
-            <div className={styles.openNav__grid}>
+            <div
+              className={styles.openNav__grid}
+              style={{ gridTemplateColumns: `repeat(${navigationData.length}, 1fr)` }}
+            >
               {navigationData.map((item) => (
                 <div key={item.label} className={styles.openNav__column}>
                   {item.subMenu && (

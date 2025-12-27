@@ -29,7 +29,6 @@ $color-bg-secondary: color(color-bg-secondary, 'dark');
   font-size: var(--font-sizes-base);
 
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(1, $header-height);
   place-items: center;
   gap: 0;
@@ -77,7 +76,6 @@ $color-bg-secondary: color(color-bg-secondary, 'dark');
 
 .openNav__grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
   place-items: center;
   gap: fluid(40, 80);
   padding: var(--spacing-xl) 0;
