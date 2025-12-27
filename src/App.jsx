@@ -3,11 +3,11 @@ import { animate } from 'animejs'
 import { useEffect, useRef, useState } from 'react'
 
 import HeroBg from './assets/images/hero/hero-bg.svg'
+import FullScreenSection from './components/common/FullScreenSection/FullScreenSection'
 import ParallaxBackground from './components/common/ParallaxBackground/ParallaxBackground'
 import Intro from './components/Intro/Intro'
 import Header from './components/layout/Header/Header'
 import Pages from './components/pages/Pages'
-
 const App = () => {
   const containerRef = useRef(null)
   const [isIntroTextFinished, setIsIntroTextFinished] = useState(false)
@@ -41,22 +41,15 @@ const App = () => {
       }}
     >
       <Intro onStartAnimateFinish={() => setState((prev) => ({ ...prev, introFinished: true }))} />
-      {/* TODO: сделать компонент Layout */}
-      <div
-        style={{
-          position: 'relative',
-          height: '100vh',
-          overflow: 'hidden',
-          width: '100%',
-          display: 'flex',
-          alignItems: 'center',
-          flexDirection: 'column',
-        }}
-      >
+
+      <FullScreenSection>
         <ParallaxBackground imageSrc={HeroBg} opacity={0.1} />
         <Header />
         <Pages />
-      </div>
+      </FullScreenSection>
+
+      <Pages />
+      <Pages />
     </div>
   )
 }

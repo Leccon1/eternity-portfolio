@@ -1,7 +1,7 @@
 import styles from './fullScreenSection.module.scss'
 
-const FullScreenSection = () => {
-  return <div className={styles.fullScreenSection}></div>
+const FullScreenSection = ({ children }) => {
+  return <div className={styles.fullScreenSection}>{children}</div>
 }
 
 export default FullScreenSection
