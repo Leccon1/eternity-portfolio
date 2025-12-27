@@ -1,6 +1,6 @@
 import ArrowButton from '@components/common/ArrowButton/ArrowButton'
 import Logo from '@components/common/Logo/Logo'
-import { useAnimation, AnimationProvider } from '@hooks/useAnimationContext'
+import { useAnimation } from '@hooks/useAnimationContext'
 import { animate } from 'animejs'
 import { useState, useRef, useEffect } from 'react'
 
@@ -9,7 +9,7 @@ import navigationData from './navigation.data'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const { state, setState } = useAnimation()
+  const { state } = useAnimation()
   const containerRef = useRef(null)
 
   useEffect(() => {
