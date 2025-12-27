@@ -1,4 +1,4 @@
-import { useAnimation, AnimationProvider } from '@hooks/useAnimationContext'
+import { useAnimation } from '@hooks/useAnimationContext'
 import { animate } from 'animejs'
 import { useEffect, useRef } from 'react'
 
@@ -13,7 +13,7 @@ const ParallaxBackground = ({
 }) => {
   const bgRef = useRef(null)
   const parallaxHandler = useRef(null)
-  const { state, setState } = useAnimation()
+  const { state } = useAnimation()
 
   useEffect(() => {
     if (!bgRef.current || !state.introFinished) return
