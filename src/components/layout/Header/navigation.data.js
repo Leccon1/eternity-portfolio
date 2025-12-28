@@ -3,10 +3,9 @@ const navigationData = [
     label: 'Home',
     llink: '#home',
     subMenu: [
+      { label: 'Identity', link: '#about-short' },
+      { label: 'Showcase', link: '#featured' },
       { label: 'News', link: '#news' },
-      { label: 'Changes', link: '#changes' },
-      { label: 'Updates', link: '#updates' },
-      { label: 'Highlights', link: '#highlights' },
     ],
   },
   {
