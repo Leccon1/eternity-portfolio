@@ -21,6 +21,18 @@
     z-index: -2;
   }
 
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50%;
+    background: linear-gradient(to top, var(--color-bg, rgba(3, 4, 10, 1)) 0%, transparent 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
   &__content {
     display: flex;
     align-items: center;
