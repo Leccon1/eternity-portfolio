@@ -1,10 +1,9 @@
 import styles from './home.module.scss'
-import HomeHero from './sections/Hero/HomeHero'
-
+import HomeNews from './sections/News/HomeNews'
 const HomeScreen = () => {
   return (
     <div className={styles.homeScreen}>
-      <HomeHero />
+      <HomeNews />
     </div>
   )
 }
