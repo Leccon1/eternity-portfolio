@@ -5,9 +5,9 @@ import ContentContainer from '@ui/ContentContainer/ContentContainer'
 import { animate, createTimeline, splitText, stagger } from 'animejs'
 import { useEffect, useRef } from 'react'
 
-import styles from './homeHero.module.scss'
+import styles from './hero.module.scss'
 
-const HomeHero = () => {
+const Hero = () => {
   const containerRef = useRef(null)
   const { state } = useAnimation()
 
@@ -97,4 +97,4 @@ const HomeHero = () => {
   )
 }
 
-export default HomeHero
+export default Hero
