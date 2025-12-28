@@ -7,37 +7,38 @@ import { useEffect, useRef } from 'react'
 
 import styles from './hero.module.scss'
 
-const Hero = () => {
+const Hero = ({ data }) => {
   const containerRef = useRef(null)
   const { state } = useAnimation()
 
   useEffect(() => {
-    if (!state.introFinished) return
+    if (!state.introFinished || !data) return
 
-    const heroSubtitle = containerRef.current.querySelector(`.${styles.hero__subtitle}`)
-    const heroPost = containerRef.current.querySelector(`.${styles.hero__post}`)
-    const heroDescription = containerRef.current.querySelector(`.${styles.hero__description}`)
-    const buttonsContainer = containerRef.current.querySelector(`.${styles.hero__buttons}`)
+    const ctx = containerRef.current
+    const heroSubtitle = ctx.querySelector(`.${styles.hero__subtitle}`)
+    const heroPost = ctx.querySelector(`.${styles.hero__post}`)
+    const heroDescription = ctx.querySelector(`.${styles.hero__description}`)
+    const buttonsContainer = ctx.querySelector(`.${styles.hero__buttons}`)
 
-    const { chars } = splitText('.hero__title', {
+    const titleElement = ctx.querySelector('.hero__title')
+
+    const { chars } = splitText(titleElement, {
       chars: { wrap: 'clip' },
     })
 
     animate([chars, heroDescription, heroPost, heroSubtitle, buttonsContainer], {
-      delay: 400,
+      opacity: [0, 1],
+      delay: 0,
     })
 
     animate(chars, {
-      y: [{ to: ['100%', '0%'] }],
+      y: ['100%', '0%'],
       duration: 1000,
       ease: 'out(3)',
       delay: stagger(50),
     })
 
-    const tl = createTimeline({
-      easing: 'easeOutExpo',
-      duration: 1000,
-    })
+    const tl = createTimeline({ easing: 'easeOutExpo', duration: 1000 })
 
     tl.add([heroSubtitle, heroPost, heroDescription, buttonsContainer], {
       scale: [0.9, 1],
@@ -54,7 +55,9 @@ const Hero = () => {
       },
       2500
     )
-  }, [state.introFinished])
+  }, [state.introFinished, data])
+
+  if (!data) return null
 
   return (
     <section className={styles.hero}>
@@ -62,35 +65,27 @@ const Hero = () => {
         <ContentContainer>
           <div className={styles.hero__info}>
             <Heading className="hero__title" level="h1" size="xxxl">
-              Ivan Samolkin
+              {data.title}
             </Heading>
-            <p className={styles.hero__subtitle}>Aka Leccon1</p>
-            <p className={styles.hero__post}>Front-End Developer</p>
-            <p className={styles.hero__description}>
-              I am a self-taught front-end developer passionate about creating intuitive, modern,
-              and user-friendly interfaces.
-            </p>
+            <p className={styles.hero__subtitle}>{data.subtitle}</p>
+            <p className={styles.hero__post}>{data.post}</p>
+            <p className={styles.hero__description}>{data.description}</p>
           </div>
         </ContentContainer>
+
         <div className={styles.hero__buttons}>
-          <NavButton
-            href={'#about'}
-            className={styles.hero__button}
-            vairiant="primary"
-            size="md"
-            onClick={() => console.log('gg')}
-          >
-            View News
-          </NavButton>
-          <NavButton
-            href={'#about'}
-            className={styles.hero__button}
-            vairiant="secondary"
-            size="md"
-            onClick={() => console.log('gg')}
-          >
-            About Me
-          </NavButton>
+          {data.buttons?.map((btn, index) => (
+            <NavButton
+              key={index}
+              href={btn.href}
+              className={styles.hero__button}
+              vairiant={btn.variant}
+              size="md"
+              onClick={btn.onClick}
+            >
+              {btn.text}
+            </NavButton>
+          ))}
         </div>
       </div>
     </section>
