@@ -93,7 +93,6 @@ $header-height-scrolled: rem(60);
 
 .openNav__grid {
   display: grid;
-  place-items: center;
   gap: fluid(40, 80);
   padding: var(--spacing-xl) 0;
 }
