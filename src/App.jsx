@@ -9,10 +9,13 @@ import ParallaxBackground from './components/common/ParallaxBackground/ParallaxB
 import Intro from './components/Intro/Intro'
 import Header from './components/layout/Header/Header'
 import Pages from './components/pages/Pages'
+import { useHeroStore } from './store/useHeroStore'
+
 const App = () => {
   const containerRef = useRef(null)
   const [isIntroTextFinished, setIsIntroTextFinished] = useState(false)
   const { state, setState } = useAnimation()
+  const data = useHeroStore((state) => state.data)
 
   console.log(state)
   const pageRef = useRef(null)
@@ -45,7 +48,7 @@ const App = () => {
 
       <FullScreenSection>
         <ParallaxBackground imageSrc={HeroBg} opacity={0.1} />
-        <Hero />
+        <Hero data={data} />
         <Header />
       </FullScreenSection>
 
