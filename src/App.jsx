@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import HeroBg from './assets/images/hero/hero-bg.svg'
 import FullScreenSection from './components/common/FullScreenSection/FullScreenSection'
+import Hero from './components/common/Hero/Hero'
 import ParallaxBackground from './components/common/ParallaxBackground/ParallaxBackground'
 import Intro from './components/Intro/Intro'
 import Header from './components/layout/Header/Header'
@@ -44,11 +45,10 @@ const App = () => {
 
       <FullScreenSection>
         <ParallaxBackground imageSrc={HeroBg} opacity={0.1} />
+        <Hero />
         <Header />
-        <Pages />
       </FullScreenSection>
 
-      <Pages />
       <Pages />
     </div>
   )
