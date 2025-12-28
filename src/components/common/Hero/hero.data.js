@@ -6,7 +6,12 @@ export const heroData = {
     description:
       'I am a self-taught front-end developer passionate about creating intuitive, modern, and user-friendly interfaces.',
     buttons: [
-      { text: 'View News', href: '#news', variant: 'primary', onClick: () => console.log('news') },
+      {
+        text: 'View Me Identity',
+        href: '#news',
+        variant: 'primary',
+        onClick: () => console.log('news'),
+      },
       {
         text: 'About Me',
         href: '#about',
