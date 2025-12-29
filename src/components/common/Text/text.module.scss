@@ -1,6 +1,8 @@
 @use '@style-helpers/mixins' as *;
 
 .text {
+  line-height: 1.5;
+
   @include font-family-modifiers;
   @include font-size-modifiers;
 }
