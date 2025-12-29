@@ -79,7 +79,7 @@ const Hero = ({ data }) => {
               key={index}
               href={btn.href}
               className={styles.hero__button}
-              vairiant={btn.variant}
+              variant={btn.variant}
               size="md"
               onClick={btn.onClick}
             >

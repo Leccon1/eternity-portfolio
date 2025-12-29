@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 import styles from './navButton.module.scss'
 
-const NavButton = ({ to, href, vairiant = 'nav', size = 'base', children, className, onClick }) => {
+const NavButton = ({ to, href, variant = 'nav', size = 'base', children, className, onClick }) => {
   const classes = clsx(
     styles.navButton,
-    styles[`navButton--${vairiant}`],
+    styles[`navButton--${variant}`],
     styles[`navButton--${size}`],
     className
   )
