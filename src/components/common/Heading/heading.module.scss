@@ -1,13 +1,10 @@
+@use '@style-helpers/mixins' as *;
+
 .heading {
   color: var(--color-text);
   font-weight: var(--font-weights-bold);
 
-  &--accent {
-    font-family: var(--color-accent);
-  }
-  &--primary {
-    font-family: var(--color-primary);
-  }
+  @include font-size-modifiers;
 
   &--xxxl {
     font-size: var(--font-sizes-xxxl);

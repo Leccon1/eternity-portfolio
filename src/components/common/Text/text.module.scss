@@ -1,12 +1,6 @@
 @use '@styles-helpers/mixins' as *;
 
 .text {
-  &--accent {
-    font-family: var(--color-accent);
-  }
-  &--primary {
-    font-family: var(--color-primary);
-  }
-
+  @include font-family-modifiers;
   @include font-size-modifiers;
 }
