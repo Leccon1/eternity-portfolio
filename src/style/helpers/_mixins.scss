@@ -10,6 +10,15 @@
   }
 }
 
+@mixin font-family-modifiers {
+  &--accent {
+    font-family: var(--font-accent);
+  }
+  &--primary {
+    font-family: var(--font-primary);
+  }
+}
+
 @mixin font-size-modifiers {
   &--sm {
     font-size: map.get($font-sizes, font-sizes-sm);
