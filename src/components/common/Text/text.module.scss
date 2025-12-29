@@ -1,0 +1,12 @@
+@use '@helpers/mixins' as *;
+
+.text {
+  &--accent {
+    font-family: var(--color-accent);
+  }
+  &--primary {
+    font-family: var(--color-primary);
+  }
+
+  @include font-size-modifiers;
+}
