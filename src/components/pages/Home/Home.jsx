@@ -1,9 +1,13 @@
+import FullScreenSection from '../../common/FullScreenSection/FullScreenSection'
+
 import styles from './home.module.scss'
-import HomeNews from './sections/News/HomeNews'
+import HomeIdentify from './sections/Identify/HomeIdentify'
 const HomeScreen = () => {
   return (
     <div className={styles.homeScreen}>
-      <HomeNews />
+      <FullScreenSection>
+        <HomeIdentify />
+      </FullScreenSection>
     </div>
   )
 }
