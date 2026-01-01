@@ -1,12 +1,11 @@
 import Heading from '@common/Heading/Heading'
-import NavButton from '@common/NavButton/NavButton'
 import Text from '@common/Text/Text'
 import ContentContainer from '@ui/ContentContainer/ContentContainer'
 import clsx from 'clsx'
 
 import styles from './insightSection.module.scss'
 
-const InsightSection = ({ title, description, buttonText, maxWidthVar }) => {
+const InsightSection = ({ title, description, maxWidthVar, action }) => {
   const classes = clsx(styles.insightSection, styles[`insightSection__content`])
   return (
     <div
@@ -23,7 +22,7 @@ const InsightSection = ({ title, description, buttonText, maxWidthVar }) => {
             {title}
           </Heading>
           <Text fontType="primary">{description}</Text>
-          <NavButton variant="secondary">{buttonText}</NavButton>
+          {action && <div>{action}</div>}
         </div>
       </ContentContainer>
     </div>
