@@ -1,7 +1,7 @@
 import InsightSection from '@common/InsightSection/InsightSection'
 import NavButton from '@common/NavButton/NavButton'
 
-import styles from './homeIdentify.module.scss'
+import styles from './identify.module.scss'
 const HomeIdentify = () => {
   return (
     <section className={styles.identify}>

@@ -1,4 +1,4 @@
-import styles from './homeNews.module.scss'
+import styles from './news.module.scss'
 
 const HomeNews = ({ className = '' }) => {
   return <section className={`${styles.news} ${className}`}>NEWS</section>
