@@ -6,10 +6,17 @@ import clsx from 'clsx'
 
 import styles from './insightSection.module.scss'
 
-const InsightSection = ({ title, description, buttonText }) => {
+const InsightSection = ({ title, description, buttonText, maxWidthVar }) => {
   const classes = clsx(styles.insightSection, styles[`insightSection__content`])
   return (
-    <div className={classes}>
+    <div
+      className={classes}
+      style={{
+        ...(maxWidthVar && {
+          '--container-max-width': `var(${maxWidthVar})`,
+        }),
+      }}
+    >
       <ContentContainer>
         <div className={classes}>
           <Heading level="h2" size="xl">

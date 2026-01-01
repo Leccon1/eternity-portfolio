@@ -1,7 +1,7 @@
 @use '@style-helpers/media' as *;
 
 .insightSection {
-  max-width: var(--container-max-width-sm);
+  max-width: var(--container-max-width, var(--container-max-width-sm));
 
   &__content {
     display: flex;
