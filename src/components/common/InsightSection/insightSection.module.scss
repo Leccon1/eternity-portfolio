@@ -1,0 +1,15 @@
+@use '@style-helpers/media' as *;
+
+.insightSection {
+  max-width: var(--container-max-width-sm);
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+
+    text-align: center;
+  }
+}
