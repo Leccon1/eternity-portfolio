@@ -46,7 +46,7 @@ const App = () => {
     >
       <Intro onStartAnimateFinish={() => setState((prev) => ({ ...prev, introFinished: true }))} />
 
-      <FullScreenSection>
+      <FullScreenSection overflow="hidden">
         <ParallaxBackground imageSrc={HeroBg} opacity={0.1} />
         <Hero data={data} />
         <Header />
