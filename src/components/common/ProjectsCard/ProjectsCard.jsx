@@ -1,4 +1,5 @@
 import NavButton from '@common/NavButton/NavButton'
+import TechStack from '@common/TechStack/TechStack'
 
 import styles from './projectsCard.module.scss'
 
@@ -11,11 +12,8 @@ const ProjectsCard = () => {
           An interactive web application with a dynamic interface and a thoughtful user scenario,
           focused on convenience and a holistic UX.
         </p>
-        <ul className={styles.skills}>
-          <li className={styles.skills__item}>HTML</li>
-          <li className={styles.skills__item}>CSS</li>
-          <li className={styles.skills__item}>JavaScript</li>
-        </ul>
+
+        <TechStack items={['React', 'Typescript', 'SCSS']} className={styles.techStack} />
 
         <NavButton variant="primary">View project</NavButton>
       </div>

@@ -2,13 +2,13 @@ import styles from './techStack.module.scss'
 
 const TechStack = ({ items = [], className = '' }) => {
   return (
-    <>
-      {items.map((item, index) => (
-        <p key={index} className={`${styles.techStack} ${className}`}>
+    <ul className={`${styles.techStack} ${className}`}>
+      {items.map((item) => (
+        <li key={item} className={styles.techStackItem}>
           {item}
-        </p>
+        </li>
       ))}
-    </>
+    </ul>
   )
 }
 
