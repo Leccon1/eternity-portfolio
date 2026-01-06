@@ -19,6 +19,8 @@ const ProjectsCard = () => {
 
         <NavButton variant="primary">View project</NavButton>
       </div>
+
+      <div className={styles.spacer}></div>
     </div>
   )
 }
