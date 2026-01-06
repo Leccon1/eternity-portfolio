@@ -13,7 +13,7 @@ const ProjectsCard = () => {
           focused on convenience and a holistic UX.
         </p>
 
-        <TechStack items={['React', 'Typescript', 'SCSS']} className={styles.techStack} />
+        <TechStack items={['Html', 'SCSS', 'JavaScript', 'Vite']} className={styles.techStack} />
 
         <NavButton variant="primary">View project</NavButton>
       </div>
