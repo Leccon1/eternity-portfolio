@@ -1,5 +1,26 @@
+import NavButton from '@common/NavButton/NavButton'
+
+import styles from './projectsCard.module.scss'
+
 const ProjectsCard = () => {
-  return <div>ProjectsCard</div>
+  return (
+    <div className={styles.projectsCard}>
+      <div className={styles.projectsCard__content}>
+        <p className={styles.projectsCard__title}>Bookmark manager</p>
+        <p className={styles.projectsCard__description}>
+          An interactive web application with a dynamic interface and a thoughtful user scenario,
+          focused on convenience and a holistic UX.
+        </p>
+        <ul className={styles.skills}>
+          <li className={styles.skills__item}>HTML</li>
+          <li className={styles.skills__item}>CSS</li>
+          <li className={styles.skills__item}>JavaScript</li>
+        </ul>
+
+        <NavButton variant="primary">View project</NavButton>
+      </div>
+    </div>
+  )
 }
 
 export default ProjectsCard
