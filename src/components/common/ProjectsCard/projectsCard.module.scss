@@ -24,6 +24,13 @@
     justify-content: space-between;
     flex-direction: column;
   }
+  &__title {
+    font-size: var(--font-sizes-lg);
+    font-weight: var(--font-weights-bold);
+  }
+  &__description {
+    font-size: var(--font-sizes-base);
+  }
 }
 
 .techStack {
