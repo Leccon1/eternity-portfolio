@@ -1,9 +1,8 @@
 .techStack {
-  background-color: var(--color-bg-secondary);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-sm);
-
   &Item {
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-sm);
     font-size: var(--font-sizes-sm);
   }
 }
