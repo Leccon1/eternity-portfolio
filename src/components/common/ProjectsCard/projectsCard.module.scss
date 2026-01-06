@@ -26,6 +26,12 @@
   }
 }
 
+.techStack {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-sm);
+}
+
 .spacer {
   flex-shrink: 0;
   width: rem(150);
