@@ -1,11 +1,10 @@
 import styles from './techStack.module.scss'
 
-// Изменяем пропс text на список элементов (по умолчанию пустой массив)
-const TechStack = ({ items = [] }) => {
+const TechStack = ({ items = [], className = '' }) => {
   return (
     <>
       {items.map((item, index) => (
-        <p key={index} className={styles.techStack}>
+        <p key={index} className={`${styles.techStack} ${className}`}>
           {item}
         </p>
       ))}
