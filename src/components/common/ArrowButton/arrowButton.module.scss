@@ -1,42 +1,45 @@
 .arrowButton {
-  position: relative;
-  transition: transform var(--transitions-normal);
+  --rotation: 0deg;
 
-  &--up {
-    transform: rotate(180deg);
-  }
-  &--down {
-    transform: rotate(0deg);
-  }
-  &--left {
-    transform: rotate(90deg);
-  }
-  &--right {
-    transform: rotate(-90deg);
-  }
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   &::after {
-    content: ' ';
+    content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 16px 6px var(--color-text);
+    width: 60%;
+    height: 60%;
+    background: var(--color-text);
+    filter: blur(16px);
+    opacity: 0.8;
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
   }
 
-  &--up:hover {
-    transform: rotate(180deg) scale(1.1);
+  img {
+    position: relative;
+    z-index: 1;
+    transform: rotate(var(--rotation)) scale(1);
+    transition: transform var(--transitions-normal);
   }
 
-  &--down:hover {
-    transform: rotate(0deg) scale(1.1);
+  &:hover img {
+    transform: rotate(var(--rotation)) scale(1.1);
   }
 
-  &--left:hover {
-    transform: rotate(90deg) scale(1.1);
+  &--up {
+    --rotation: 180deg;
   }
-
-  &--right:hover {
-    transform: rotate(-90deg) scale(1.1);
+  &--down {
+    --rotation: 0deg;
+  }
+  &--left {
+    --rotation: 90deg;
+  }
+  &--right {
+    --rotation: -90deg;
   }
 }
