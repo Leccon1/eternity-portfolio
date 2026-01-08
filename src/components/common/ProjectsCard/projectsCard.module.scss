@@ -2,11 +2,20 @@
 @use '@styles/helpers' as *;
 
 @keyframes panel-slide {
-  0% {
+  from {
     transform: translateX(0);
   }
-  100% {
+  to {
     transform: translateX(10%);
+  }
+}
+
+@keyframes panel-slide-reverse {
+  from {
+    transform: translateX(10%);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 
@@ -16,6 +25,15 @@
   }
   to {
     height: 90%;
+  }
+}
+
+@keyframes image-shrink-reverse {
+  from {
+    height: 90%;
+  }
+  to {
+    height: 100%;
   }
 }
 
@@ -78,6 +96,7 @@
   align-items: center;
   justify-content: space-between;
 
+  animation-fill-mode: forwards;
   transition: transform var(--transitions-normal);
 
   & .arrowButton {
@@ -97,6 +116,14 @@
       object-fit: cover;
     }
   }
+}
+
+.projectsCard:not(:hover) .projectsCard__previewPanel {
+  animation: panel-slide-reverse 0.3s forwards ease-out;
+}
+
+.projectsCard:not(:hover) .projectsCard__previewPanel-image {
+  animation: image-shrink-reverse 0.4s forwards ease;
 }
 
 .techStack {
