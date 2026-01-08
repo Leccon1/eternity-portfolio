@@ -22,10 +22,10 @@ const ProjectsCard = () => {
 
       <div className={styles.spacer}></div>
 
-      <div className={styles.previewPanel}>
+      <div className={styles.projectsCard__previewPanel}>
         <ArrowButton direction="right" className={styles.arrowButton} onClick={() => {}} />
 
-        <div className={styles.previewPanel__image}>
+        <div className={styles[`projectsCard__previewPanel-image`]}>
           <img src={bookmarkManagerPreview} alt="Bookmark manager preview" />
         </div>
       </div>
