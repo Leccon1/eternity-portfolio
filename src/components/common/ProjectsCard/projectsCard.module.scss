@@ -1,0 +1,107 @@
+@use '@styles/setting/variables' as *;
+@use '@styles/helpers' as *;
+
+.projectsCard {
+  position: relative;
+  max-width: rem(600);
+  min-width: rem(600);
+  max-height: rem(300);
+  min-height: rem(300);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: flex;
+  cursor: pointer;
+
+  .projectsCard__previewPanel {
+    transform: translateX(0);
+    transition: transform 0.3s ease-out;
+  }
+
+  .projectsCard__previewPanel-image {
+    height: 100%;
+    transition: height 0.4s ease;
+  }
+
+  @include hover {
+    .projectsCard__previewPanel {
+      transform: translateX(10%);
+    }
+
+    .projectsCard__previewPanel-image {
+      height: 90%;
+      transition-delay: 0.3s;
+    }
+  }
+
+  &.isOpen {
+    .projectsCard__previewPanel {
+      transform: translateX(80%);
+      transition-delay: 0s;
+    }
+    .projectsCard__previewPanel-image {
+      height: 70%;
+    }
+  }
+}
+
+.projectsCard__previewPanel {
+  $bg-color-opacity: color(color-text, 'dark');
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($bg-color-opacity, 0.1);
+  border: rem(1) solid var(--color-bg);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+
+  &-image {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.projectsCard__content {
+  flex-shrink: 1;
+  padding: var(--spacing-xl);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.projectsCard__title {
+  font-size: var(--font-sizes-lg);
+  font-weight: var(--font-weights-bold);
+  line-height: var(--line-heights-tight);
+  color: var(--color-text-primary);
+}
+
+.projectsCard__description {
+  font-size: var(--font-sizes-base);
+  font-weight: var(--font-weights-regular);
+  line-height: var(--line-heights-relaxed);
+  color: var(--color-text-secondary);
+}
+
+.techStack {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.spacer {
+  flex-shrink: 0;
+  width: rem(150);
+}
+
+.arrowButton {
+  padding-inline: var(--spacing-md);
+}
