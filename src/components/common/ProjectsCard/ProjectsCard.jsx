@@ -2,12 +2,19 @@ import ArrowButton from '@common/ArrowButton/ArrowButton'
 import NavButton from '@common/NavButton/NavButton'
 import TechStack from '@common/TechStack/TechStack'
 import bookmarkManagerPreview from '@images/previewProjects/bookmark-manager-preview.png'
+import { useState } from 'react'
 
 import styles from './projectsCard.module.scss'
 
 const ProjectsCard = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toogleCard = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
-    <div className={styles.projectsCard}>
+    <div className={`${styles.projectsCard} ${isOpen ? styles.isOpen : ''}`} onClick={toogleCard}>
       <div className={styles.projectsCard__content}>
         <p className={styles.projectsCard__title}>Bookmark manager</p>
         <p className={styles.projectsCard__description}>
