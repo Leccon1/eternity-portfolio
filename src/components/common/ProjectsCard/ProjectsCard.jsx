@@ -30,7 +30,11 @@ const ProjectsCard = () => {
       <div className={styles.spacer}></div>
 
       <div className={styles.projectsCard__previewPanel} onClick={toogleCard}>
-        <ArrowButton direction="right" className={styles.arrowButton} onClick={() => {}} />
+        <ArrowButton
+          direction={`${isOpen ? 'left' : 'right'}`}
+          className={styles.arrowButton}
+          onClick={() => {}}
+        />
 
         <div className={styles[`projectsCard__previewPanel-image`]}>
           <img src={bookmarkManagerPreview} alt="Bookmark manager preview" />
