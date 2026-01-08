@@ -1,6 +1,24 @@
 @use '@styles/setting/variables' as *;
 @use '@styles/helpers' as *;
 
+@keyframes panel-slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(10%);
+  }
+}
+
+@keyframes image-shrink {
+  from {
+    height: 100%;
+  }
+  to {
+    height: 90%;
+  }
+}
+
 .projectsCard {
   position: relative;
   max-width: rem(600);
@@ -11,10 +29,22 @@
 
   background-color: var(--color-surface);
   border-radius: var(--radius-xl);
+  overflow: hidden;
 
   display: flex;
   flex-direction: row;
   gap: var(--spacing-md);
+
+  @include hover {
+    .projectsCard__previewPanel {
+      animation: panel-slide 0.3s forwards ease-out;
+    }
+
+    .projectsCard__previewPanel-image {
+      animation: image-shrink 0.4s forwards ease;
+      animation-delay: 0.25s;
+    }
+  }
 
   &__content {
     flex-shrink: 1;
@@ -45,15 +75,21 @@
 
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
+
+  transition: transform var(--transitions-normal);
 
   & .arrowButton {
     padding-inline: var(--spacing-md);
   }
 
   &-image {
-    border-radius: inherit;
+    height: 100%;
+    border-radius: var(--radius-xl);
     overflow: hidden;
+
+    transition: var(--transitions-normal);
 
     img {
       width: 100%;
