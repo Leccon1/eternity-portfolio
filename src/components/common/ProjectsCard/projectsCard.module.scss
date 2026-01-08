@@ -42,6 +42,7 @@
   background-color: var(--color-surface);
   border: rem(1) solid var(--color-bg);
   border-radius: var(--radius-xl);
+  backdrop-filter: blur(12px);
 
   display: flex;
   flex-direction: row;
