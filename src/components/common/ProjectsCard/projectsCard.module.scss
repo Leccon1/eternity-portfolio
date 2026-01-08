@@ -2,6 +2,7 @@
 @use '@styles/helpers' as *;
 
 .projectsCard {
+  position: relative;
   max-width: rem(600);
   min-width: rem(600);
 
@@ -31,6 +32,18 @@
   &__description {
     font-size: var(--font-sizes-base);
   }
+}
+
+.previewPanel {
+  position: absolute;
+
+  background-color: var(--color-surface);
+  border: rem(1) solid var(--color-bg);
+  border-radius: inherit;
+
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-md);
 }
 
 .techStack {
