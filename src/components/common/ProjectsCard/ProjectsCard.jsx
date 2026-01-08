@@ -1,7 +1,7 @@
 import ArrowButton from '@common/ArrowButton/ArrowButton'
 import NavButton from '@common/NavButton/NavButton'
 import TechStack from '@common/TechStack/TechStack'
-import bookmarkManagerPreview from '@images/previewProjects/bookmark-manager-preview.svg'
+import bookmarkManagerPreview from '@images/previewProjects/bookmark-manager-preview.png'
 
 import styles from './projectsCard.module.scss'
 
