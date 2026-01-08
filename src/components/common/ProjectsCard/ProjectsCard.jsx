@@ -14,7 +14,7 @@ const ProjectsCard = () => {
   }
 
   return (
-    <div className={`${styles.projectsCard} ${isOpen ? styles.isOpen : ''}`} onClick={toogleCard}>
+    <div className={`${styles.projectsCard} ${isOpen ? styles.isOpen : ''}`}>
       <div className={styles.projectsCard__content}>
         <p className={styles.projectsCard__title}>Bookmark manager</p>
         <p className={styles.projectsCard__description}>
@@ -29,7 +29,7 @@ const ProjectsCard = () => {
 
       <div className={styles.spacer}></div>
 
-      <div className={styles.projectsCard__previewPanel}>
+      <div className={styles.projectsCard__previewPanel} onClick={toogleCard}>
         <ArrowButton direction="right" className={styles.arrowButton} onClick={() => {}} />
 
         <div className={styles[`projectsCard__previewPanel-image`]}>
