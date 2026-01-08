@@ -1,5 +1,6 @@
 const navigationData = [
   {
+    id: 'Home',
     label: 'Home',
     llink: '#home',
     subMenu: [
@@ -9,6 +10,7 @@ const navigationData = [
     ],
   },
   {
+    id: 'About',
     label: 'About Me',
     link: '#about',
     subMenu: [
@@ -23,6 +25,7 @@ const navigationData = [
     type: 'Logo',
   },
   {
+    id: 'Portfolio',
     label: 'Portfolio',
     link: '#portfolio',
     subMenu: [
@@ -32,6 +35,7 @@ const navigationData = [
     ],
   },
   {
+    id: 'Music',
     label: 'Music',
     link: '#music',
     subMenu: [

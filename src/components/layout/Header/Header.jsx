@@ -85,11 +85,11 @@ const Header = () => {
               }}
             >
               {navigationData.map((item) => (
-                <div key={item.label} className={styles.openNav__column}>
+                <div key={`col-${item.id}`} className={styles.openNav__column}>
                   {item.subMenu && (
                     <ul className={styles.openNav__list}>
-                      {item.subMenu.map((sub) => (
-                        <li key={sub.label}>
+                      {item.subMenu.map((sub, index) => (
+                        <li key={`${item.id}-${sub.label}-${index}`}>
                           <a href={sub.href} className={styles.openNav__link}>
                             {sub.label}
                           </a>
