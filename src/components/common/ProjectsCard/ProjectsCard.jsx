@@ -1,5 +1,7 @@
+import ArrowButton from '@common/ArrowButton/ArrowButton'
 import NavButton from '@common/NavButton/NavButton'
 import TechStack from '@common/TechStack/TechStack'
+import bookmarkManagerPreview from '@images/previewProjects/bookmark-manager-preview.svg'
 
 import styles from './projectsCard.module.scss'
 
@@ -15,10 +17,18 @@ const ProjectsCard = () => {
 
         <TechStack items={['Html', 'SCSS', 'JavaScript', 'Vite']} className={styles.techStack} />
 
-        <NavButton variant="primary">View project</NavButton>
+        <NavButton variant="secondary">View project</NavButton>
       </div>
 
       <div className={styles.spacer}></div>
+
+      <div className={styles.previewPanel}>
+        <ArrowButton direction="right" className={styles.arrowButton} onClick={() => {}} />
+
+        <div className={styles.previewPanel__image}>
+          <img src={bookmarkManagerPreview} alt="Bookmark manager preview" />
+        </div>
+      </div>
     </div>
   )
 }
