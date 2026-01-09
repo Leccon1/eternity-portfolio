@@ -13,7 +13,7 @@ const ProjectsCard = ({ title, description, techStack, image, link }) => {
   }
 
   return (
-    <div className={`${styles.projectsCard} ${isOpen ? styles.isOpen : ''}`}>
+    <article className={`${styles.projectsCard} ${isOpen ? styles.isOpen : ''}`}>
       <div className={styles.projectsCard__content}>
         <h3 className={styles.projectsCard__title}>{title}</h3>
         <p className={styles.projectsCard__description}>{description}</p>
@@ -38,7 +38,7 @@ const ProjectsCard = ({ title, description, techStack, image, link }) => {
           <img src={image} alt={`${title} preview`} />
         </div>
       </div>
-    </div>
+    </article>
   )
 }
 
