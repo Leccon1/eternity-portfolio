@@ -1,6 +1,6 @@
 import FullScreenSection from '../../common/FullScreenSection/FullScreenSection'
 
-import styles from './home.module.scss'
+import styles from './homeScreen.module.scss'
 import Identify from './sections/Identify/Identify'
 import Projects from './sections/Projects/Projects'
 
