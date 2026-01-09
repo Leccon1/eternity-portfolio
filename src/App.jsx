@@ -1,4 +1,4 @@
-import { useAnimation, AnimationProvider } from '@hooks/useAnimationContext'
+import { useAnimation } from '@hooks/useAnimationContext'
 import { animate } from 'animejs'
 import { useEffect, useRef, useState } from 'react'
 
@@ -13,11 +13,10 @@ import { useHeroStore } from './store/useHeroStore'
 
 const App = () => {
   const containerRef = useRef(null)
-  const [isIntroTextFinished, setIsIntroTextFinished] = useState(false)
-  const { state, setState } = useAnimation()
+  const [isIntroTextFinished] = useState(false)
+  const { setState } = useAnimation()
   const data = useHeroStore((state) => state.data)
 
-  console.log(state)
   const pageRef = useRef(null)
 
   useEffect(() => {
