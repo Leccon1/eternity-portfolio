@@ -4,10 +4,10 @@ import ContentContainer from '@ui/ContentContainer/ContentContainer'
 
 import styles from './insightSection.module.scss'
 
-const InsightSection = ({ title, description, maxWidthVar, action }) => {
+const InsightSection = ({ title, description, maxWidthVar, action, className = '' }) => {
   return (
-    <div
-      className={styles.insightSection}
+    <section
+      className={`${styles.insightSection} ${className}`}
       style={{
         ...(maxWidthVar && {
           '--container-max-width': `var(${maxWidthVar})`,
@@ -23,7 +23,7 @@ const InsightSection = ({ title, description, maxWidthVar, action }) => {
           {action && <div>{action}</div>}
         </div>
       </ContentContainer>
-    </div>
+    </section>
   )
 }
 
