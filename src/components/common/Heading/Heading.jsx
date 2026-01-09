@@ -1,20 +1,10 @@
 import styles from './heading.module.scss'
 
-const Heading = ({
-  level = 'h1',
-  size = 'xxxl',
-  fontType = 'accent',
-  className = '',
-  children,
-}) => {
+const Heading = ({ level = 'h1', size = 'xxxl', className = '', children }) => {
   const Tag = level
 
   return (
-    <Tag
-      className={`${styles.heading} ${styles[`heading--${fontType}`]} ${styles[`heading--${size}`]} ${className}`}
-    >
-      {children}
-    </Tag>
+    <Tag className={`${styles.heading} ${styles[`heading--${size}`]} ${className}`}>{children}</Tag>
   )
 }
 
