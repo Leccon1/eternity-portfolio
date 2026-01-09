@@ -2,7 +2,7 @@ import InsightSection from '@common/InsightSection/InsightSection'
 import NavButton from '@common/NavButton/NavButton'
 
 import styles from './identify.module.scss'
-const HomeIdentify = () => {
+const Identify = () => {
   return (
     <section className={styles.identify}>
       <InsightSection
@@ -14,4 +14,4 @@ const HomeIdentify = () => {
   )
 }
 
-export default HomeIdentify
+export default Identify
