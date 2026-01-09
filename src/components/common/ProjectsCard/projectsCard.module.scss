@@ -37,6 +37,12 @@
   display: flex;
   cursor: pointer;
 
+  &::after {
+    content: '';
+    flex-shrink: 0;
+    width: rem(150);
+  }
+
   .projectsCard__previewPanel {
     transform: translateX(0);
     transition: transform 0.3s ease-out;
@@ -95,11 +101,6 @@
 .techStack {
   display: flex;
   gap: var(--spacing-sm);
-}
-
-.spacer {
-  flex-shrink: 0;
-  width: rem(150);
 }
 
 .arrowButton {

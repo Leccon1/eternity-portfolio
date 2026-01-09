@@ -25,8 +25,6 @@ const ProjectsCard = ({ title, description, techStack, image, link }) => {
         </NavButton>
       </div>
 
-      <div className={styles.spacer}></div>
-
       <div className={styles.projectsCard__previewPanel} onClick={toggleCard}>
         <ArrowButton
           direction={isOpen ? 'left' : 'right'}
