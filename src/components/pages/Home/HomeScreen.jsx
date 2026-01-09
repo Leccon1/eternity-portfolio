@@ -8,7 +8,7 @@ const HomeScreen = () => {
   return (
     <div className={styles.homeScreen}>
       <FullScreenSection>
-        <div className={styles.homeScreen__content}>
+        <div className={styles.homeScreen__pitch}>
           <Identify />
           <Projects />
         </div>
