@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import HomeScreen from './Home/Home'
+import HomeScreen from './Home/HomeScreen'
 import styles from './pages.module.scss'
 
 const Pages = () => {
