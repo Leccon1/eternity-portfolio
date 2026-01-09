@@ -6,14 +6,14 @@ import Projects from './sections/Projects/Projects'
 
 const HomeScreen = () => {
   return (
-    <div className={styles.homeScreen}>
+    <section className={styles.homeScreen}>
       <FullScreenSection>
         <div className={styles.homeScreen__pitch}>
           <Identify />
           <Projects />
         </div>
       </FullScreenSection>
-    </div>
+    </section>
   )
 }
 
