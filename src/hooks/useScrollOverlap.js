@@ -1,20 +1,20 @@
 import { useEffect } from 'react'
 
-export const useScrollOverlap = (pagesRef, heroRef) => {
+export const useScrollOverlap = (targetRef, referenceRef) => {
   useEffect(() => {
     const handleScroll = () => {
-      if (!pagesRef.current || !heroRef.current) return
+      if (!targetRef.current || !referenceRef.current) return
 
       const scrollY = window.scrollY
-      const heroHeight = heroRef.current.offsetHeight
+      const heroHeight = referenceRef.current.offsetHeight
 
       const progress = Math.min(scrollY / heroHeight, 1)
 
-      heroRef.current.style.transform = `translateY(${-progress * 50}px)`
-      pagesRef.current.style.transform = `translateY(${-progress * 20}px)`
+      referenceRef.current.style.transform = `translateY(${-progress * 50}px)`
+      targetRef.current.style.transform = `translateY(${-progress * 20}px)`
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [pagesRef, heroRef])
+  }, [targetRef, referenceRef])
 }
