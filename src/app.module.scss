@@ -2,8 +2,9 @@
   position: fixed;
   top: 0;
   height: 100vh;
-  z-index: 1;
   overflow: hidden;
+  will-change: transform;
+  z-index: 1;
 }
 
 .pages {
