@@ -2,6 +2,7 @@ import { useAnimation } from '@hooks/useAnimationContext'
 import { animate } from 'animejs'
 import { useEffect, useRef, useState } from 'react'
 
+import styles from './app.module.scss'
 import HeroBg from './assets/images/hero/hero-bg.svg'
 import FullScreenSection from './components/common/FullScreenSection/FullScreenSection'
 import Hero from './components/common/Hero/Hero'
@@ -9,6 +10,7 @@ import ParallaxBackground from './components/common/ParallaxBackground/ParallaxB
 import Intro from './components/Intro/Intro'
 import Header from './components/layout/Header/Header'
 import Pages from './components/pages/Pages'
+import { useScrollOverlap } from './hooks/useScrollOverlap'
 import { useHeroStore } from './store/useHeroStore'
 
 const App = () => {
@@ -18,6 +20,10 @@ const App = () => {
   const data = useHeroStore((state) => state.data)
 
   const pageRef = useRef(null)
+  const heroRef = useRef(null)
+  const pagesRef = useRef(null)
+
+  useScrollOverlap(pageRef, heroRef)
 
   useEffect(() => {
     if (!pageRef.current) return
@@ -43,15 +49,20 @@ const App = () => {
         flexDirection: 'column',
       }}
     >
-      <Intro onStartAnimateFinish={() => setState((prev) => ({ ...prev, introFinished: true }))} />
+      {/* <Intro onStartAnimateFinish={() => setState((prev) => ({ ...prev, introFinished: true }))} /> */}
+
+      <Header />
 
       <FullScreenSection overflow="hidden">
-        <ParallaxBackground imageSrc={HeroBg} opacity={0.1} />
-        <Hero data={data} />
-        <Header />
+        <div className={styles.heroContainer} ref={heroRef}>
+          <ParallaxBackground imageSrc={HeroBg} opacity={0.1} />
+          <Hero data={data} />
+        </div>
       </FullScreenSection>
 
-      <Pages />
+      <div className={styles.pages} ref={pageRef}>
+        <Pages ref={pagesRef} />
+      </div>
     </div>
   )
 }
