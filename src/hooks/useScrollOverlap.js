@@ -10,7 +10,7 @@ export const useScrollOverlap = (pagesRef, heroRef) => {
 
       const progress = Math.min(scrollY / heroHeight, 1)
 
-      heroRef.current.style.transform = `translateY(${-progress * 10}px)`
+      heroRef.current.style.transform = `translateY(${-progress * 50}px)`
       pagesRef.current.style.transform = `translateY(${-progress * 20}px)`
     }
 
