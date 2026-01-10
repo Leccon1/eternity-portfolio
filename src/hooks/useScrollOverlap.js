@@ -13,6 +13,9 @@ export const useScrollOverlap = (targetRef, referenceRef) => {
       referenceRef.current.style.transform = `translateY(${-progress * 50}px)`
       referenceRef.current.style.filter = `blur(${progress * 5}px)`
 
+      const scale = 1 + progress * 0.02
+      referenceRef.current.style.transform = `translateY(${-progress * 10}px) scale(${scale})`
+
       targetRef.current.style.transform = `translateY(${-progress * 20}px)`
     }
 
