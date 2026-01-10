@@ -13,3 +13,8 @@
   will-change: transform;
   z-index: 2;
 }
+
+.hero-container,
+.pages {
+  transition: transform 0.2s ease;
+}
