@@ -7,7 +7,7 @@ import Projects from './sections/Projects/Projects'
 const HomeScreen = () => {
   return (
     <section className={styles.homeScreen}>
-      <FullScreenSection>
+      <FullScreenSection overflow="visible">
         <div className={styles.homeScreen__pitch}>
           <Identify />
           <Projects />
