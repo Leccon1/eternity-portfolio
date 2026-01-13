@@ -23,7 +23,7 @@ const App = () => {
   const heroRef = useRef(null)
   const pagesRef = useRef(null)
 
-  useScrollOverlap(pageRef, heroRef)
+  //   useScrollOverlap(pageRef, heroRef)
 
   useEffect(() => {
     if (!pageRef.current) return
@@ -49,7 +49,7 @@ const App = () => {
         flexDirection: 'column',
       }}
     >
-      {/* <Intro onStartAnimateFinish={() => setState((prev) => ({ ...prev, introFinished: true }))} /> */}
+      <Intro onStartAnimateFinish={() => setState((prev) => ({ ...prev, introFinished: true }))} />
 
       <Header />
 

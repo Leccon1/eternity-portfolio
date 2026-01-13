@@ -8,10 +8,10 @@ const HomeScreen = () => {
   return (
     <section className={styles.homeScreen}>
       <FullScreenSection>
-        <div className={styles.homeScreen__pitch}>
+        {/* <div className={styles.homeScreen__pitch}>
           <Identify />
           <Projects />
-        </div>
+        </div> */}
       </FullScreenSection>
     </section>
   )

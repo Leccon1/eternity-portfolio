@@ -1,12 +1,12 @@
-.heroContainer {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  will-change: transform;
-  z-index: 1;
-}
+// .heroContainer {
+//   position: fixed;
+//   width: 100%;
+//   top: 0;
+//   height: 100vh;
+//   overflow: hidden;
+//   will-change: transform;
+//   z-index: 1;
+// }
 
 .pages {
   position: relative;
@@ -16,7 +16,7 @@
   z-index: 2;
 }
 
-.hero-container,
-.pages {
-  transition: transform 0.2s ease;
-}
+// .hero-container,
+// .pages {
+//   transition: transform 0.2s ease;
+// }
