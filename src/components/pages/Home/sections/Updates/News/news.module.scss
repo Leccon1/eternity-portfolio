@@ -7,20 +7,22 @@
 .item {
   @include square(350px);
 
+  @include hover {
+    .itemImageOverlay {
+      opacity: 1;
+    }
+  }
+
   .itemImage {
     position: relative;
   }
 
   .itemImageOverlay {
-    display: none;
-  }
-}
-
-.itemHover {
-  .itemImageOverlay {
     position: absolute;
     inset: 0;
     place-self: center;
-    display: block;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
   }
 }
