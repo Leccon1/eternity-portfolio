@@ -3,9 +3,9 @@ import img from '@images/previewProjects/bookmark-manager-preview.png'
 import styles from './news.module.scss'
 const News = () => {
   return (
-    <article className={styles.news}>
+    <section className={styles.news}>
       <p className={styles.newsTitle}>News</p>
-      <div className={styles.item}>
+      <article className={styles.item}>
         <div className={styles.itemContent}>
           <div className={styles.itemImage}>
             <img src={img} alt="" />
@@ -18,8 +18,8 @@ const News = () => {
           </p>
           <p className={styles.itemDate}>OCT 28, 2026</p>
         </div>
-      </div>
-    </article>
+      </article>
+    </section>
   )
 }
 
