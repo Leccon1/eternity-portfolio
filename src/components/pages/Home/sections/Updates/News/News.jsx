@@ -5,7 +5,11 @@ const News = () => {
   return (
     <section className={styles.news}>
       <p className={styles.newsTitle}>News</p>
-      <article className={styles.item}>
+      <article
+        className={styles.item}
+        onMouseEnter={(e) => e.currentTarget.classList.add(styles.itemHover)}
+        onMouseLeave={(e) => e.currentTarget.classList.remove(styles.itemHover)}
+      >
         <div className={styles.itemContent}>
           <div className={styles.itemImage}>
             <img src={img} alt="" />
