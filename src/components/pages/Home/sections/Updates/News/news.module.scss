@@ -1,0 +1,5 @@
+@use '@style-helpers/mixins' as *;
+
+.item {
+  @include square(350px);
+}
