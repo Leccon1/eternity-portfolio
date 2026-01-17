@@ -5,7 +5,7 @@ import styles from './improvements.module.scss'
 
 const Improvements = () => {
   return (
-    <section className={styles.ImprovementsGrid}>
+    <>
       {ImprovementsData.map(({ version, progress, list }, index) => (
         <article key={index} className={styles.Improvements}>
           <div className={styles.ImprovementsContent}>
@@ -31,7 +31,7 @@ const Improvements = () => {
           </div>
         </article>
       ))}
-    </section>
+    </>
   )
 }
 

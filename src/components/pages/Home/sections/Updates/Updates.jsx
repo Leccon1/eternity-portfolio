@@ -9,7 +9,10 @@ const Updates = ({ className = '' }) => {
         <p className={styles.updatesNewsTitle}>News</p>
         <News />
       </section>
-      <Improvements />
+      <section className={styles.updatesImprovements}>
+        <p className={styles.updatesImprovementsTitle}>Improvements</p>
+        <Improvements />
+      </section>
     </div>
   )
 }
