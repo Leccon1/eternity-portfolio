@@ -1,14 +1,14 @@
 @use '@style-helpers/mixins' as *;
 @use '@style-helpers/media' as *;
 
-.improments {
+.Improvements {
   @include rectangle(350px, 200px);
 
   @include hover {
-    .impromentsContent {
+    .ImprovementsContent {
       opacity: 0;
     }
-    .impromentsOverlay {
+    .ImprovementsOverlay {
       opacity: 1;
       pointer-events: auto;
     }
@@ -16,16 +16,16 @@
   position: relative;
 }
 
-.impromentsContent,
-.impromentsOverlay {
+.ImprovementsContent,
+.ImprovementsOverlay {
   transition: opacity 0.4s ease;
 }
 
-.impromentsContent {
+.ImprovementsContent {
   opacity: 1;
 }
 
-.impromentsOverlay {
+.ImprovementsOverlay {
   position: absolute;
   inset: 0;
   opacity: 0;
