@@ -1,4 +1,3 @@
-import { useAnimation } from '@hooks/useAnimationContext'
 import { animate } from 'animejs'
 import { useEffect, useRef, useState } from 'react'
 
@@ -12,6 +11,8 @@ import Header from './components/layout/Header/Header'
 import Pages from './components/pages/Pages'
 import { useScrollOverlap } from './hooks/useScrollOverlap'
 import { useHeroStore } from './store/useHeroStore'
+
+import { useAnimation } from '.hooks/useAnimationContext'
 
 const App = () => {
   const containerRef = useRef(null)
