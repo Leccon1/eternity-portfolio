@@ -1,0 +1,38 @@
+@use '@style-helpers/mixins' as *;
+@use '@style-helpers/media' as *;
+
+.improments {
+  @include rectangle(350px, 200px);
+
+  @include hover {
+    .impromentsContent {
+      opacity: 0;
+    }
+    .impromentsOverlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+  position: relative;
+}
+
+.impromentsContent,
+.impromentsOverlay {
+  transition: opacity 0.4s ease;
+}
+
+.impromentsContent {
+  opacity: 1;
+}
+
+.impromentsOverlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  pointer-events: none;
+}

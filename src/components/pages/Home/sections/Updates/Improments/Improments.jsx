@@ -5,13 +5,14 @@ import styles from './improments.module.scss'
 const Improments = () => {
   return (
     <article className={styles.improments}>
-      <p className={styles.impromentsVersion}>v1.0.0</p>
-
-      <ul className={styles.impromentsList}>
-        <li className={styles.impromentsItem}>Lorem ipsum dolor sit amet.</li>
-        <li className={styles.impromentsItem}>Lorem ipsum dolor sit amet.</li>
-        <li className={styles.impromentsItem}>Lorem ipsum dolor sit amet.</li>
-      </ul>
+      <div className={styles.impromentsContent}>
+        <p className={styles.impromentsVersion}>v1.0.0</p>
+        <ul className={styles.impromentsList}>
+          <li className={styles.impromentsItem}>Lorem ipsum dolor sit amet.</li>
+          <li className={styles.impromentsItem}>Lorem ipsum dolor sit amet.</li>
+          <li className={styles.impromentsItem}>Lorem ipsum dolor sit amet.</li>
+        </ul>
+      </div>
 
       <div className={styles.impromentsOverlay}>
         <div className={styles.impromentsProgressBar}>
