@@ -5,7 +5,7 @@
   @include square(350px);
 
   @include hover {
-    .itemImageOverlay {
+    .newsImageOverlay {
       opacity: 1;
     }
   }
