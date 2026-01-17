@@ -1,4 +1,10 @@
+@use '@style-helpers/functions' as *;
+
 .techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(8); // Default
+
   &Item {
     background-color: var(--color-bg-secondary);
     border-radius: var(--radius-lg);

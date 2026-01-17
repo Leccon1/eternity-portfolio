@@ -8,7 +8,7 @@ import Updates from './sections/Updates/Updates'
 const HomeScreen = () => {
   return (
     <section className={styles.homeScreen}>
-      <FullScreenSection>
+      <FullScreenSection overflow="visible">
         <div className={styles.homeScreen__pitch}>
           <Identify />
           <Projects />

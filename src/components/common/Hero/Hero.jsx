@@ -64,7 +64,7 @@ const Hero = ({ data }) => {
       <div className={styles.hero__content} ref={containerRef}>
         <ContentContainer>
           <div className={styles.hero__info}>
-            <Heading className="hero__title" level="h1" size="xxxl">
+            <Heading className="hero__title" level="h1" size="3xl">
               {data.title}
             </Heading>
             <p className={styles.hero__subtitle}>{data.subtitle}</p>
