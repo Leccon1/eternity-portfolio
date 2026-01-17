@@ -2,9 +2,6 @@
 @use '@style-helpers/media' as *;
 
 .news {
-}
-
-.item {
   @include square(350px);
 
   @include hover {
@@ -13,11 +10,11 @@
     }
   }
 
-  .itemImage {
+  .newsImage {
     position: relative;
   }
 
-  .itemImageOverlay {
+  .newsImageOverlay {
     position: absolute;
     inset: 0;
     place-self: center;

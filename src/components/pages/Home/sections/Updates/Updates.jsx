@@ -4,10 +4,13 @@ import styles from './Updates.module.scss'
 
 const Updates = ({ className = '' }) => {
   return (
-    <section className={`${styles.Updates} ${className}`}>
-      <News />
+    <div className={`${styles.updates} ${className}`}>
+      <section className={styles.updatesNews}>
+        <p className={styles.updatesNewsTitle}>News</p>
+        <News />
+      </section>
       <Improvements />
-    </section>
+    </div>
   )
 }
 
