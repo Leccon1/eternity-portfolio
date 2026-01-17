@@ -23,7 +23,7 @@ const App = () => {
   const heroRef = useRef(null)
   const pagesRef = useRef(null)
 
-  //   useScrollOverlap(pageRef, heroRef)
+  useScrollOverlap(pageRef, heroRef)
 
   useEffect(() => {
     if (!pageRef.current) return
