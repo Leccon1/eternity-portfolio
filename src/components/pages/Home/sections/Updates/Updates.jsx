@@ -1,4 +1,4 @@
-import Improments from './Improments/Improments'
+import Improvements from './Improvements/Improvements'
 import News from './News/News'
 import styles from './Updates.module.scss'
 
@@ -6,7 +6,7 @@ const Updates = ({ className = '' }) => {
   return (
     <section className={`${styles.Updates} ${className}`}>
       <News />
-      <Improments />
+      <Improvements />
     </section>
   )
 }

@@ -1,8 +1,8 @@
 import NavButton from '@common/NavButton/NavButton'
 
-import styles from './improments.module.scss'
+import styles from './improvements.module.scss'
 
-const Improments = () => {
+const Improvements = () => {
   return (
     <article className={styles.Improvements}>
       <div className={styles.ImprovementsContent}>
@@ -27,4 +27,4 @@ const Improments = () => {
   )
 }
 
-export default Improments
+export default Improvements
