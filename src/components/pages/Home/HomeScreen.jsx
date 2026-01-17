@@ -9,7 +9,7 @@ const HomeScreen = () => {
   return (
     <section className={styles.homeScreen}>
       <FullScreenSection overflow="visible">
-        <div className={styles.homeScreen__pitch}>
+        <div className={styles.homeScreenPitch}>
           <Identify />
           <Projects />
         </div>
