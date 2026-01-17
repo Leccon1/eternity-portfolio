@@ -1,25 +1,31 @@
 import NavButton from '@common/NavButton/NavButton'
 
+import ImprovementsData from './improvements.data'
 import styles from './improvements.module.scss'
 
 const Improvements = () => {
+  const { version, progress, list } = ImprovementsData
+
   return (
     <article className={styles.Improvements}>
       <div className={styles.ImprovementsContent}>
-        <p className={styles.ImprovementsVersion}>v1.0.0</p>
-        <ul className={styles.iImprovementsList}>
-          <li className={styles.ImprovementsItem}>Lorem ipsum dolor sit amet.</li>
-          <li className={styles.ImprovementsItem}>Lorem ipsum dolor sit amet.</li>
-          <li className={styles.ImprovementsItem}>Lorem ipsum dolor sit amet.</li>
+        <p className={styles.ImprovementsVersion}>{version}</p>
+
+        <ul className={styles.ImprovementsList}>
+          {list.map((item, index) => (
+            <li key={index} className={styles.ImprovementsItem}>
+              {item}
+            </li>
+          ))}
         </ul>
       </div>
 
       <div className={styles.ImprovementsOverlay}>
         <div className={styles.ImprovementsProgressBar}>
-          <div className={styles.ImprovementsProgress}></div>
+          <div className={styles.ImprovementsProgress} style={{ width: `${progress}%` }} />
         </div>
 
-        <div className={styles.ImprovementsProgressStatus}>85% completed</div>
+        <div className={styles.ImprovementsProgressStatus}>{progress}% completed</div>
 
         <NavButton variant="secondary">Detailed log</NavButton>
       </div>
