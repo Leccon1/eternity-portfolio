@@ -1,3 +1,6 @@
+import { useRef } from 'react'
+
+import { useScrollOverlap } from '../../../hooks/useScrollOverlap'
 import FullScreenSection from '../../common/FullScreenSection/FullScreenSection'
 
 import styles from './homeScreen.module.scss'
@@ -6,17 +9,23 @@ import Projects from './sections/Projects/Projects'
 import Updates from './sections/Updates/Updates'
 
 const HomeScreen = () => {
+  const topRef = useRef(null)
+  const bottomRef = useRef(null)
+
+  useScrollOverlap(topRef, bottomRef, { targetOffset: -100 })
   return (
     <section className={styles.homeScreen}>
-      <FullScreenSection overflow="visible">
-        <div className={styles.homeScreenPitch}>
+      <div className={styles.homeScreenPitch} ref={topRef}>
+        <FullScreenSection>
           <Identify />
           <Projects />
-        </div>
-      </FullScreenSection>
+        </FullScreenSection>
+      </div>
 
       <FullScreenSection>
-        <Updates />
+        <div className={styles.homeScreenUpdates} ref={bottomRef}>
+          <Updates />
+        </div>
       </FullScreenSection>
     </section>
   )
