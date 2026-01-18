@@ -1,11 +1,26 @@
 .homeScreen {
+  position: relative;
   padding: var(--spacing-8xl) 0;
+}
 
-  &Pitch {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-8xl);
-  }
+.homeScreenPitch {
+  height: 100%;
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-8xl);
+
+  z-index: 1;
+  overflow: hidden;
+}
+
+.homeScreenUpdates {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  background: var(--color-bg);
+  min-height: 100vh;
 }
