@@ -2,8 +2,11 @@
 @use '@styles/helpers' as *;
 
 $header-height: rem(80);
-$color-bg-secondary: color(color-bg-secondary, 'dark');
 $header-height-scrolled: rem(60);
+$color-bg: color(color-bg, 'dark');
+$color-bg-secondary: color(color-bg-secondary, 'dark');
+$header-radius-base: var(--radius-2xl);
+$header-radius-openNav: calc(#{$header-radius-base} / 2);
 
 .header {
   --current-header-height: #{$header-height};
@@ -28,7 +31,7 @@ $header-height-scrolled: rem(60);
 .navigation__list {
   width: 100%;
   height: var(--current-header-height);
-  background-color: var(--color-bg);
+  background-color: rgba($color-bg, 0.7);
   padding-inline: fluid(75, 100);
   border-radius: var(--radius-2xl);
 
@@ -102,9 +105,10 @@ $header-height-scrolled: rem(60);
   width: 100%;
 
   max-height: var(--current-header-height);
-  background-color: rgba($color-bg-secondary, 0.7);
+  background-color: rgba($color-bg-secondary, 0.4);
   backdrop-filter: blur(8px);
-  border-radius: var(--radius-2xl);
+  border-top-left-radius: $header-radius-openNav;
+  border-top-right-radius: $header-radius-openNav;
 
   font-size: var(--font-sizes-base);
 
@@ -112,7 +116,7 @@ $header-height-scrolled: rem(60);
   padding-top: var(--current-header-height);
   overflow: hidden;
 
-  z-index: var(--z-index-modal);
+  z-index: 1;
   transition:
     max-height var(--transitions-normal),
     padding-top var(--transitions-normal),
