@@ -3,7 +3,7 @@
 
 $header-height: rem(80);
 $header-height-scrolled: rem(60);
-$color-bg: color(color-bg, 'dark');
+$color-bg: color(color-border, 'dark');
 $color-bg-secondary: color(color-bg-secondary, 'dark');
 $header-radius-base: var(--radius-2xl);
 $header-radius-openNav: calc(#{$header-radius-base} / 2);
@@ -31,9 +31,11 @@ $header-radius-openNav: calc(#{$header-radius-base} / 2);
 .navigation__list {
   width: 100%;
   height: var(--current-header-height);
-  background-color: rgba($color-bg, 0.7);
+  background-color: rgba($color-bg, 0.1);
+  backdrop-filter: blur(12px);
   padding-inline: fluid(75, 100);
   border-radius: var(--radius-2xl);
+  border: rem(1) solid $color-bg;
 
   font-size: var(--font-sizes-sm);
 
@@ -42,12 +44,10 @@ $header-radius-openNav: calc(#{$header-radius-base} / 2);
   place-items: center;
   gap: 0;
 
-  box-shadow: 0 0 16px 5px rgba(5, 6, 10, 1);
   z-index: var(--z-index-tooltip);
   transition:
     height var(--transitions-normal),
     grid-template-rows var(--transitions-normal),
-    box-shadow var(--transitions-normal),
     background-color var(--transitions-normal);
 }
 
@@ -105,7 +105,8 @@ $header-radius-openNav: calc(#{$header-radius-base} / 2);
   width: 100%;
 
   max-height: var(--current-header-height);
-  background-color: rgba($color-bg-secondary, 0.4);
+  background-color: transparent;
+  opacity: 0;
   backdrop-filter: blur(8px);
   border-top-left-radius: $header-radius-openNav;
   border-top-right-radius: $header-radius-openNav;
