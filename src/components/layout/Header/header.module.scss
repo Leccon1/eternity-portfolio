@@ -13,7 +13,7 @@ $header-radius-openNav: calc(#{$header-radius-base} / 2);
 
   max-width: rem(1000);
   position: fixed;
-  top: rem(50);
+  top: rem(25);
   left: 50%;
   transform: translateX(-50%);
   z-index: var(--z-index-tooltip);
