@@ -5,6 +5,7 @@ $header-height: rem(80);
 $header-height-scrolled: rem(60);
 $color-bg: color(color-border, 'dark');
 $color-bg-secondary: color(color-bg-secondary, 'dark');
+$color-accnet-alt: color(color-accent-alt, 'dark');
 $header-radius-base: var(--radius-2xl);
 $header-radius-openNav: calc(#{$header-radius-base} / 2);
 
@@ -91,7 +92,10 @@ $header-radius-openNav: calc(#{$header-radius-base} / 2);
 .navigation__logo img {
   max-height: 100%;
   width: auto;
-  filter: invert(1);
+  background-color: var(--color-text);
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: 0 0 50px 1px rgba($color-accnet-alt, 0.4);
   transition: all var(--transitions-normal);
 }
 
@@ -106,7 +110,7 @@ $header-radius-openNav: calc(#{$header-radius-base} / 2);
 
   max-height: var(--current-header-height);
   background-color: transparent;
-  opacity: 0;
+  //   opacity: 0;
   backdrop-filter: blur(8px);
   border-top-left-radius: $header-radius-openNav;
   border-top-right-radius: $header-radius-openNav;
