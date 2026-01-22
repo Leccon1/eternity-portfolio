@@ -7,7 +7,6 @@ $color-bg: color(color-border, 'dark');
 $color-bg-secondary: color(color-bg-secondary, 'dark');
 $color-accnet-alt: color(color-accent-alt, 'dark');
 $header-radius-base: var(--radius-2xl);
-$header-radius-openNav: calc(#{$header-radius-base} / 2);
 
 .header {
   --current-header-height: #{$header-height};
@@ -116,22 +115,24 @@ $header-radius-openNav: calc(#{$header-radius-base} / 2);
 
   max-height: var(--current-header-height);
   background-color: transparent;
-  //   opacity: 0;
+
   backdrop-filter: blur(8px);
-  border-top-left-radius: $header-radius-openNav;
-  border-top-right-radius: $header-radius-openNav;
+  border: 1px solid rgba($color-bg, 0.4);
+  border-radius: $header-radius-base;
 
   font-size: var(--font-sizes-base);
 
   padding-inline: fluid(75, 100);
   padding-top: var(--current-header-height);
+  opacity: 0;
   overflow: hidden;
 
   z-index: 1;
   transition:
     max-height var(--transitions-normal),
     padding-top var(--transitions-normal),
-    border-radius var(--transitions-normal);
+    border-radius var(--transitions-normal),
+    opacity var(--transitions-normal);
 }
 
 .openNavContainer {
@@ -170,6 +171,7 @@ $header-radius-openNav: calc(#{$header-radius-base} / 2);
   max-height: 400px;
   border-bottom-left-radius: var(--radius-xl);
   border-bottom-right-radius: var(--radius-xl);
+  opacity: 1;
 }
 
 .openNavToggle {
