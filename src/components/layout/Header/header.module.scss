@@ -87,6 +87,12 @@ $header-radius-openNav: calc(#{$header-radius-base} / 2);
   justify-content: center;
   padding: var(--spacing-sm);
   transition: all var(--transitions-normal);
+
+  @include hover {
+    img {
+      transform: scale(1.05);
+    }
+  }
 }
 
 .navigation__logo img {
