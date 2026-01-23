@@ -54,7 +54,6 @@ const App = () => {
 
       <FullScreenSection overflow="hidden">
         <div className={styles.heroContainer} ref={topRef}>
-          <ParallaxBackground imageSrc={HeroBg} opacity={0.1} />
           <Hero data={data} />
         </div>
       </FullScreenSection>
