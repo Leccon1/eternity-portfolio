@@ -13,7 +13,7 @@ const Hero = ({ data }) => {
 
   useEffect(() => {
     const [$container] = utils.$('.container')
-    const [$range] = utils.$('.range')
+    const $range = document.querySelector('.range')
 
     if (!$container || !$range) return
 
@@ -32,10 +32,11 @@ const Hero = ({ data }) => {
     }
 
     const onInput = (e) => {
-      utils.sync(() => (engine.speed = e.target.value))
+      const value = e.target.value
+      utils.sync(() => (engine.speed = parseFloat(value)))
     }
 
-    $range.addEventListener('input', onInput)
+    $range?.addEventListener('input', onInput)
 
     return () => {
       $range.removeEventListener('input', onInput)
@@ -98,11 +99,21 @@ const Hero = ({ data }) => {
         <div className={`${styles.glow} ${styles.glow_3}`} />
         <div className={`${styles.glow} ${styles.glow_4}`} />
         <div className={styles.cont}>
-          <div className="large row container"></div>
-          <div className="medium row">
-            <fieldset className="controls">
-              <input type="range" min="0.1" max="2" value="1" step=".01" className="range" />
-            </fieldset>
+          <div className={styles.contInner}>
+            <div className="large row container"></div>
+            <div className="medium row">
+              <fieldset className="controls">
+                <input
+                  type="range"
+                  min="0.1"
+                  max="2"
+                  defaultValue="1"
+                  step=".01"
+                  className="range"
+                  style={{ pointerEvents: 'all' }}
+                />
+              </fieldset>
+            </div>
           </div>
         </div>
       </div>
