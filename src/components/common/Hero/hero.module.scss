@@ -1,44 +1,140 @@
 @use '@styles/helpers/' as *;
-.hero {
-  min-height: 100vh;
+@use 'sass:color';
 
+$color-accent: color(color-accent, 'dark');
+$color-accent-light: color.adjust($color-accent, $lightness: 15%);
+$color-accent-alt: color(color-accent-alt, 'dark');
+
+@keyframes floatLeft {
+  0%,
+  100% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
+  50% {
+    transform: rotate(-40deg) translate(20px, -10px);
+  }
+}
+
+@keyframes floatRight {
+  0%,
+  100% {
+    transform: rotate(135deg) translate(0, 0);
+  }
+  50% {
+    transform: rotate(137deg) translate(-20px, 10px);
+  }
+}
+
+.hero {
+  position: relative;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  background: #000;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .glow {
+    position: absolute;
+    width: 100%;
+    height: rem(50);
+    border-radius: var(--radius-circle);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    filter: blur(20px);
+    z-index: 2;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 200%;
+      border-radius: inherit;
+      background-color: $color-accent;
+      opacity: 0.5;
+      filter: blur(75px);
+      z-index: 1;
+    }
+  }
+
+  .glow_1 {
+    left: -20%;
+    bottom: 15%;
+    background: linear-gradient(to right, $color-accent-alt, transparent);
+    animation: floatLeft 15s infinite ease-in-out;
+  }
+  .glow_2 {
+    left: -25%;
+    bottom: 35%;
+    background: linear-gradient(to right, $color-accent, transparent);
+    animation: floatLeft 20s infinite ease-in-out reverse;
+  }
+
+  .glow_3 {
+    right: -20%;
+    top: 15%;
+    background: linear-gradient(to left, $color-accent, transparent);
+    animation: floatRight 18s infinite ease-in-out;
+  }
+  .glow_4 {
+    right: -25%;
+    top: 35%;
+    background: linear-gradient(to left, $color-accent-alt, transparent);
+    animation: floatRight 22s infinite ease-in-out reverse;
+  }
 
   &__content {
+    position: relative;
+    z-index: 10;
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
     gap: var(--spacing-xl);
+    text-align: center;
   }
+
   &__info {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-md);
   }
+
   &__subtitle {
     color: var(--color-text-secondary);
     font-size: var(--font-sizes-xl);
   }
+
   &__post {
     font-size: var(--font-sizes-lg);
-    letter-spacing: rem(4);
+    letter-spacing: 4px;
   }
+
   &__description {
+    max-width: 600px;
     font-size: var(--font-sizes-base);
   }
+
   &__buttons {
     display: flex;
     gap: var(--spacing-sm);
   }
-}
 
-.hero__subtitle,
-.hero__post,
-.hero__description,
-.hero__buttons {
-  opacity: 0;
-  transform: translateY(10px) scale(0.9);
+  &__subtitle,
+  &__post,
+  &__description,
+  &__buttons {
+    opacity: 0;
+    transform: translateY(10px);
+  }
 }

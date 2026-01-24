@@ -61,6 +61,13 @@ const Hero = ({ data }) => {
 
   return (
     <section className={styles.hero}>
+      <div className={styles.hero__bg}>
+        <div className={`${styles.glow} ${styles.glow_1}`} />
+        <div className={`${styles.glow} ${styles.glow_2}`} />
+        <div className={`${styles.glow} ${styles.glow_3}`} />
+        <div className={`${styles.glow} ${styles.glow_4}`} />
+      </div>
+
       <div className={styles.hero__content} ref={containerRef}>
         <ContentContainer>
           <div className={styles.hero__info}>
