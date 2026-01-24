@@ -71,6 +71,7 @@ $color-accent-alt: color(color-accent-alt, 'dark');
     left: -30%;
     bottom: 20%;
     background: linear-gradient(to right, $color-accent-alt, transparent);
+    filter: blur(40px);
     transform: rotate(330deg);
   }
   .glow_2 {
@@ -83,13 +84,14 @@ $color-accent-alt: color(color-accent-alt, 'dark');
   .glow_3 {
     right: -30%;
     top: 10%;
-    background: linear-gradient(to left, $color-accent, transparent);
+    background: linear-gradient(to left, $color-accent-light, transparent);
+    filter: blur(50px);
     transform: rotate(310deg);
   }
   .glow_4 {
     right: -35%;
     top: 20%;
-    background: linear-gradient(to left, $color-accent-alt, transparent);
+    background: linear-gradient(to left, $color-accent, transparent);
     transform: rotate(290deg);
   }
 
