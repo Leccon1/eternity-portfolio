@@ -22,12 +22,28 @@ const Hero = ({ data }) => {
       $particle.classList.add(styles.particle)
       $container.appendChild($particle)
 
+      const startX = utils.random(0, 20)
+      const startY = utils.random(0, 20)
+
       animate($particle, {
-        x: utils.random(-10, 10, 2) + 'rem',
-        y: utils.random(-3, 3, 2) + 'rem',
-        scale: [{ from: 0, to: 1 }, { to: 0 }],
-        delay: utils.random(0, 1000),
+        x: [startX + 'rem', startX + utils.random(20, 50) + 'rem'],
+        y: [startY + 'rem', startY + utils.random(-20, -50) + 'rem'],
+
+        scale: [
+          { from: 0, to: () => utils.random(0.5, 1.2, 1), duration: utils.random(1000, 10000) },
+          { to: 0, duration: 4000 },
+        ],
+
+        opacity: [
+          { from: 0, to: 1, duration: 800 },
+          { to: 0, duration: utils.random(2000, 10000) },
+        ],
+
+        duration: () => utils.random(6000, 15000),
+
+        delay: i * 50 + utils.random(0, 500),
         loop: true,
+        easing: 'easeOutCubic',
       })
     }
 
