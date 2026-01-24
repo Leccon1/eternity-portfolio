@@ -21,11 +21,20 @@ $color-accent-alt: color(color-accent-alt, 'dark');
   place-self: center;
 }
 
+.contInner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 64px;
+}
+
 .particle {
   width: 24px;
   height: 24px;
   border-radius: 50%;
   background-color: $color-accent;
+  position: absolute;
 }
 
 .hero {
