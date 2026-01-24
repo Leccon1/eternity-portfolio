@@ -15,6 +15,19 @@ $color-accent-alt: color(color-accent-alt, 'dark');
   }
 }
 
+.cont {
+  position: absolute;
+  inset: 0;
+  place-self: center;
+}
+
+.particle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: $color-accent;
+}
+
 .hero {
   position: relative;
   min-height: 100vh;
@@ -113,7 +126,7 @@ $color-accent-alt: color(color-accent-alt, 'dark');
   &__content {
     position: relative;
     z-index: 10;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-xl);
