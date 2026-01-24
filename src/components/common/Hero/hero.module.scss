@@ -5,25 +5,25 @@ $color-accent: color(color-accent, 'dark');
 $color-accent-light: color.adjust($color-accent, $lightness: 15%);
 $color-accent-alt: color(color-accent-alt, 'dark');
 
-@keyframes floatLeft {
-  0%,
-  100% {
-    transform: rotate(-45deg) translate(0, 0);
-  }
-  50% {
-    transform: rotate(-40deg) translate(20px, -10px);
-  }
-}
+// @keyframes floatLeft {
+//   0%,
+//   100% {
+//     transform: rotate(-45deg) translate(0, 0);
+//   }
+//   50% {
+//     transform: rotate(-40deg) translate(20px, -10px);
+//   }
+// }
 
-@keyframes floatRight {
-  0%,
-  100% {
-    transform: rotate(135deg) translate(0, 0);
-  }
-  50% {
-    transform: rotate(137deg) translate(-20px, 10px);
-  }
-}
+// @keyframes floatRight {
+//   0%,
+//   100% {
+//     transform: rotate(135deg) translate(0, 0);
+//   }
+//   50% {
+//     transform: rotate(137deg) translate(-20px, 10px);
+//   }
+// }
 
 .hero {
   position: relative;
@@ -32,7 +32,7 @@ $color-accent-alt: color(color-accent-alt, 'dark');
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background: #000;
+  background: var(--color-bg);
 
   &__bg {
     position: absolute;
@@ -68,29 +68,29 @@ $color-accent-alt: color(color-accent-alt, 'dark');
   }
 
   .glow_1 {
-    left: -20%;
-    bottom: 15%;
+    left: -30%;
+    bottom: 20%;
     background: linear-gradient(to right, $color-accent-alt, transparent);
-    animation: floatLeft 15s infinite ease-in-out;
+    transform: rotate(330deg);
   }
   .glow_2 {
-    left: -25%;
-    bottom: 35%;
+    left: -40%;
+    bottom: 20%;
     background: linear-gradient(to right, $color-accent, transparent);
-    animation: floatLeft 20s infinite ease-in-out reverse;
+    transform: rotate(320deg);
   }
 
   .glow_3 {
-    right: -20%;
-    top: 15%;
+    right: -30%;
+    top: 10%;
     background: linear-gradient(to left, $color-accent, transparent);
-    animation: floatRight 18s infinite ease-in-out;
+    transform: rotate(310deg);
   }
   .glow_4 {
-    right: -25%;
-    top: 35%;
+    right: -35%;
+    top: 20%;
     background: linear-gradient(to left, $color-accent-alt, transparent);
-    animation: floatRight 22s infinite ease-in-out reverse;
+    transform: rotate(290deg);
   }
 
   &__content {
