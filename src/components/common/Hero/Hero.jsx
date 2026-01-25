@@ -2,7 +2,7 @@ import Heading from '@common/Heading/Heading'
 import NavButton from '@common/NavButton/NavButton'
 import { useAnimation } from '@hooks/useAnimationContext'
 import ContentContainer from '@ui/ContentContainer/ContentContainer'
-import { animate, createTimeline, splitText, stagger } from 'animejs'
+import { animate, createTimeline, engine, splitText, stagger, utils } from 'animejs'
 import { useEffect, useRef } from 'react'
 
 import styles from './hero.module.scss'
@@ -10,6 +10,62 @@ import styles from './hero.module.scss'
 const Hero = ({ data }) => {
   const containerRef = useRef(null)
   const { state } = useAnimation()
+
+  useEffect(() => {
+    const [$container] = utils.$('.container')
+    const $range = document.querySelector('.range')
+
+    if (!$container || !$range) return
+
+    $container.innerHTML = ''
+
+    const blurClasses = [styles.blur_small, styles.blur_medium, styles.blur_large]
+
+    for (let i = 0; i < 100; i++) {
+      const $particle = document.createElement('div')
+      $particle.classList.add(styles.particle)
+      $container.appendChild($particle)
+
+      const startX = utils.random(0, 50)
+      const startY = utils.random(0, 50)
+
+      $particle.classList.add(styles.particle, blurClasses[Math.floor(Math.random() * 3)])
+      $container.appendChild($particle)
+
+      animate($particle, {
+        translateZ: 0,
+        x: [startX + 'rem', startX + utils.random(20, 50) + 'rem'],
+        y: [startY + 'rem', startY + utils.random(-20, -50) + 'rem'],
+
+        scale: [
+          { from: 0, to: () => utils.random(0.5, 1.2, 1), duration: utils.random(1000, 10000) },
+          { to: 0, duration: 4000 },
+        ],
+
+        opacity: [
+          { from: 0, to: 1, duration: 800 },
+          { to: 0, duration: utils.random(2000, 10000) },
+        ],
+
+        duration: () => utils.random(6000, 15000),
+
+        delay: i * 50 + utils.random(0, 500),
+        loop: true,
+        easing: 'easeOutCubic',
+      })
+    }
+
+    const onInput = (e) => {
+      const value = e.target.value
+      utils.sync(() => (engine.speed = parseFloat(value)))
+    }
+
+    $range?.addEventListener('input', onInput)
+
+    return () => {
+      $range.removeEventListener('input', onInput)
+    }
+  }, [])
 
   useEffect(() => {
     if (!state.introFinished || !data) return
@@ -66,6 +122,24 @@ const Hero = ({ data }) => {
         <div className={`${styles.glow} ${styles.glow_2}`} />
         <div className={`${styles.glow} ${styles.glow_3}`} />
         <div className={`${styles.glow} ${styles.glow_4}`} />
+        <div className={styles.cont}>
+          <div className={styles.contInner}>
+            <div className="large row container"></div>
+            <div className="medium row">
+              <fieldset className="controls">
+                <input
+                  type="range"
+                  min="0.1"
+                  max="2"
+                  defaultValue="1"
+                  step=".01"
+                  className="range"
+                  style={{ pointerEvents: 'all' }}
+                />
+              </fieldset>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className={styles.hero__content} ref={containerRef}>
