@@ -2,7 +2,6 @@ import Heading from '@common/Heading/Heading'
 import NavButton from '@common/NavButton/NavButton'
 import { useAnimation } from '@hooks/useAnimationContext'
 import ContentContainer from '@ui/ContentContainer/ContentContainer'
-import { animate, createTimeline, engine, splitText, stagger, utils } from 'animejs'
 import { useEffect, useRef } from 'react'
 
 import styles from './hero.module.scss'
@@ -10,75 +9,62 @@ import styles from './hero.module.scss'
 const Hero = ({ data }) => {
   const containerRef = useRef(null)
   const { state } = useAnimation()
-
   const canvasRef = useRef(null)
-  const particlesRef = useRef({})
-  const particleIndexRef = useRef(0)
-
-  const settings = {
-    density: 20,
-    particleSize: 5,
-    startingX: 200,
-    startingY: 100,
-    gravity: 0.5,
-    maxLife: 100,
-    groundLevel: 300,
-    leftWall: 0,
-  }
-
-  class Particle {
-    constructor() {
-      this.x = settings.startingX
-      this.y = settings.startingY
-      this.vx = Math.random() * 20 - 10
-      this.vy = Math.random() * 20 - 10
-      particleIndexRef.current += 1
-      particlesRef.current[particleIndexRef.current] = this
-      this.id = particleIndexRef.current
-      this.life = 0
-    }
-
-    draw(ctx) {
-      this.x += this.vx
-      this.y += this.vy
-      this.vy += settings.gravity
-
-      this.life++
-      if (this.life >= settings.maxLife) {
-        delete particlesRef.current[this.id]
-      }
-
-      ctx.beginPath()
-      ctx.fillStyle = '#ffffff'
-      ctx.arc(this.x, this.y, settings.particleSize, 0, Math.PI * 2)
-      ctx.fill()
-    }
-  }
+  const particlesRef = useRef([])
+  const lastSpawnRef = useRef(0)
+  const spawnInterval = { min: 300, max: 700 }
 
   useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
-    let animationFrameId
+    canvas.width = 600
+    canvas.height = 400
 
-    const render = () => {
-      // Очистка холста
-      ctx.fillStyle = 'black'
-      ctx.fillRect(0, 0, canvas.width, canvas.height)
+    const animate = (time) => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      // Генерация новых частиц
-      for (let i = 0; i < settings.density; i++) {
-        new Particle()
+      if (
+        time - lastSpawnRef.current >
+        Math.random() * (spawnInterval.max - spawnInterval.min) + spawnInterval.min
+      ) {
+        particlesRef.current.push({
+          x: 0,
+          y: canvas.height,
+          size: Math.random() * 5 + 3,
+          speed: Math.random() * 0.08 + 0.02,
+          angle: (Math.random() * Math.PI) / 3 - Math.PI / 6,
+          alpha: Math.random() * 0.5 + 0.3,
+          life: 0,
+          maxLife: Math.random() * 2000 + 5000,
+          shrink: Math.random() * 2 + 1,
+        })
+        lastSpawnRef.current = time
       }
 
-      // Рисуем все частицы
-      Object.values(particlesRef.current).forEach((p) => p.draw(ctx))
+      particlesRef.current.forEach((p, i) => {
+        p.x += Math.cos(p.angle) * p.speed
+        p.y -= Math.sin(p.angle) * p.speed
 
-      animationFrameId = requestAnimationFrame(render)
+        const lifeRatio = p.life / p.maxLife
+        const currentSize = Math.max(p.size - lifeRatio * p.shrink, 0)
+
+        ctx.beginPath()
+        ctx.fillStyle = `rgba(173,216,230,${p.alpha})`
+        ctx.shadowColor = `rgba(173,216,230,${p.alpha})`
+        ctx.shadowBlur = currentSize * 8
+        ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2)
+        ctx.fill()
+
+        p.life++
+        if (p.life >= p.maxLife || p.x > canvas.width || p.y < 0) {
+          particlesRef.current.splice(i, 1)
+        }
+      })
+
+      requestAnimationFrame(animate)
     }
 
-    render()
-
-    return () => cancelAnimationFrame(animationFrameId)
+    requestAnimationFrame(animate)
   }, [])
 
   useEffect(() => {
