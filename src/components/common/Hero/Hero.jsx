@@ -2,6 +2,7 @@ import Heading from '@common/Heading/Heading'
 import NavButton from '@common/NavButton/NavButton'
 import { useAnimation } from '@hooks/useAnimationContext'
 import ContentContainer from '@ui/ContentContainer/ContentContainer'
+import { animate, createTimeline, splitText, stagger } from 'animejs'
 import { useEffect, useRef } from 'react'
 
 import styles from './hero.module.scss'
@@ -27,37 +28,55 @@ const Hero = ({ data }) => {
         time - lastSpawnRef.current >
         Math.random() * (spawnInterval.max - spawnInterval.min) + spawnInterval.min
       ) {
+        const size = Math.random() * 5 + 3
         particlesRef.current.push({
           x: 0,
           y: canvas.height,
-          size: Math.random() * 5 + 3,
+          size,
           speed: Math.random() * 0.08 + 0.02,
-          angle: (Math.random() * Math.PI) / 3 - Math.PI / 6,
+          angle: (Math.random() * Math.PI) / 2,
           alpha: Math.random() * 0.5 + 0.3,
           life: 0,
           maxLife: Math.random() * 2000 + 5000,
           shrink: Math.random() * 2 + 1,
+          fading: false,
         })
         lastSpawnRef.current = time
       }
 
       particlesRef.current.forEach((p, i) => {
-        p.x += Math.cos(p.angle) * p.speed
-        p.y -= Math.sin(p.angle) * p.speed
+        if (!p.fading) {
+          p.x += Math.cos(p.angle) * p.speed
+          p.y -= Math.sin(p.angle) * p.speed
 
-        const lifeRatio = p.life / p.maxLife
-        const currentSize = Math.max(p.size - lifeRatio * p.shrink, 0)
+          const lifeRatio = p.life / p.maxLife
+          const currentSize = Math.max(p.size - lifeRatio * p.shrink, 0)
 
-        ctx.beginPath()
-        ctx.fillStyle = `rgba(173,216,230,${p.alpha})`
-        ctx.shadowColor = `rgba(173,216,230,${p.alpha})`
-        ctx.shadowBlur = currentSize * 8
-        ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2)
-        ctx.fill()
+          ctx.beginPath()
+          ctx.fillStyle = `rgba(173,216,230,${p.alpha})`
+          ctx.shadowColor = `rgba(173,216,230,${p.alpha})`
+          ctx.shadowBlur = currentSize * 8
+          ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2)
+          ctx.fill()
 
-        p.life++
-        if (p.life >= p.maxLife || p.x > canvas.width || p.y < 0) {
-          particlesRef.current.splice(i, 1)
+          p.life++
+          if (p.life >= p.maxLife || p.x > canvas.width || p.y < 0) {
+            p.fading = true
+          }
+        } else {
+          p.size *= 0.98
+          p.alpha *= 0.98
+
+          if (p.size < 0.1 || p.alpha < 0.01) {
+            particlesRef.current.splice(i, 1)
+          } else {
+            ctx.beginPath()
+            ctx.fillStyle = `rgba(173,216,230,${p.alpha})`
+            ctx.shadowColor = `rgba(173,216,230,${p.alpha})`
+            ctx.shadowBlur = p.size * 8
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
+            ctx.fill()
+          }
         }
       })
 
