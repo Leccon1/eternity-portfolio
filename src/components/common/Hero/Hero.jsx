@@ -11,60 +11,74 @@ const Hero = ({ data }) => {
   const containerRef = useRef(null)
   const { state } = useAnimation()
 
+  const canvasRef = useRef(null)
+  const particlesRef = useRef({})
+  const particleIndexRef = useRef(0)
+
+  const settings = {
+    density: 20,
+    particleSize: 5,
+    startingX: 200,
+    startingY: 100,
+    gravity: 0.5,
+    maxLife: 100,
+    groundLevel: 300,
+    leftWall: 0,
+  }
+
+  class Particle {
+    constructor() {
+      this.x = settings.startingX
+      this.y = settings.startingY
+      this.vx = Math.random() * 20 - 10
+      this.vy = Math.random() * 20 - 10
+      particleIndexRef.current += 1
+      particlesRef.current[particleIndexRef.current] = this
+      this.id = particleIndexRef.current
+      this.life = 0
+    }
+
+    draw(ctx) {
+      this.x += this.vx
+      this.y += this.vy
+      this.vy += settings.gravity
+
+      this.life++
+      if (this.life >= settings.maxLife) {
+        delete particlesRef.current[this.id]
+      }
+
+      ctx.beginPath()
+      ctx.fillStyle = '#ffffff'
+      ctx.arc(this.x, this.y, settings.particleSize, 0, Math.PI * 2)
+      ctx.fill()
+    }
+  }
+
   useEffect(() => {
-    const [$container] = utils.$('.container')
-    const $range = document.querySelector('.range')
+    const canvas = canvasRef.current
+    const ctx = canvas.getContext('2d')
+    let animationFrameId
 
-    if (!$container || !$range) return
+    const render = () => {
+      // Очистка холста
+      ctx.fillStyle = 'black'
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-    $container.innerHTML = ''
+      // Генерация новых частиц
+      for (let i = 0; i < settings.density; i++) {
+        new Particle()
+      }
 
-    const blurClasses = [styles.blur_small, styles.blur_medium, styles.blur_large]
+      // Рисуем все частицы
+      Object.values(particlesRef.current).forEach((p) => p.draw(ctx))
 
-    for (let i = 0; i < 100; i++) {
-      const $particle = document.createElement('div')
-      $particle.classList.add(styles.particle)
-      $container.appendChild($particle)
-
-      const startX = utils.random(0, 50)
-      const startY = utils.random(0, 50)
-
-      $particle.classList.add(styles.particle, blurClasses[Math.floor(Math.random() * 3)])
-      $container.appendChild($particle)
-
-      animate($particle, {
-        translateZ: 0,
-        x: [startX + 'rem', startX + utils.random(20, 50) + 'rem'],
-        y: [startY + 'rem', startY + utils.random(-20, -50) + 'rem'],
-
-        scale: [
-          { from: 0, to: () => utils.random(0.5, 1.2, 1), duration: utils.random(1000, 10000) },
-          { to: 0, duration: 4000 },
-        ],
-
-        opacity: [
-          { from: 0, to: 1, duration: 800 },
-          { to: 0, duration: utils.random(2000, 10000) },
-        ],
-
-        duration: () => utils.random(6000, 15000),
-
-        delay: i * 50 + utils.random(0, 500),
-        loop: true,
-        easing: 'easeOutCubic',
-      })
+      animationFrameId = requestAnimationFrame(render)
     }
 
-    const onInput = (e) => {
-      const value = e.target.value
-      utils.sync(() => (engine.speed = parseFloat(value)))
-    }
+    render()
 
-    $range?.addEventListener('input', onInput)
-
-    return () => {
-      $range.removeEventListener('input', onInput)
-    }
+    return () => cancelAnimationFrame(animationFrameId)
   }, [])
 
   useEffect(() => {
@@ -122,24 +136,12 @@ const Hero = ({ data }) => {
         <div className={`${styles.glow} ${styles.glow_2}`} />
         <div className={`${styles.glow} ${styles.glow_3}`} />
         <div className={`${styles.glow} ${styles.glow_4}`} />
-        <div className={styles.cont}>
-          <div className={styles.contInner}>
-            <div className="large row container"></div>
-            <div className="medium row">
-              <fieldset className="controls">
-                <input
-                  type="range"
-                  min="0.1"
-                  max="2"
-                  defaultValue="1"
-                  step=".01"
-                  className="range"
-                  style={{ pointerEvents: 'all' }}
-                />
-              </fieldset>
-            </div>
-          </div>
-        </div>
+        <canvas
+          ref={canvasRef}
+          width={600}
+          height={400}
+          style={{ display: 'block', margin: 'auto', background: 'black' }}
+        />
       </div>
 
       <div className={styles.hero__content} ref={containerRef}>
