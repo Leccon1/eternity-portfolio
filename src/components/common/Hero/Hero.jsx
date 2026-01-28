@@ -2,6 +2,7 @@ import Heading from '@common/Heading/Heading'
 import NavButton from '@common/NavButton/NavButton'
 import { useAnimation } from '@hooks/useAnimationContext'
 import ContentContainer from '@ui/ContentContainer/ContentContainer'
+import { randomRange } from '@utils/math'
 import { animate, createTimeline, splitText, stagger } from 'animejs'
 import { useEffect, useRef } from 'react'
 
@@ -18,8 +19,10 @@ const Hero = ({ data }) => {
   useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
-    canvas.width = 600
-    canvas.height = 400
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+    canvas.style.width = '100%'
+    canvas.style.height = '100%'
 
     const animate = (time) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -143,9 +146,11 @@ const Hero = ({ data }) => {
         <div className={`${styles.glow} ${styles.glow_4}`} />
         <canvas
           ref={canvasRef}
-          width={600}
-          height={400}
-          style={{ display: 'block', margin: 'auto', background: 'black' }}
+          style={{
+            background: 'transparent',
+            pointerEvents: 'none',
+            zIndex: '-1',
+          }}
         />
       </div>
 
