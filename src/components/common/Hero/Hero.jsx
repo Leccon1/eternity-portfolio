@@ -16,7 +16,7 @@ const Hero = ({ data }) => {
   const canvasRef = useRef(null)
   const particlesRef = useRef([])
   const lastSpawnRef = useRef(0)
-  const spawnInterval = { min: 300, max: 700 }
+  const spawnInterval = { min: 200, max: 700 }
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -43,7 +43,7 @@ const Hero = ({ data }) => {
       ctx.filter = 'none'
 
       if (time - lastSpawnRef.current > nextSpawnRef.current) {
-        const size = randomRange(15, 35)
+        const size = randomRange(5, 35)
         particlesRef.current.push({
           x: 0,
           y: canvas.height,
@@ -52,7 +52,7 @@ const Hero = ({ data }) => {
           angle: (Math.random() * Math.PI) / 2,
           alpha: randomRange(0.5, 1),
           life: 0,
-          maxLife: randomRange(7000, 15000),
+          maxLife: randomRange(8000, 17000),
           shrink: randomRange(5, 10),
           fading: false,
           blur: randomRange(0.01, 0.05),
