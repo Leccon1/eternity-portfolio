@@ -48,7 +48,7 @@ const App = () => {
         flexDirection: 'column',
       }}
     >
-      {/* <Intro onStartAnimateFinish={() => setState((prev) => ({ ...prev, introFinished: true }))} /> */}
+      <Intro onStartAnimateFinish={() => setState((prev) => ({ ...prev, introFinished: true }))} />
 
       <Header />
 
