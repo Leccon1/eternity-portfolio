@@ -10,6 +10,7 @@ import styles from './hero.module.scss'
 
 const Hero = ({ data }) => {
   const containerRef = useRef(null)
+  const nextSpawnRef = useRef(0)
   const { state } = useAnimation()
   const canvasRef = useRef(null)
   const particlesRef = useRef([])
@@ -19,18 +20,22 @@ const Hero = ({ data }) => {
   useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
+
+    let lastTime = performance.now()
+
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
     canvas.style.width = '100%'
     canvas.style.height = '100%'
 
     const animate = (time) => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      const dt = time - lastTime
+      lastTime = time
 
-      if (
-        time - lastSpawnRef.current >
-        Math.random() * (spawnInterval.max - spawnInterval.min) + spawnInterval.min
-      ) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.shadowBlur = 0
+
+      if (time - lastSpawnRef.current > nextSpawnRef.current) {
         const size = Math.random() * 5 + 3
         particlesRef.current.push({
           x: 0,
@@ -40,17 +45,18 @@ const Hero = ({ data }) => {
           angle: (Math.random() * Math.PI) / 2,
           alpha: Math.random() * 0.5 + 0.3,
           life: 0,
-          maxLife: Math.random() * 2000 + 5000,
+          maxLife: randomRange(7000, 15000),
           shrink: Math.random() * 2 + 1,
           fading: false,
         })
         lastSpawnRef.current = time
+        nextSpawnRef.current = randomRange(spawnInterval.min, spawnInterval.max)
       }
 
       particlesRef.current.forEach((p, i) => {
         if (!p.fading) {
-          p.x += Math.cos(p.angle) * p.speed
-          p.y -= Math.sin(p.angle) * p.speed
+          p.x += Math.cos(p.angle) * p.speed * dt
+          p.y -= Math.sin(p.angle) * p.speed * dt
 
           const lifeRatio = p.life / p.maxLife
           const currentSize = Math.max(p.size - lifeRatio * p.shrink, 0)
@@ -62,7 +68,8 @@ const Hero = ({ data }) => {
           ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2)
           ctx.fill()
 
-          p.life++
+          p.life += dt
+
           if (p.life >= p.maxLife || p.x > canvas.width || p.y < 0) {
             p.fading = true
           }
@@ -71,7 +78,9 @@ const Hero = ({ data }) => {
           p.alpha *= 0.98
 
           if (p.size < 0.1 || p.alpha < 0.01) {
-            particlesRef.current.splice(i, 1)
+            particlesRef.current = particlesRef.current.filter(
+              (p) => p.alpha >= 0.01 && p.size >= 0.1
+            )
           } else {
             ctx.beginPath()
             ctx.fillStyle = `rgba(173,216,230,${p.alpha})`
