@@ -6,7 +6,6 @@ import { hexToRgb } from '@utils/hexToRgb'
 import { randomRange } from '@utils/math'
 import { animate, createTimeline, splitText, stagger } from 'animejs'
 import { useEffect, useRef } from 'react'
-import { shallow } from 'zustand/shallow'
 
 import styles from './hero.module.scss'
 
@@ -23,19 +22,17 @@ const Hero = ({ data }) => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
 
-    let lastTime = performance.now()
-
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
     canvas.style.width = '100%'
     canvas.style.height = '100%'
 
-    const particlesColor = getComputedStyle(document.documentElement)
+    let lastTime = performance.now()
+
+    const particlesColorHex = getComputedStyle(document.documentElement)
       .getPropertyValue('--color-accent')
       .trim()
-
-    const particlesColorRgb = hexToRgb(particlesColor)
-    console.log(particlesColorRgb, particlesColor)
+    const particlesColorRgb = hexToRgb(particlesColorHex)
 
     const animate = (time) => {
       const dt = time - lastTime
@@ -43,6 +40,7 @@ const Hero = ({ data }) => {
 
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       ctx.shadowBlur = 0
+      ctx.filter = 'none'
 
       if (time - lastSpawnRef.current > nextSpawnRef.current) {
         const size = randomRange(15, 35)
@@ -57,6 +55,7 @@ const Hero = ({ data }) => {
           maxLife: randomRange(7000, 15000),
           shrink: randomRange(5, 10),
           fading: false,
+          blur: randomRange(0.01, 0.05),
         })
         lastSpawnRef.current = time
         nextSpawnRef.current = randomRange(spawnInterval.min, spawnInterval.max)
@@ -64,35 +63,26 @@ const Hero = ({ data }) => {
 
       particlesRef.current.forEach((p) => {
         if (!p.fading) {
-          // движение
           p.x += Math.cos(p.angle) * p.speed * dt
           p.y -= Math.sin(p.angle) * p.speed * dt
-
-          // увеличение жизни
           p.life += dt
-
-          // проверка окончания жизни
-          if (p.life >= p.maxLife || p.x > canvas.width || p.y < 0) {
-            p.fading = true
-          }
+          if (p.life >= p.maxLife || p.x > canvas.width || p.y < 0) p.fading = true
         } else {
-          // затухание
           p.size *= 0.98
           p.alpha *= 0.98
         }
 
-        // вычисление текущего размера
         const lifeRatio = p.life / p.maxLife
         const currentSize = p.fading
           ? Math.max(p.size, 0)
           : Math.max(p.size - lifeRatio * p.shrink, p.size * 0.5)
 
-        // рисуем частицу с blur и динамическим цветом
         ctx.save()
-        ctx.fillStyle = `rgba(${particlesColorRgb},${p.alpha})`
-        ctx.shadowColor = `rgba(${particlesColorRgb},${p.alpha})`
-        ctx.shadowBlur = currentSize * 8
-        ctx.filter = `blur(${currentSize * 0.3}px)`
+        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, currentSize)
+        gradient.addColorStop(0, `rgba(${particlesColorRgb}, ${p.alpha})`)
+        gradient.addColorStop(1, `rgba(${particlesColorRgb}, 0)`)
+
+        ctx.fillStyle = gradient
 
         ctx.beginPath()
         ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2)
@@ -100,7 +90,6 @@ const Hero = ({ data }) => {
         ctx.restore()
       })
 
-      // Удаляем «мертвые» частицы один раз после обновления всех
       particlesRef.current = particlesRef.current.filter((p) => p.alpha >= 0.01 && p.size >= 0.1)
 
       requestAnimationFrame(animate)
