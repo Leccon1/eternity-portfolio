@@ -15,13 +15,24 @@ $color-accent-alt: color(color-accent-alt, 'dark');
   }
 }
 
-.cont {
+.particleScene {
   position: absolute;
   inset: 0;
   place-self: center;
+  z-index: 1;
+  overflow: hidden;
+  background: transparent;
 }
 
-.contInner {
+.particleCanvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.sceneInner {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,12 +40,14 @@ $color-accent-alt: color(color-accent-alt, 'dark');
   gap: 64px;
 }
 
-.particle {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: $color-accent;
-  position: absolute;
+.controls {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .hero {

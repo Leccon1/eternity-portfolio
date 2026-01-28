@@ -48,117 +48,97 @@ const Hero = ({ data }) => {
   }
 
   useEffect(() => {
-    const canvas = canvasRef.current
+    const canvas = containerRef.current
+    if (!canvas || !(canvas instanceof HTMLCanvasElement)) return
+
     const ctx = canvas.getContext('2d')
+    const $range = document.querySelector('.range')
 
-    // 1. Сначала получаем цвета
-    const particlesColorHex = getComputedStyle(document.documentElement)
-      .getPropertyValue('--color-accent')
-      .trim()
-    const particlesColorRgb = hexToRgb(particlesColorHex)
+    const particles = []
+    const particleCount = 60 // Начнем с меньшего числа для теста
 
-    // 2. Создаем кэш (теперь переменная цвета доступна)
-    // Размер 35 — это базовый радиус, кэш подстроится сам
-    const particleCache = createCache(particlesColorRgb, 35)
-    const whiteCache = createCache('255, 255, 255', 35)
+    const resize = () => {
+      canvas.width = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
+    }
+    window.addEventListener('resize', resize)
+    resize()
 
-    const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+    // Инициализация
+    for (let i = 0; i < particleCount; i++) {
+      const p = {
+        x: utils.random(0, 50),
+        y: 0,
+        scale: 0,
+        opacity: 0,
+      }
+      particles.push(p)
+
+      // Более явная анимация для объектов
+      animate(p, {
+        x: {
+          value: [p.x, p.x + utils.random(200, 800)],
+          easing: 'linear',
+        },
+        y: {
+          value: [0, utils.random(-400, -800)],
+          easing: 'outCubic',
+        },
+        scale: [
+          { value: 1, duration: 1000, easing: 'outQuad' },
+          { value: 0, duration: 4000, easing: 'inQuad' },
+        ],
+        opacity: [
+          { value: 1, duration: 800, easing: 'linear' },
+          { value: 0, duration: 5000, easing: 'linear' },
+        ],
+        duration: utils.random(4000, 8000),
+        delay: i * 100,
+        loop: true,
+      })
     }
 
-    window.addEventListener('resize', handleResize)
-    handleResize()
-
-    let lastTime = performance.now()
-    let animationFrameId
-
-    const animate = (time) => {
-      const dt = time - lastTime
-      lastTime = time
-
+    let animationFrame
+    const render = () => {
+      // Очищаем прозрачным цветом
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      // Увеличение количества: спавним чаще
-      if (time - lastSpawnRef.current > nextSpawnRef.current) {
-        // Спавним по 2 частицы за раз для густоты
-        for (let i = 0; i < 2; i++) {
-          const size = randomRange(5, 30)
-          particlesRef.current.push({
-            x: randomRange(0, canvas.width), // Вылет по всей ширине
-            y: canvas.height + 50,
-            size,
-            speed: randomRange(0.02, 0.05),
-            angle: Math.PI / 2 + randomRange(-0.2, 0.2), // Летит вверх с легким разбросом
-            alpha: randomRange(0.4, 0.8),
-            life: 0,
-            maxLife: randomRange(6000, 12000),
-            shrink: randomRange(2, 5),
-            fading: false,
-          })
+      particles.forEach((p) => {
+        // Если частица невидима, не тратим ресурсы
+        if (p.opacity <= 0.001) return
+
+        ctx.beginPath()
+        ctx.globalAlpha = p.opacity
+        ctx.fillStyle = '#00f2ff'
+
+        // Рисуем относительно НИЗА канваса
+        // ВАЖНО: убедитесь, что canvas.height > 0
+        const drawX = p.x
+        const drawY = canvas.height + p.y
+
+        const radius = 10 * p.scale
+        if (radius > 0) {
+          ctx.arc(drawX, drawY, radius, 0, Math.PI * 2)
+          ctx.fill()
         }
-        lastSpawnRef.current = time
-        // Уменьшенный интервал для большего количества частиц
-        nextSpawnRef.current = randomRange(100, 400)
-      }
-
-      particlesRef.current.forEach((p) => {
-        if (!p.fading) {
-          p.x += Math.cos(p.angle) * p.speed * dt
-          p.y -= Math.sin(p.angle) * p.speed * dt
-          p.life += dt
-          if (p.life >= p.maxLife || p.y < -50) p.fading = true
-        } else {
-          p.alpha *= 0.96 // Плавное исчезновение
-        }
-
-        const lifeRatio = p.life / p.maxLife
-        const currentSize = p.fading
-          ? Math.max(p.size * p.alpha, 0)
-          : Math.max(p.size - lifeRatio * p.shrink, p.size * 0.5)
-
-        // Рисуем из кэша
-        ctx.save()
-
-        // Медленный перелив в белый (синус)
-        const whiteAlpha = Math.max(0, Math.sin(lifeRatio * Math.PI) * 0.8)
-
-        // Отрисовка основной частицы
-        ctx.globalAlpha = p.alpha
-        ctx.drawImage(
-          particleCache,
-          p.x - currentSize,
-          p.y - currentSize,
-          currentSize * 2,
-          currentSize * 2
-        )
-
-        // Отрисовка белого перелива поверх
-        if (whiteAlpha > 0) {
-          ctx.globalAlpha = p.alpha * whiteAlpha
-          ctx.drawImage(
-            whiteCache,
-            p.x - currentSize,
-            p.y - currentSize,
-            currentSize * 2,
-            currentSize * 2
-          )
-        }
-
-        ctx.restore()
       })
 
-      particlesRef.current = particlesRef.current.filter((p) => p.alpha >= 0.02)
-      animationFrameId = requestAnimationFrame(animate)
+      animationFrame = requestAnimationFrame(render)
     }
 
-    animationFrameId = requestAnimationFrame(animate)
+    render()
+
+    const onInput = (e) => {
+      engine.speed = parseFloat(e.target.value)
+    }
+    $range?.addEventListener('input', onInput)
 
     return () => {
-      cancelAnimationFrame(animationFrameId)
-      window.removeEventListener('resize', handleResize)
+      window.removeEventListener('resize', resize)
+      cancelAnimationFrame(animationFrame)
+      $range?.removeEventListener('input', onInput)
     }
-  }, [state.introFinished])
+  }, [data])
 
   useEffect(() => {
     if (!state.introFinished || !data) return
@@ -215,14 +195,24 @@ const Hero = ({ data }) => {
         <div className={`${styles.glow} ${styles.glow_2}`} />
         <div className={`${styles.glow} ${styles.glow_3}`} />
         <div className={`${styles.glow} ${styles.glow_4}`} />
-        <canvas
-          ref={canvasRef}
-          style={{
-            background: 'transparent',
-            pointerEvents: 'none',
-            zIndex: '-1',
-          }}
-        />
+        <div className={styles.particleScene}>
+          <div className={styles.sceneInner}>
+            <canvas ref={containerRef} className={styles.particleCanvas} />
+
+            <div className="medium row">
+              <fieldset className={styles.controls}>
+                <input
+                  type="range"
+                  min="0.1"
+                  max="2"
+                  defaultValue="1"
+                  step=".01"
+                  className="range"
+                />
+              </fieldset>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className={styles.hero__content} ref={containerRef}>
