@@ -36,17 +36,17 @@ const Hero = ({ data }) => {
       ctx.shadowBlur = 0
 
       if (time - lastSpawnRef.current > nextSpawnRef.current) {
-        const size = Math.random() * 5 + 3
+        const size = randomRange(15, 35)
         particlesRef.current.push({
           x: 0,
           y: canvas.height,
           size,
-          speed: Math.random() * 0.08 + 0.02,
+          speed: randomRange(0.03, 0.06),
           angle: (Math.random() * Math.PI) / 2,
-          alpha: Math.random() * 0.5 + 0.3,
+          alpha: randomRange(0.5, 1),
           life: 0,
           maxLife: randomRange(7000, 15000),
-          shrink: Math.random() * 2 + 1,
+          shrink: randomRange(2, 5),
           fading: false,
         })
         lastSpawnRef.current = time
@@ -59,7 +59,7 @@ const Hero = ({ data }) => {
           p.y -= Math.sin(p.angle) * p.speed * dt
 
           const lifeRatio = p.life / p.maxLife
-          const currentSize = Math.max(p.size - lifeRatio * p.shrink, 0)
+          const currentSize = Math.max(p.size - lifeRatio * p.shrink, p.size * 0.5)
 
           ctx.beginPath()
           ctx.fillStyle = `rgba(173,216,230,${p.alpha})`
