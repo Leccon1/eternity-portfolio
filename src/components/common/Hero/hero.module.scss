@@ -15,48 +15,6 @@ $color-accent-alt: color(color-accent-alt, 'dark');
   }
 }
 
-.cont {
-  position: absolute;
-  inset: 0;
-  place-self: center;
-}
-
-.contInner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 64px;
-}
-
-.controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.particle {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: $color-accent;
-  position: absolute;
-
-  will-change: transform, opacity;
-
-  &.blur_small {
-    filter: blur(2px);
-  }
-  &.blur_medium {
-    filter: blur(4px);
-  }
-  &.blur_large {
-    filter: blur(8px);
-  }
-}
-
 .hero {
   position: relative;
   min-height: 100vh;
@@ -155,7 +113,7 @@ $color-accent-alt: color(color-accent-alt, 'dark');
   &__content {
     position: relative;
     z-index: 10;
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-xl);
