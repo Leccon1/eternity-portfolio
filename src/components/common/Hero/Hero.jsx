@@ -11,6 +11,7 @@ import styles from './hero.module.scss'
 
 const Hero = ({ data }) => {
   const containerRef = useRef(null)
+  const titleElementRef = useRef(null)
   const nextSpawnRef = useRef(0)
   const { state, setState } = useAnimation()
   const canvasRef = useRef(null)
@@ -171,9 +172,7 @@ const Hero = ({ data }) => {
     const heroDescription = ctx.querySelector(`.${styles.hero__description}`)
     const buttonsContainer = ctx.querySelector(`.${styles.hero__buttons}`)
 
-    const titleElement = ctx.querySelector('.hero__title')
-
-    const { chars } = splitText(titleElement, {
+    const { chars } = splitText(titleElementRef.current, {
       chars: { wrap: 'clip' },
     })
 
@@ -230,7 +229,7 @@ const Hero = ({ data }) => {
       <div className={styles.hero__content} ref={containerRef}>
         <ContentContainer>
           <div className={styles.hero__info}>
-            <Heading className="hero__title" level="h1" size="3xl">
+            <Heading className={styles.hero__title} ref={titleElementRef} level="h1" size="3xl">
               {data.title}
             </Heading>
             <p className={styles.hero__subtitle}>{data.subtitle}</p>
