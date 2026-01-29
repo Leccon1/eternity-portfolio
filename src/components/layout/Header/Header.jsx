@@ -10,7 +10,7 @@ import navigationData from './navigation.data'
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const { state } = useAnimation()
+  const { state, setState } = useAnimation()
   const containerRef = useRef(null)
 
   const headerGapMax = '60px'
@@ -31,7 +31,9 @@ const Header = () => {
   }, [])
 
   useEffect(() => {
-    if (!state.introFinished) return
+    if (!state.introEnabled || state.introFinished) {
+      setState((s) => ({ ...s, contentAnimated: true }))
+    }
 
     const navigation = containerRef.current.querySelector(`.${styles.navigation}`)
     const navigationList = containerRef.current.querySelector(`.${styles.navigation__list}`)

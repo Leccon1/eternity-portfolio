@@ -12,7 +12,7 @@ import styles from './hero.module.scss'
 const Hero = ({ data }) => {
   const containerRef = useRef(null)
   const nextSpawnRef = useRef(0)
-  const { state } = useAnimation()
+  const { state, setState } = useAnimation()
   const canvasRef = useRef(null)
   const particlesRef = useRef([])
   const lastSpawnRef = useRef(0)
@@ -161,7 +161,9 @@ const Hero = ({ data }) => {
   }, [state.introFinished])
 
   useEffect(() => {
-    if (!state.introFinished || !data) return
+    if (!state.introEnabled || state.introFinished) {
+      setState((s) => ({ ...s, contentAnimated: true }))
+    }
 
     const ctx = containerRef.current
     const heroSubtitle = ctx.querySelector(`.${styles.hero__subtitle}`)
