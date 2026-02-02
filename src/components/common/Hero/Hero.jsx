@@ -166,6 +166,11 @@ const Hero = ({ data }) => {
 
     chars.forEach((char, i) => {
       const total = chars.length
+      // Рассчитываем расстояние от центра (0 в центре, увеличивается к краям)
+      const distanceFromCenter = Math.abs(i - (total - 1) / 2)
+      // Инвертируем: теперь в центре самое большое число, по краям — самое маленькое
+      const zIndexValue = Math.round(total / 2 - distanceFromCenter)
+
       const offset = total > 1 ? (i / (total - 1) - 0.5) * 2 : 0
       const shadowX = -(offset * 40)
 
@@ -182,10 +187,26 @@ const Hero = ({ data }) => {
         display: 'inline-block',
         whiteSpace: 'pre',
         textShadow: shadowStyle,
+        position: 'relative',
+        overflow: 'visible',
+        // Применяем рассчитанный zIndex
+        zIndex: zIndexValue,
       })
+
+      if (char.parentElement && char.parentElement !== title) {
+        char.parentElement.style.overflow = 'visible'
+        // Родителю тоже нужен zIndex, если splitText создал обертки
+        char.parentElement.style.position = 'relative'
+        char.parentElement.style.zIndex = zIndexValue
+      }
     })
 
-    const controls = animate(chars, {
+    animate([chars, heroDescription, heroPost, heroSubtitle, buttonsContainer], {
+      opacity: [0, 1],
+      delay: 0,
+    })
+
+    animate(chars, {
       y: ['100%', '0%'],
       duration: 1000,
       ease: 'out(3)',
@@ -212,14 +233,13 @@ const Hero = ({ data }) => {
     isFirstRender.current = false
 
     return () => {
-      if (controls?.stop) controls.stop()
       if (tl?.pause) tl.pause()
 
       if (title && originalText.current) {
         title.innerHTML = originalText.current
       }
     }
-  }, [data])
+  }, [state.introFinished, data])
 
   if (!data) return null
 
@@ -228,6 +248,8 @@ const Hero = ({ data }) => {
       <div className={styles.hero__bg}>
         <div className={`${styles.glow} ${styles.glow_1}`} />
         <div className={`${styles.glow} ${styles.glow_2}`} />
+        <div className={`${styles.glow} ${styles.glow_3}`} />
+        <div className={`${styles.glow} ${styles.glow_4}`} />
         <canvas
           ref={canvasRef}
           style={{
