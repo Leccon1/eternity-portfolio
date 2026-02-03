@@ -7,6 +7,7 @@
   @include theme-vars($font-sizes);
   @include theme-vars($font-weights);
   @include theme-vars($spacing);
+  @include theme-vars($letter-spacing);
   @include theme-vars($radius);
   @include theme-vars($shadows);
   @include theme-vars($container-max-width);

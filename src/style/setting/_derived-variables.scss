@@ -24,6 +24,15 @@ $spacing: (
   spacing-8xl: rem(144),
 );
 
+$letter-spacing: (
+  letter-spacing-xs: rem(-2),
+  letter-spacing-sm: rem(-1.5),
+  letter-spacing-md: rem(-1),
+  letter-spacing-lg: rem(0),
+  letter-spacing-xl: rem(4),
+  letter-spacing-2xl: rem(6),
+);
+
 $radius: (
   radius-sm: rem(4),
   radius-md: rem(8),
