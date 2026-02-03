@@ -133,6 +133,7 @@ $color-accent-alt: color(color-accent-alt, 'dark');
     font-weight: 900;
     line-height: 1;
     letter-spacing: var(--letter-spacing-xs);
+    margin-bottom: var(--spacing-lg);
   }
 
   &__subtitle {
@@ -143,13 +144,16 @@ $color-accent-alt: color(color-accent-alt, 'dark');
   }
 
   &__post {
-    font-size: var(--font-sizes-lg);
+    font-size: var(--font-sizes-md);
     letter-spacing: var(--letter-spacing-2xl);
+    text-transform: uppercase;
   }
 
   &__description {
     max-width: 600px;
     font-size: var(--font-sizes-base);
+    line-height: 1.5;
+    margin: var(--spacing-md) 0;
   }
 
   &__buttons {
