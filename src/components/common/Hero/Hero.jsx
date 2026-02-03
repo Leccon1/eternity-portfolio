@@ -178,14 +178,23 @@ const Hero = ({ data }) => {
       const offset = total > 1 ? (i / (total - 1) - 0.5) * 2 : 0
       const shadowX = -(offset * 40)
 
-      const shadowStyle = Array.from({ length: 12 }, (_, sIndex) => {
-        const s = sIndex + 1
-        const x = (shadowX * (s / 12)).toFixed(2)
-        const y = (s * 1.2).toFixed(2)
-        const color =
-          s < 8 ? `rgba(200, 225, 255, ${1 - s / 15})` : `rgba(10, 25, 45, ${0.3 + s / 20})`
-        return `${x}px ${y}px 0px ${color}`
-      }).join(', ')
+      const shadowStyle =
+        Array.from({ length: 6 }, (_, sIndex) => {
+          const s = sIndex + 1
+          const x = (shadowX * (s / 15)).toFixed(2)
+          const y = (s * 1.5).toFixed(2)
+
+          let color
+          if (s <= 10) {
+            const opacity = 0.9 - s * 0.03
+            color = `rgba(140, 180, 230, ${opacity})`
+          } else {
+            const darkOpacity = 0.2 + (s - 10) * 0.1
+            color = `rgba(10, 30, 60, ${darkOpacity})`
+          }
+
+          return `${x}px ${y}px 0px ${color}`
+        }).join(', ') + `, ${(shadowX * 1.8).toFixed(2)}px 18px 35px rgba(0, 0, 0, 0.5)`
 
       Object.assign(char.style, {
         display: 'inline-block',
