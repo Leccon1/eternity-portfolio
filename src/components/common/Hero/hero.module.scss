@@ -132,17 +132,19 @@ $color-accent-alt: color(color-accent-alt, 'dark');
     font-size: 120px;
     font-weight: 900;
     line-height: 1;
-    letter-spacing: -2px;
+    letter-spacing: var(--letter-spacing-xs);
   }
 
   &__subtitle {
     color: var(--color-text-secondary);
-    font-size: var(--font-sizes-xl);
+    font-size: var(--font-sizes-md);
+    letter-spacing: var(--letter-spacing-2xl);
+    text-transform: uppercase;
   }
 
   &__post {
     font-size: var(--font-sizes-lg);
-    letter-spacing: 4px;
+    letter-spacing: var(--letter-spacing-2xl);
   }
 
   &__description {
