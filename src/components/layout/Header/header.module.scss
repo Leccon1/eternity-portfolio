@@ -29,6 +29,8 @@ $header-radius-base: var(--radius-2xl);
 }
 
 .navigation__list {
+  --navigation-gap: 0px;
+
   width: 100%;
   height: var(--current-header-height);
   background-color: rgba($color-bg, 0.1);
@@ -42,7 +44,7 @@ $header-radius-base: var(--radius-2xl);
   display: grid;
   grid-template-rows: repeat(1, var(--current-header-height));
   place-items: center;
-  gap: 0;
+  gap: var(--navigation-gap);
 
   z-index: var(--z-index-tooltip);
   transition:

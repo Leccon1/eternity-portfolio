@@ -31,9 +31,9 @@ const Header = () => {
   }, [])
 
   useEffect(() => {
-    if (!state.introEnabled || state.introFinished) {
-      setState((s) => ({ ...s, contentAnimated: true }))
-    }
+    if (!state.introFinished) return
+
+    setState((s) => ({ ...s, contentAnimated: true }))
 
     const navigation = containerRef.current.querySelector(`.${styles.navigation}`)
     const navigationList = containerRef.current.querySelector(`.${styles.navigation__list}`)
@@ -45,7 +45,7 @@ const Header = () => {
       duration: 1200,
       onComplete: () => {
         animate(navigationList, {
-          gap: `clamp(${headerGapMin},calc(${headerGapMin} + 40 * ((100vw - 375px) / 1545)), ${headerGapMax})`,
+          '--navigation-gap': `clamp(${headerGapMin}, calc(${headerGapMin} + 40 * ((100vw - 375px) / 1545)), ${headerGapMax})`,
           easing: 'ease',
           duration: 1200,
         })
