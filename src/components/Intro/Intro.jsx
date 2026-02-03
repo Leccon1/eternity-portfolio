@@ -10,6 +10,8 @@ const Intro = ({ onStartAnimateFinish }) => {
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
+    document.body.classList.add('lock-scroll')
+
     const titleLeft = introLeft.current.querySelector(`#introTitleLeft`)
     const titleRight = introRight.current.querySelector(`#introTitleRight`)
     const borderLineLeft = introLeft.current.querySelector(`#introBorderLineLeft`)
@@ -45,6 +47,7 @@ const Intro = ({ onStartAnimateFinish }) => {
       easing: 'easeInOutSine',
       duration: 1000,
       delay: TEXT_DURATION,
+      onComplete: () => document.body.classList.remove('lock-scroll'),
     })
 
     createTimer(
@@ -86,7 +89,7 @@ const Intro = ({ onStartAnimateFinish }) => {
     )
   }, [])
 
-  if (!visible) return null
+  if (!visible) return document.body.classList.remove('lock-scroll')
 
   return (
     <>
