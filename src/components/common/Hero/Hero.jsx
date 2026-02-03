@@ -194,7 +194,7 @@ const Hero = ({ data }) => {
           }
 
           return `${x}px ${y}px 0px ${color}`
-        }).join(', ') + `, ${(shadowX * 1.8).toFixed(2)}px 18px 35px rgba(0, 0, 0, 0.5)`
+        }).join(', ') + `, ${shadowX.toFixed(2)}px 25px 20px rgba(0, 0, 0, 0.9)`
 
       Object.assign(char.style, {
         display: 'inline-block',
