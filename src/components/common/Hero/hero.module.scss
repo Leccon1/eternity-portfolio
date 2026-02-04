@@ -65,6 +65,8 @@ $color-accent-alt: color(color-accent-alt, 'dark');
     z-index: 2;
     opacity: 1;
 
+    will-change: transform, opacity;
+
     &::before {
       content: '';
       position: absolute;
