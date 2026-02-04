@@ -129,7 +129,7 @@ $color-accent-alt: color(color-accent-alt, 'dark');
 
   &__title {
     color: var(--color-text);
-    font-size: 120px;
+    font-size: var(--font-sizes-6xl);
     font-weight: 900;
     line-height: 1;
     letter-spacing: var(--letter-spacing-xs);
