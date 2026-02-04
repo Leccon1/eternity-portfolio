@@ -1,6 +1,7 @@
 import Heading from '@common/Heading/Heading'
 import NavButton from '@common/NavButton/NavButton'
 import { useAnimation } from '@hooks/useAnimationContext'
+import useMediaQuery from '@hooks/useMediaQuery'
 import ContentContainer from '@ui/ContentContainer/ContentContainer'
 import { hexToRgb } from '@utils/hexToRgb'
 import { randomRange } from '@utils/math'
@@ -19,6 +20,19 @@ const Hero = ({ data }) => {
   const nextSpawnRef = useRef(0)
   const isFirstRender = useRef(true)
   const originalText = useRef('')
+
+  // Для динамической смены количества теней shadowStyle при изменении размера экрана
+  const isMobile = useMediaQuery('(max-width: 768px)')
+  const isTablet = useMediaQuery('(max-width: 1024px)')
+
+  let length
+  if (!isTablet) {
+    length = 6 // desktop
+  } else if (isTablet && !isMobile) {
+    length = 4 // tablet
+  } else {
+    length = 2 // mobile
+  }
 
   useEffect(() => {
     if (!state.introEnabled || state.introFinished) {
@@ -179,7 +193,7 @@ const Hero = ({ data }) => {
       const shadowX = -(offset * 40)
 
       const shadowStyle =
-        Array.from({ length: 6 }, (_, sIndex) => {
+        Array.from({ length }, (_, sIndex) => {
           const s = sIndex + 1
           const x = (shadowX * (s / 15)).toFixed(2)
           const y = (s * 1.5).toFixed(2)
@@ -252,7 +266,7 @@ const Hero = ({ data }) => {
         title.innerHTML = originalText.current
       }
     }
-  }, [state.introFinished, data])
+  }, [state.introFinished, data, isMobile])
 
   if (!data) return null
 
