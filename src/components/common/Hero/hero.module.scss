@@ -74,7 +74,7 @@ $color-accent-alt: color(color-accent-alt, 'dark');
       background-color: $color-accent;
       opacity: 0.5;
       filter: blur(75px);
-      animation: infinite shimmer 15s;
+      animation: shimmer 15s ease-in-out infinite;
       z-index: 1;
     }
   }
